@@ -1,0 +1,109 @@
+﻿
+
+<main>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 30px ; margin-left: 30px">
+                <label class="Tittle_Settings_Main" style="display:block;margin-bottom:10px;font-weight: bold;" data-i18n="Person_period_enrollment">Period Enrollment</label>
+                <label class="Tittle_Settings_secondLine" style="display:block;margin-left:20px;margin-bottom:10px;" data-i18n="Person_period">Period</label>
+
+                <div class="Container_Controls" style="display:block;margin-left:40px;margin-bottom:10px;">
+                    <form id="periodForm">
+                        <div class="form-group col-md-4">
+                            <label data-i18n="Person_export_date_from">Date From:</label>
+                            <div class="position-relative has-icon-left">
+                                <input type='text' id="DateFromPeriod" class="form-control" placeholder="mm/dd/yyyy" style="background-color: white;" required />
+                                <div class="form-control-position">
+                                    <i class="icon-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label data-i18n="Person_export_date_to">Date To:</label>
+                            <div class="position-relative has-icon-left">
+                                <input type='text' id="DateToPeriod" class="form-control" placeholder="mm/dd/yyyy" style="background-color: white;" required />
+                                <div class="form-control-position">
+                                    <i class="icon-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div style=" margin: 0 10px;margin-top: 8px;">
+                                <label for=""></label>
+                                <div class="position-relative has-icon-left">
+                                    <button class="btn btn-success" id="btnSave" type="submit" data-i18n="Person_period_btn_save">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+
+@section scripts{
+
+    <script>
+    //elements
+        var AvailablePcpName = [];
+        var ResultsMcos = [];
+    var UrlThisView = '@Url.Action("Enrollment", "Enrollment")';
+    var ApplicationMemberID = '@TempData["ApplicationMemberID"]';
+
+    var disabledBackground = '@Url.Content("~/app-assets/assets/images/disabledBackgroung.png")';
+    //actions
+    var urlGetMembersByApplicationMemberID = '@Url.Action("GetMembersByApplicationMemberID", "Enrollment")';
+    var urlGetAllMco = '@Url.Action("GetAllMco", "Common")';
+    var urlGetAllPmg = '@Url.Action("GetAllPmg", "Common")';
+    var urlGetAllSpeciality = '@Url.Action("GetAllSpeciality", "Common")';
+    var urlGetAllPcp = '@Url.Action("GetAllPcp", "Common")';
+    var urlChangePersonMco = '@Url.Action("ChangePersonMco", "person")';
+        var urlSendConfirmationEmail = '@Url.Action("SendConfirmationEmail", "Common")';
+        var urlCreatePDF = '@Url.Action("CreatePDF", "Common")';
+        var urlSendConfirmationEmail = '@Url.Action("SendConfirmationEmail", "Common")';
+        var urlSendEnrollmentPeriod = '@Url.Action("SendPEnrollmenteriod", "Enrollment")';
+        var urlGetEnrollmentPeriod = '@Url.Action("GetEnrollmentPeriod", "Enrollment")';
+    @*var urlVerifyOverCapacity = '@Url.Action("VerifyOverCapacity", "Common")';*@
+
+    //fill dynamic data
+        var urlGetPcpWithFilters = '@Url.Action("GetPcpWithFilters", "Common")';
+        var GetEnrollmentFiles = '@Url.Action("GetEnrollmentFiles", "File")';
+        var DisabledEnrollmentFiles = '@Url.Action("DisabledEnrollmentFiles", "File")';
+        var SetEnrollmentFiles = '@Url.Action("SetEnrollmentFiles", "File")';
+        var GetValidateFiles = '@Url.Action("GetValidateFiles", "File")';
+        var GetFile = '@Url.Action("GetFile", "File")';
+    var urlGetEnrollmentHistoryByPersonId = '@Url.Action("GetEnrollmentHistoryByPersonId", "Common")';
+     var urlGetAllOvercapacity = '@Url.Action("GetAllOverCapacity", "Enrollment")';
+    //
+    var textForDisabledButton = "";
+    //Dinamic data for update
+    var PersonId = '';
+    var ActualMcoId = "";
+    var ActualNPI = "";
+    var ActualPmgId = "";
+    var UpdateMcoId = "";
+    var UpdateNPI = "";
+        var UpdatePmgId = "";
+        // por overcapacity
+        var jsonover;
+        var jsondatamemory;
+
+        //var UpdateMcoId = "";
+        var UpdateMco = "";
+        //var UpdatePmgId = "";
+        var UpdatePmg = "";
+        var UpdatePcpId = "";
+        var UpdatePcp = "";
+        //var UpdateNPI = "";
+        var resultsPmg = [];
+
+    </script>
+    <script src="~/app-assets/assets/js/jquery.actual.min.js"></script>
+    <script src="~/app-assets/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/app-assets/assets/js/EnrollmentPeriod.js"></script>
+    
+}

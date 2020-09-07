@@ -1,0 +1,369 @@
+﻿@using Common;
+@using EnrrolmentSelfServicesWebApp.Helpers;
+@*<!DOCTYPE html>*@
+<html lang="es" data-textdirection="rtl" class="loading">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Enrollment System">
+    <meta name="keywords" content="Enrollment, Vital">
+    <meta name="author" content="Truenorth Corporation">
+    <title>Enrollment System</title>
+    <link rel="apple-touch-icon" sizes="60x60" href="~/wwwroot/images/ico/apple-icon-60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/wwwroot/images/ico/apple-icon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/wwwroot/images/ico/apple-icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/wwwroot/images/ico/apple-icon-152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="../../../app-assets/images/ico/favicon-32.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- BEGIN VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/materializedesignbootstrap/css/mdb.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/fonts/fontawesome/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/sweet-alert/css/sweetalert2.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/lib/flag-icon/css/flag-icon.css" />
+
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN CUSTOM CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css/customStyle.css">
+    <!-- END CUSTOM CSS-->
+
+    <link href="~/wwwroot/vendors/css/pickers/pickadate/pickadate.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/wwwroot/vendors/css/tables/datatable/dataTables.bootstrap4.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/wwwroot/vendors/css/tables/datatable/select.dataTables.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/wwwroot/vendors/css/tables/extensions/buttons.dataTables.min.css")">
+
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/wwwroot/vendors/css/ui/jquery-ui.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/wwwroot/vendors/css/forms/selects/select2.min.css")">
+    @RenderSection("head", required: false)
+</head>
+<body class="main-body" data-open="hover" data-menu="horizontal-top-icon-menu" data-col="2-columns">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a href=@Url.Action("Logout","User", new { url = ViewBag.urlGov})><img src="~/wwwroot/images/logoPuertoRico.png" height="60px" /></a>
+        </li>
+        <li class="nav-item">
+            <a href=@Url.Action("Logout","User", new { url = ViewBag.urlVital})><img src="~/wwwroot/images/LogoVital.png" height="60px" /></a>
+        </li>
+        <li class="nav-item">
+            <a href=@Url.Action("Logout","User", new { url = ViewBag.urlASES})><img src="~/wwwroot/images/logoAses.png" height="60px" /></a>
+        </li>
+    </ul>
+    @if (ViewBag.IsNA == true)
+    {
+        <div class="topnav" style="overflow:visible !important;" id="myTopnav">
+
+            <a href="@ViewBag.urlVital" class="active"><i class="fas fa-home"></i> <span data-i18n="Munu_inicio">Inicio</span></a>
+
+            <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe-americas"></i> <span data-i18n="footer_EscogeUnIdioma">Idioma</span> <b class="caret"></b></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a onclick="changeLanguage('?lng=en', 'en')" class="dropdown-item" style="font-size:12px;">
+                    <i class="flag-icon flag-icon-us"></i> English
+                </a>
+                <a onclick="changeLanguage('?lng=es', 'es')" class="dropdown-item" style="font-size:12px;">
+                    <i class="flag-icon flag-icon-pr"></i> Español
+                </a>
+            </div>
+
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    }
+    @*<nav class="navbar navbar-expand-md navbar-light navbar-shadow">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+
+                @if (ViewBag.IsNA == true)
+                {
+                    <a href="@ViewBag.urlVital" data-i18n="Munu_inicio">Inicio</a>
+                }
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                @if (ViewBag.IsNA == true)
+                {
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="footer_EscogeUnIdioma">Escoge un idioma <b class="caret"></b></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a onclick="changeLanguage('?lng=en', 'en')" class="dropdown-item" style="font-size:12px;">
+                                    <i class="flag-icon flag-icon-us"></i> English
+                                </a>
+                                <a onclick="changeLanguage('?lng=es', 'es')" class="dropdown-item" style="font-size:12px;">
+                                    <i class="flag-icon flag-icon-pr"></i> Español
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                }
+
+            </div>
+
+        </nav>*@
+
+    @if (ViewBag.IsNA != true)
+    {
+<div class="topnav" style="overflow:visible !important;" id="myTopnav">
+    <a href="~/Home/Welcome/" class="active"><i class="fas fa-home"></i> <span data-i18n="Munu_inicio">Inicio</span></a>
+    @*<a href="~/Home/Index/" class="active"><i class="fas fa-exchange-alt"></i> <span data-i18n="changeMCO_title">Cambiar MCO</span></a>*@
+    <a href="~/Settings/MyAccount/" class="active"><i class="fas fa-user"></i> <span data-i18n="Munu_perfil">Mi Perfil</span></a>
+    <a href="~/Home/Tools/" class="active"><i class="fas fa-user"></i> <span data-i18n="Munu_enlaces">Enlances</span></a>
+    @*<a href="#" class="active"><i class="fas fa-clipboard-check"></i> Cambiar Proveedor</a>*@
+
+    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe-americas"></i> <span data-i18n="footer_EscogeUnIdioma">Idioma</span> <b class="caret"></b></a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a onclick="changeLanguage('?lng=en', 'en')" class="dropdown-item" style="font-size:12px;">
+            <i class="flag-icon flag-icon-us"></i> English
+        </a>
+        <a onclick="changeLanguage('?lng=es', 'es')" class="dropdown-item" style="font-size:12px;">
+            <i class="flag-icon flag-icon-pr"></i> Español
+        </a>
+    </div>
+    <a href=@Url.Action("ChangePassword","User")><i class="fas"></i> <span data-i18n="Munu_password"> Cambiar Contrase\u00f1a</span></a>
+    <a href=@Url.Action("Logout","User")><i class="fas fa-sign-out-alt"></i> <span data-i18n="Munu_sesion"> Cerrar Sesión</span></a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+    }
+
+
+
+    <div id="wrap">
+        <!-- body-->
+        <div class="bg2 sizeOnSmall mb-2" style="height:690px;">
+            <div class="app-content container center-layout mt-2">
+                <div class="content-wrapper">
+                    <div class="content-header row">
+                    </div>
+                    <div class="content-body">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-->
+    @*<div id="footer mt-4">
+            <div class="container">
+                <p class="clearfix text-muted text-sm-center mb-0 px-2">
+                    <ul class="customUl">
+                        <li><a href="#" data-toggle="modal" data-target="#protegeteDelFraudeModal" data-i18n="footer_ProtegeteDelFraude">Protégete del fraude en los portales</a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="footer_EscogeUnIdioma">Escoge un idioma <b class="caret"></b></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a onclick="changeLanguage('?lng=en', 'en')" class="dropdown-item" style="font-size:12px;">
+                                    <i class="flag-icon flag-icon-us"></i> English
+                                </a>
+                                <a onclick="changeLanguage('?lng=es', 'es')" class="dropdown-item" style="font-size:12px;">
+                                    <i class="flag-icon flag-icon-pr"></i> Español
+                                </a>
+                            </div>
+                        </li>
+                        <li><a href="#" data-toggle="modal" data-target="#informacionLegalModal" data-i18n="footer_InformacionLegal">Información legal </a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#privacidadModal" data-i18n="footer_DeclatacionDePrivacidad">Declaración de privacidad</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#cookiesModal" data-i18n="footer_AvisoDeCookies">Aviso de cookies</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#comunicateModal" data-i18n="footer_ComunicateConNosotros">Comunícate con nosotros</a></li>
+                    </ul>
+                </p>
+            </div>
+        </div>*@
+    <!-- Modal Protegete del Fraude -->
+    <div class="modal fade" id="protegeteDelFraudeModal" tabindex="-1" role="dialog" aria-labelledby="protegeteDelFraudeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="protegeteDelFraudeModalLabel" data-i18n="modal_title_ProtegeteDelFraude">Protégete del fraude en los portales</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("~/Views/Shared/Modal/ProtegeteDelFraudeModal.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Informacion Legal -->
+    <div class="modal fade" id="informacionLegalModal" tabindex="-1" role="dialog" aria-labelledby="informacionLegalModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="informacionLegalModalLabel" data-i18n="modal_title_InformacionLegal">Información Legal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("~/Views/Shared/Modal/InformacionLegalModal.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Declaracion de Privacidad -->
+    <div class="modal fade" id="privacidadModal" tabindex="-1" role="dialog" aria-labelledby="privacidadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacidadModalLabel" data-i18n="modal_title_DeclaracionDePrivacidad">Declaración de Privacidad</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("~/Views/Shared/Modal/DeclaracionDePrivacidadModal.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Aviso de Cookies -->
+    <div class="modal fade" id="cookiesModal" tabindex="-1" role="dialog" aria-labelledby="cookiesModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cookiesModalLabel" data-i18n="modal_title_AvisoDeCookies">Aviso de Cookies</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("~/Views/Shared/Modal/AvisoDeCookiesModal.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Comunicate con nosotros -->
+    <div class="modal fade" id="comunicateModal" tabindex="-1" role="dialog" aria-labelledby="comunicateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="comunicateModalLabel" data-i18n="modal_title_ComunicateConNosotros">Comunícate con nosotros</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("~/Views/Shared/Modal/ComunicateConNosotrosModal.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Terminos de Servicio -->
+    <div class="modal fade" id="terminosDeServicioModal" tabindex="-1" role="dialog" aria-labelledby="terminosDeServicioModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="terminosDeServicioModalLabel" data-i18n="modal_title_TerminosDeServicio">Normas de Uso</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("~/Views/Shared/Modal/TerminosDeServicioModal.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BEGIN VENDOR JS-->
+    <script src="~/wwwroot/lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/jquery_ui/jquery-ui.min.js"></script>
+    <script src="~/wwwroot/lib/popper/popper.js"></script>
+    <script src="~/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/blockUI/dist/js/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/sweet-alert/js/sweetalert2.all.min.js"></script>
+    <script src="~/wwwroot/lib/sweet-alert/js/core.js"></script>
+    <script src="~/wwwroot/lib/i18next/i18next.min.js"></script>
+    <script src="~/wwwroot/lib/i18next/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="~/wwwroot/lib/i18next/i18nextXHRBackend.min.js"></script>
+    <script src="~/wwwroot/lib/i18next/jquery-i18next.min.js"></script>
+    <script src="~/wwwroot/lib/i18next/query-string.js"></script>
+    <script src="~/wwwroot/lib/materializedesignbootstrap/js/mdb.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN CUSTOM JS-->
+
+    <script src="@Url.Content("~/wwwroot/vendors/js/tables/jquery.dataTables.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/wwwroot/vendors/js/tables/datatable/dataTables.bootstrap4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/wwwroot/vendors/js/tables/datatable/dataTables.select.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/wwwroot/js/scripts/tables/datatables-extensions/dataTables.rowGroup.min.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/wwwroot/lib/jquery.date-dropdowns/dist/jquery.date-dropdowns.min.js")" type="text/javascript"></script>
+    <script src="~/wwwroot/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="~/wwwroot/vendors/js/pickers/pickadate/picker.date.js"></script>
+
+    <script src="@Url.Content("~/wwwroot/js/scripts/tables/datatables-extensions/dataTables.rowsGroup.js")" type="text/javascript"></script>
+
+    <script src="~/wwwroot/vendors/js/tables/datatable/dataTables.buttons.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/vendors/js/tables/datatable/buttons.bootstrap4.min.js" type="text/javascript"></script>
+
+    <script src="~/wwwroot/vendors/js/tables/jszip.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/vendors/js/tables/pdfmake.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/vendors/js/tables/vfs_fonts.js" type="text/javascript"></script>
+    <script src="~/wwwroot/vendors/js/tables/buttons.html5.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/vendors/js/tables/buttons.print.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/vendors/js/tables/buttons.colVis.min.js" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/wwwroot/lib/jquery_ui/jquery-ui.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/wwwroot/vendors/js/forms/select/select2.full.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/wwwroot/lib/Pagination/jquery.twbsPagination.js")" type="text/javascript"></script>
+    <script src="~/wwwroot/lib/jquery.redirect/dist/jquery.redirect.js"></script>
+    <script src="~/wwwroot/js/site.js" type="text/javascript"></script>
+    <!-- END CUSTOM JS-->
+    @RenderSection("scripts", required: false)
+    <script>
+
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    $(document).ready(function () {
+		    var UserSettings = {
+			    language: "@Session[SessionHelper.LANGUAGE_SESSION_KEY]",
+			    culture: "@Session[SessionHelper.CULTURE_SESSION_KEY]"
+		    }
+             String.language = UserSettings.language;
+		     String.defaultLocale = "@AppConstants.DefaultCulture";
+             String.locale = UserSettings.culture;
+             i18next.changeLanguage("@Session[SessionHelper.LANGUAGE_SESSION_KEY]");
+           });
+        function changeLanguage(urlLanguage, language) {
+            //debugger;
+        //alert("Cambiar lenguaje")
+             $.ajax({
+                        url: '@Url.Action("ChangeLanguage", "Common")',
+                        dataType: 'json',
+                        data: {
+                            language: language
+                        },
+                        type: 'GET',
+                        async: false,
+                        success: function (response) {
+                            i18next.changeLanguage(language);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert('Occurrió un error en el translate')
+                        }
+                    });
+           }
+    </script>
+    @Html.Partial("~/Views/Shared/GoogleAnalytics.cshtml")
+</body>
+</html>

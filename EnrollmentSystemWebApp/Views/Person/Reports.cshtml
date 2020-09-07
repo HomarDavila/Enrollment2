@@ -1,0 +1,141 @@
+﻿<link href="~/app-assets/assets/css/CustomCards.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-6" onclick="window.location.href = '@Url.Action("ReportsWeb", "Person")';">
+                        <div class="ch-info ch-info-1">
+                            <img class="img-rounded" src="~/app-assets/assets/images/4288565analysisanalyticschartdatapie-115791_115722.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Person_reports_web_applications">Web Aplications Report</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-7" onclick="window.location.href = '@Url.Action("ReportsSystem", "Person")';">
+                        <div class="ch-info ch-info-2">
+                            <img class="img-rounded" src="~/app-assets/assets/images/4288565analysisanalyticschartdatapie-115791_115722.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Person_reports_system_downtime">System Downtime Report</h3>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-8" onclick="window.location.href = '@Url.Action("ReportsEnrollment", "Person")';">
+                        <div class="ch-info ch-info-3">
+                            <img class="img-rounded" src="~/app-assets/assets/images/4288565analysisanalyticschartdatapie-115791_115722.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Person_reports_enrollment">Enrollment Report</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-2">
+                        <div class="ch-info ch-info-3" onclick="window.location.href = '@Url.Action("ReportsDisenrollment", "Person")';">
+                            <img class="img-rounded" src="~/app-assets/assets/images/icon-Network.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Person_reports_disenrollment">Disenrollment Report</h3>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-9">
+                        <div class="ch-info ch-info-3" onclick="window.location.href = '@Url.Action("ReportsJustcause", "Person")';">
+                            <img class="img-rounded" src="~/app-assets/assets/images/4288565analysisanalyticschartdatapie-115791_115722.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Person_reports_just_cause">Just Cause Report</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-9">
+                        <div class="ch-info ch-info-3" onclick="window.location.href = '@Url.Action("ReportsCallCenter", "Person")';">
+                            <img class="img-rounded" src="~/app-assets/assets/images/4288565analysisanalyticschartdatapie-115791_115722.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Person_reports_callcenter">Call Center Report</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+     $("#reports").attr({
+            class: "active",
+     });
+</script>
+@*<div class="row">
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-4">
+                        <div class="ch-info ch-info-4">
+                            <img src="~/app-assets/assets/images/icon-Navigation.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Index_Search_PCP/PCM">Buscar PCP/PMG</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-5">
+                        <div class="ch-info ch-info-5">
+                            <img src="~/app-assets/assets/images/icon-Report.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Index_Reporting">Reportes</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<script src="~/app-assets/assets/js/CustomCards.js"></script>

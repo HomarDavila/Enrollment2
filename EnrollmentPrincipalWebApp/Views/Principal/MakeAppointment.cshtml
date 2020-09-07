@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Make VITAL Orientation Appointment";
+    Layout = "~/Views/Shared/_Layout-Principal-English.cshtml";
+    ViewBag.Ruta = "HacerCita";
+}
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                </div>
+                <div class="col-md-6 col-lg-9">
+                    <h1>Make a VITAL Orientation Appointment</h1>
+                    <p>
+                        <strong>Get help from a Choice Counselor</strong><br>
+                        Choice counselors are available to answer questions and help you make an informed decision about choosing the Insurer that best meets your and your family's health care needs. To schedule an in-person appointment with a Choice Counselor, select <a href="@ViewBag.HacerCita" target="_blank">Make a VITAL Orientation Appointment</a>. When you make an appointment, select the location of the Medicaid office you want to visit. For help to find the location of the Medicaid office near you, download the <a href="~/wwwroot/assets/pdf/oficinas-medicaid-en.pdf" target="_blank">Medicaid Office Locations PDF</a>.
+                    </p>
+                    <p>Choice Counselors are available at a local Medicaid office from 7:30 a.m. to 4:00 p.m., Monday through Friday</p>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="OfficeLocations">
+                        <div class="tile">
+                            <img class="img-fluid" src="~/wwwroot/assets/img/doctor-patient.jpg" alt="">
+                            <h3 class="tile__title tile__title--blue">Medicaid Office Locations</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>EnrollmentDB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{40068504-d334-4115-9633-c96ae2380fff}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql140DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>EnrollmentDB</RootNamespace>
+    <AssemblyName>EnrollmentDB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'WebConfigPRO|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Produccion|AnyCPU' ">
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Identity\" />
+    <Folder Include="Identity\Tables\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="Configuration\Tables\" />
+    <Folder Include="Security" />
+    <Folder Include="Enrollment\" />
+    <Folder Include="Enrollment\Tables\" />
+    <Folder Include="ExportAses\" />
+    <Folder Include="ExportAses\Tables\" />
+    <Folder Include="ExportAses\Stored Procedures\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Functions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Event.sql" />
+    <Build Include="Identity\Tables\IdentityAudiences.sql" />
+    <Build Include="Identity\Tables\IdentityOptionRoles.sql" />
+    <Build Include="Identity\Tables\IdentityOptionTypes.sql" />
+    <Build Include="Identity\Tables\IdentityOptions.sql" />
+    <Build Include="Identity\Tables\IdentityApplications.sql" />
+    <Build Include="Identity\Tables\IdentityUserLogins.sql" />
+    <Build Include="Identity\Tables\IdentityUserClaims.sql" />
+    <Build Include="Identity\Tables\IdentityUsers.sql" />
+    <Build Include="Identity\Tables\IdentityRolUsers.sql" />
+    <Build Include="Identity\Tables\IdentityRoles.sql" />
+    <Build Include="Configuration\Tables\ConfigurationDetails.sql" />
+    <Build Include="Configuration\Tables\Configurations.sql" />
+    <Build Include="Security\Configuration.sql" />
+    <Build Include="Security\Identity.sql" />
+    <Build Include="Enrollment\Tables\PrimaryMedicalGroup.sql" />
+    <Build Include="Enrollment\Tables\ManagedCareOrganizations.sql" />
+    <Build Include="Enrollment\Tables\Genders.sql" />
+    <Build Include="Enrollment\Tables\Specialities.sql" />
+    <Build Include="Enrollment\Tables\Municipalities.sql" />
+    <Build Include="Enrollment\Tables\PrimaryCarePhysician.sql" />
+    <Build Include="Security\Enrollment.sql" />
+    <Build Include="Enrollment\Tables\PersonPrimaryCarePhysician.sql" />
+    <Build Include="ExportAses\Tables\NetworkProvidersImport.sql" />
+    <Build Include="ExportAses\Tables\ProcessHeader.sql" />
+    <Build Include="Security\ExportAses.sql" />
+    <Build Include="Enrollment\Tables\Languages.sql" />
+    <Build Include="ExportAses\Tables\MembersRecords_1.sql" />
+    <Build Include="ExportAses\Tables\InsuranceRecords_1.sql" />
+    <Build Include="ExportAses\Tables\HouseHoldRecords_1.sql" />
+    <Build Include="ExportAses\Tables\FamilyRecords_1.sql" />
+    <Build Include="Enrollment\Tables\PrimaryCarePhysicianDetail.sql" />
+    <Build Include="Enrollment\Tables\Members_1.sql" />
+    <Build Include="Enrollment\Tables\Families_1.sql" />
+    <Build Include="Enrollment\Tables\PcpPmgMco.sql" />
+    <Build Include="Enrollment\Tables\EnrollmentHistories.sql" />
+    <Build Include="Enrollment\Tables\ContractsStatus.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_UploadDataExcel.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_UploadDataText.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_Validatefileds.sql" />
+    <Build Include="ExportAses\Stored Procedures\ExecuteNormalizationNetworkProviders.sql" />
+    <Build Include="ExportAses\Stored Procedures\ExecuteNormalizationBeneficiaries.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_UploadDataFamilyRecords.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_UploadDataHouseHoldRecords.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_UploadDataInsuranceRecords.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_UploadDataMembersRecords.sql" />
+    <Build Include="ExportAses\Tables\ConfigurationTableImport.sql" />
+    <Build Include="Enrollment\Tables\Files.sql" />
+    <Build Include="Enrollment\Tables\Statistics.sql" />
+    <Build Include="Enrollment\Tables\Period.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetRowSize.sql" />
+    <Build Include="ExportAses\Tables\ExportFileForAses.sql" />
+    <Build Include="Enrollment\Tables\ReasonJustCauses.sql" />
+    <Build Include="Security\EnrollmentSecurityDbUsr2.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_GetDataForAses.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_GenerateDataForAses.sql" />
+    <Build Include="ExportAses\Stored Procedures\ExecuteNormalizationNetworkProviders_PRD_DLM.sql" />
+    <Build Include="ExportAses\Tables\ImportRejectfileFromAses.sql" />
+    <Build Include="Enrollment\Tables\Status.sql" />
+    <Build Include="Enrollment\Tables\Puntuacion.sql" />
+    <Build Include="Enrollment\Tables\Preguntas.sql" />
+    <Build Include="dbo\Functions\RemoveExtraSpacesColumn.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_UploadDataReject.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_UpdateStatusWhenRejected.sql" />
+    <Build Include="ExportAses\Stored Procedures\USP_AutomaticCloseIfNotRejected.sql" />
+    <Build Include="dbo\Stored Procedures\USP_Insert_InsertIdentityUser.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EnrollmentDB.publish.xml" />
+    <None Include="EnrollmentDB_Development.publish.xml" />
+  </ItemGroup>
+</Project>

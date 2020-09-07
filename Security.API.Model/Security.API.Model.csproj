@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;WebConfigDEV;Test;WebConfigPRO;Produccion</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Response\DomainServer_Response_v1.cs" />
+    <Compile Remove="Response\UserType_Response_v1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.API.Model\Core.API.Model.csproj" />
+  </ItemGroup>
+
+</Project>

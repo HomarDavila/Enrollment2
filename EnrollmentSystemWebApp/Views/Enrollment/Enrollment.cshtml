@@ -1,0 +1,916 @@
+﻿@{
+    Layout = "~/Views/Shared/Custom/_MainRobust.cshtml";
+}
+
+<link href="~/app-assets/assets/css/CustomTabs.css" rel="stylesheet" />
+<link href="~/app-assets/assets/css/Enrollment.css" rel="stylesheet" />
+<link href="~/app-assets/assets/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+<style>
+    .popupTd {
+        padding: 10px !important;
+        vertical-align: middle !important;
+    }
+
+    table th {
+        font-size: .9rem;
+        font-weight: 400;
+        background-color: #0079c1;
+        color: #FFF;
+        padding: 5px 0;
+    }
+
+    .fa-check {
+        color: green;
+    }
+
+    .fa-times {
+        color: red;
+    }
+
+    .fa-map-marker-alt {
+        color: red;
+    }
+
+    #PersonDirections td:not(.dontCenter) {
+        text-align: center;
+    }
+
+    table#PersonDirections {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .showImportant {
+        display: inline-block !important;
+    }
+
+    .noShowImportant label::before,
+    .noShowImportant label::after {
+        display: none;
+    }
+</style>
+<main>
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label class="tab" for="tab1" data-i18n="Enrollment_TittleTab1">Enrollment</label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label class="tab" for="tab2" data-i18n="Enrollment_TittleTab2">Change History</label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label class="tab" for="tab3" data-i18n="Enrollment_TittleTab3">Upload File</label>
+
+
+    <section id="content1">
+        <div class="m-bottom20px">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-md-4 label-control" for="txtContactMPI" style="line-height: 40px;" data-i18n="Enrollment_MPI">Nombre del Contacto:</label>
+                        <div class="col-md-8 position-relative has-icon-left">
+                            <input id="txtContactMPI" class="form-control" disabled />
+                            <div class="form-control-position">
+                                <i class="icon-head"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <div class="form">
+                        <div class="form-body">
+                            <div class="row m-bottom20px">
+                                <div class="col-md-12">
+                                    <h3 data-i18n="Enrollment_Tittle1">Datos Generales</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="txtBeneficiary" data-i18n="SearchPerson_Header_Member_Name">Beneficiario:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtBeneficiary" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="txtMPIDatosGenerales" data-i18n="">MPI</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtMPIDatosGenerales" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="txtActualPcp" data-i18n="Enrollment_CPCP">PCP Actual:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtActualPcp" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="txtActualPmg" data-i18n="Enrollment_CPMG">PMG Actual:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtActualPmg" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="txtActualMco" data-i18n="Enrollment_CMCO">MCO Actual:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtActualMco" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="txtEligibility" data-i18n="Enrollment_Eligibility">Elegibilidad:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtEligibility" data-i18n="[placeholder]Enrollment_Elegible" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="txtEfectivityDate" data-i18n="Enrollment_EffectiveDate">Fecha de Efectividad:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtEfectivityDate" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="txtCertificationDate" data-i18n="Enrollment_CertificationDate">Fecha de Certificación:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtCertificationDate" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" hidden>
+                                <div class="form-group col-md-12">
+                                    <label for="txtComment" data-i18n="Enrollment_Comment">Comentario</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtComment" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="Last4SSN" data-i18n="registerUser_ssn">4 \u00faltimos d\u00edgitos del SSN</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="Last4SSN" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="txtDateOfBirth" data-i18n="SearchPerson_Birthday">Fecha de Nacimiento</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtDateOfBirth" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="txtContactFullName" data-i18n="SearchPerson_Header_Contact_Name">Nombre de Contacto</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtContactFullName" class="form-control" disabled />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="card-block">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <div class="position-relative has-icon-left">
+                                    <button class="btn btn-primary center-button" id="btnDisplaySelection" type="button">
+                                        <i class="icon-shuffle"></i> <span id="txt_btn_displat_Selection" data-i18n="Enrollment_btnDisplaySelection">Realizar Cambio de MCO</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        @if (ViewBag.permission == "true")
+                        {
+                            <div class="row" style="padding:0 10px;">
+                                <div class="col-md-2">
+                                    <div class="checkbox checkbox-primary">
+                                        <input id="justCauseCheck" class="styled" type="checkbox">
+                                        <label for="justCauseCheck" class="label-control" data-i18n="Enrollment_ReasonJustCauseCheck" style=" color: #0062ab; padding-bottom: 3px; font-weight: bolder;">Cambio por Justa Causa</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="row" id="divReasonJustCause">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="cbJustCausa" data-i18n="Enrollment_ReasonJustCause">Reason change just cause:</label>
+                                                <select type="text" class="js-example-basic-single" id="cbJustCausa" style="width: 100%;">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="JustCauseCommentSection" class="col-md-8" hidden>
+                                            <div class="form-group">
+                                                <label for="txtComment" data-i18n="Enrollment_ReasonJustCause_Description">Description:</label>
+                                                <textarea id="txtCommentJustCausa" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="cardSelection" style="display:none">
+            <div class="card-body">
+                <div class="card-block">
+                    <div class="form">
+                        <div class="form-body">
+                            <div class="row m-bottom20px">
+                                <div class="col-md-12">
+                                    <h3 data-i18n="Enrollment_Tittle2">Select PCP/PMG</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="txtPhName" data-i18n="Enrollment_PhisycianName">Phisycian Name:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtPhName" class="form-control" data-i18n="[placeholder]AllEnterText" />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="txtNPI" data-i18n="Enrollment_NPI">NPI:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtNPI" maxlength=10" class="form-control" data-i18n="[placeholder]AllEnterText" />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="cbSpeciality" data-i18n="Enrollment_Speciality">Speciality:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <div class="position-relative has-icon-left">
+                                            <select type="text" id="cbSpeciality" style="width: 100%;">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="cbPmg" data-i18n="Enrollment_Medical">Grupo Médico Primario:</label>@*Primary Medical Group*@
+                                    <div class="position-relative has-icon-left">
+                                        <div class="position-relative has-icon-left">
+                                            <select type="text" id="cbPmg" style="width: 100%;">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="cbMco" data-i18n="Enrollment_Org">Aseguradora MCO:</label>@*managed Care Organization*@
+                                    <div class="position-relative has-icon-left">
+                                        <div class="position-relative has-icon-left">
+                                            <select type="text" id="cbMco" class="cbMco" data-allow-clear="true" data-placeholder="Yours Placeholder" multiple style="width: 100%;"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="cbMunicipality" data-i18n="Enrollment_Municipality">Pueblo:</label>
+                                    <div class="position-relative has-icon-left">
+                                        <div class="position-relative has-icon-left">
+                                            <select type="text" class="cbPmg" id="cbMunicipality" style="width: 100%;">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+
+                                </div>
+                                <div class="form-group col-md-4">
+
+                                </div>
+                                <div class="form-group col-md-3" style="margin-top: 10px;">
+                                    <label for="btnClean"></label>
+                                    <div class="position-relative has-icon-left">
+                                        <button type="button" class="btn btn-primary" id="btnClean" style="float:right;" data-i18n="ClenaPerson_Clean">
+                                            <i class="icon-shuffle"></i> Limpiar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-1" style="margin-top: 10px;">
+                                    <label for="btnSearch"></label>
+                                    <div class="position-relative has-icon-left">
+                                        <button type="submit" class="btn btn-primary" id="btnSearch" style="float:right;" data-i18n="AllBtnSearch">
+                                            <i class="icon-shuffle"></i> Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div class="results-tag" style="margin-top: 40px;">
+                                <span data-i18n="SearchPerson_Results">Resultados</span>
+                            </div>
+                            <div id="results-div"></div>
+                            <div class="container">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination" id="pagination"></ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content2">
+        <div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="txtContactMPITab2" data-i18n="Enrollment_MPI">MPI del Contacto:</label>
+                    <div class="position-relative has-icon-left">
+                        <input id="txtContactMPITab2" class="form-control" disabled />
+                        <div class="form-control-position">
+                            <i class="icon-head"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-bottom20px" style="padding-right: 1.5rem;">
+                <div class="col-md-12" style="overflow: auto;">
+                    <div class="col-md-12">
+                        <table id="tbHistorySearch" class="table table-hover table-bordered dt-responsive dataex-html5-export" width="100%" cellspacing="0">
+                            @*<thead>
+                                    <tr>
+                                        <th scope="col" class="all" data-i18n="Enrollment_User">Usuario</th>
+                                        <th scope="col" class="none" data-i18n="Enrollment_ChangeSource">Origen del Cambio</th>
+                                        <th scope="col" class="desktop" data-i18n="Enrollment_ChangeDate">Fecha del Cambio</th>
+                                        <th scope="col" class="all" data-i18n="Enrollment_MCO">MCO</th>
+                                        <th scope="col" class="none" data-i18n="Enrollment_PMG">PMG</th>
+                                        <th scope="col" class="desktop" data-i18n="Enrollment_PCP">PCP</th>
+                                        <th scope="col" class="all">PDF</th>
+                                    </tr>
+                                </thead>*@
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content3">
+        <div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="txtContactMPITab3" data-i18n="Enrollment_MPI">MPI del Contacto:</label>
+                    <div class="position-relative has-icon-left">
+                        <input id="txtContactMPITab3" class="form-control" disabled />
+                        <div class="form-control-position">
+                            <i class="icon-head"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <div class="form">
+                        <div class="form-body">
+                            <div class="row m-bottom20px">
+                                <div class="col-md-12">
+                                    <h3 data-i18n="common_File">Archivo</h3>
+                                    <input type="hidden" id="TamanioMaximoEnrollmentFile" />
+                                    <input type="hidden" id="ExtensionValidEnrollmentFile" />
+                                    <input type="hidden" id="PathEnrollmentFile" />
+                                </div>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <input type="file" name="fileBrowse" id="btnBrowse" @*accept=".jpg,.jpeg,.pdf"*@ />
+                                <label for="btnBrowse" class="btn btn-primary" data-i18n="common_ButtonBrowse">Buscar</label>
+                                <input id="txtFile" class="form-control" disabled />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <button type="button" class="btn btn-primary" name="fileUpload" id="btnUploadFile" data-i18n="Enrollment_TittleTab3"></button>
+                                @*<label for="btnUploadFile" data-i18n="Enrollment_TittleTab3">Subir Archivo</label>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row m-bottom20px" style="padding-right: 1.5rem;">
+                <div class="col-md-12" style="overflow: hidden;">
+                    <div id="sectionFiles" class="col-md-12 mt-2">
+                        <table id="tbFiles" class="table table-hover table-bordered dt-responsive nowrap dataex-html5-export" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="all" width="15%" data-i18n="SearchPerson_Header_View">Ver</th>
+                                    <th scope="col" class="none" width="15%" data-i18n="common_ButtonEliminar">Eliminar</th>
+                                    <th scope="col" class="desktop" width="70%" data-i18n="common_File">Archivo</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<!--DirectionsModal-->
+<div class="modal fade" id="DirectionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header" style="background: #33B5E5; color: #fff;">
+                <h4 class="modal-title" id="myModalLabel" data-i18n="Select_your_provider_address" style="float: left;">Seleccione una dirección</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-i18n="Enrollment_CloseWindow">
+                    <span aria-hidden="true" style="color:red;">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body" style="overflow:auto">
+                <table id="PersonDirections" class="table table-borderless table-striped" style="width:100%;">
+                    <colgroup>
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 40%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 5%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td colspan="5">
+                                <div class="panel-body p-t-10 CardBody radioDiv PersonCard">
+                                    <div class="media-main">
+                                        <div class="container">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="row">
+                                                            <h4 class="name" id="PCPDFullName">PCPDFullName</h4>
+                                                        </div>
+                                                        <div class="row" style="padding-left:25%;">
+                                                            <a><img class="thumb-lg img-circle bx-s" id="imgPCP" src="@Url.Content("~/app-assets/assets/images/svg/spanish/male/MaleGeneralPractice.png")" alt=""> </a>
+                                                        </div>
+                                                        <div class="row" style="padding-left:25%;">
+                                                            NPI: <span class="bolder" id="PCPDNPINumber">0000000</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <p data-i18n="Enrollment_MessageButtonSearch">Si el proveedor seleccionado tiene más de una Especialidad y/o PMG, seleccione los mismos y precione el botón BUSCAR.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <p class="text-muted text-right"><span data-i18n="Enrollment_Speciality">Speciality</span>:</p>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <select type="text" class="js-example-basic-single" id="cbSpecialityPCP" style="width: 100%;">
+                                                                    <option></option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <p class="text-muted text-right">PMG:</p>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <select type="text" class="js-example-basic-single" id="cbPmgPCP" style="width: 100%;">
+                                                                    <option></option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <br />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12" style="padding-left:40%;">
+                                                                <button type="button" class="btn btn-info" id="btnBuscarDireccion" data-i18n="SearchPerson_Search">Buscar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="align-content:center;" data-i18n="Direction">Dirección</td>
+                            <td>First Medical Plan</td>
+                            <td>MMM Multi Health</td>
+                            <td>Plan Menonita</td>
+                            <td>TripleS</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody id="PersonTBody">
+                    </tbody>
+                </table>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                @*<div style="float:left;">
+                        <p id="McoOverCapacity" style="margin: 0px; color: #FF0000; font-size: 11px; text-align: left; display: none;">El <b>MCO</b> seleccionado está sobrecargado.</p>
+                        <p id="PcpOverCapacity" style="margin: 0px; color: #FF0000; font-size: 11px; text-align: left; display: none;">El <b>PCP</b> seleccionado está sobrecargado.</p>
+                        <p id="PmgOverCapacity" style="margin: 0px; color: #FF0000; font-size: 11px; text-align: left; display: none;">El <b>PMG</b> seleccionado está sobrecargado.</p>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal" data-i18n="Enrollment_CloseWindow">Close</button>
+                    <button type="submit" id="btnApplyPcp" class="btn btn-primary" data-i18n="EnrollmentApply">Aplicar</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Select MCO-->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalSelectAseguradora" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;">
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header" style="background: #33B5E5; color: #fff;">
+                <h4 class="modal-title" id="myModalLabel" data-i18n="Enrollment_SelectAseguradora" style="float: left;">Seleccione Aseguradora</h4>
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close" data-i18n="Enrollment_CloseWindow">
+                        <span aria-hidden="true">×</span>
+                    </button>*@
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p data-i18n="PCP_Address">
+                            Su médico en dirección seleccionada acepta las siguientes aseguradoras.
+                        </p>
+                        <p data-i18n="PCP_Address_Select">
+                            Seleccione una de ellas:
+                        </p>
+                    </div>
+                </div>
+                <div class="row" id="divrtbFirstMedicalPlan">
+                    <div class="col-md-12">
+                        <input id="rtbFirstMedicalPlan" class="styled showImportant" type="radio" name="Aseguradora">
+                        <label for="rtbFirstMedicalPlan">First Medical</label>
+                    </div>
+                </div>
+                <div class="row" id="divrtbMMM">
+                    <div class="col-md-12">
+                        <input id="rtbMMM" class="styled showImportant" type="radio" name="Aseguradora">
+                        <label for="rtbMMM">MMM</label>
+                    </div>
+                </div>
+                @*<div class="row" id="divrtbMolinaHealthCare">
+                        <div class="col-md-12">
+                            <input id="rtbMolinaHealthCare" class="styled" type="radio" name="Aseguradora">
+                            <label for="rtbMolinaHealthCare">Molina Health Care</label>
+                        </div>
+                    </div>*@
+                <div class="row" id="divrtbPlanMenonita">
+                    <div class="col-md-12">
+                        <input id="rtbPlanMenonita" class="styled showImportant" type="radio" name="Aseguradora">
+                        <label for="rtbPlanMenonita">Plan Menonita</label>
+                    </div>
+                </div>
+                <div class="row" id="divrtbTripleS">
+                    <div class="col-md-12">
+                        <input id="rtbTripleS" class="styled showImportant" type="radio" name="Aseguradora">
+                        <label for="rtbTripleS">Triple S</label>
+                    </div>
+                </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn" id="btnCloseAseguradora" data-dismiss="modal" style="background-color:#BBBBBB;" data-i18n="Enrollment_CloseWindow">Close</button>
+                <button type="button" class="btn" id="btnOpenmodalCart" hidden="hidden" data-toggle="modal" data-target="#modalCart">SELECCIONE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal: modalCart -->
+<div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 800px;">
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header" style="background: #33B5E5; color: #fff;">
+                <h4 class="modal-title" id="myModalLabel" data-i18n="Enrollment_Pregunta" style="float: left;">¿Estás seguro de realizar el siguiente cambio?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-i18n="Enrollment_CloseWindow">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <table id="tbChanges" class="table table-hover" style="border:none">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th data-i18n="Enrollment_Datosact">Aseguradora Actual</th>
+                            <th></th>
+                            <th data-i18n="Enrollment_Actua">Nueva aseguradora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr scope="row">
+                            <th>MCO</th>
+                            <td class="popupTd" id="ActualMco"></td>
+                            <td><img class="imgUpdate" src="@Url.Content("~/app-assets/assets/images/arrows.svg")" /></td>
+                            @*<td class="dataUpdate" id="UpdateMco"></td>*@
+                            <td class="popupTd">
+                                <div class="checkbox" id="dMCOFirstMedical">
+                                    <input type="checkbox" id="MCOFirstMedical" value="1" disabled="false" hidden />
+                                    First Medical
+                                </div>
+                                <div class="checkbox" id="dMCOMMM">
+                                    <input type="checkbox" id="MCOMMM" value="2" disabled="false" hidden />
+                                    MMM
+                                </div>
+                                <div class="checkbox" id="dMCOPlanMenonita">
+                                    <input type="checkbox" id="MCOPlanMenonita" value="4" disabled="false" hidden />
+                                    Plan Menonita
+                                </div>
+                                <div class="checkbox" id="dMCOTripleS">
+                                    <input type="checkbox" id="MCOTripleS" value="5" disabled="false" hidden />
+                                    Triple S
+                                </div>
+                            </td>
+                        </tr>
+                        <tr scope="row">
+                            <th>PMG</th>
+                            <td class="popupTd" id="ActualPmg"></td>
+                            <td><img class="imgUpdate" src="@Url.Content("~/app-assets/assets/images/arrows.svg")" /></td>
+                            <td class="dataUpdate popupTd" id="UpdatePmg"></td>
+                        </tr>
+                        <tr scope="row">
+                            <th>PCP</th>
+                            <td class="popupTd" id="ActualPcp"></td>
+                            <td><img class="imgUpdate" src="@Url.Content("~/app-assets/assets/images/arrows.svg")" /></td>
+                            <td class="dataUpdate popupTd" id="UpdatePcp"></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p data-i18n="Email_Note">
+                            Marque encasillado para envío de confirmación al correo secundario:
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+                <div class="row" style="padding:0 10px;">
+                    <div class="col-md-6">
+                        <div class="checkbox checkbox-primary">
+                            <input id="chkSendEmail" class="styled" type="checkbox">
+                            @*<i class="fa fa-envelope" aria-hidden="true"></i>*@
+                            <label for="chkSendEmail" class="label-control" data-i18n="Enrollment_Envcorreo" style="color:#0062ab;padding-bottom:3px;font-weight:bolder;">Enviar al correo electrónico:</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 has-icon-left">
+                                <input id="txtEmail" class="form-control" data-i18n="[placeholder]EnterEmail" disabled />
+                                <div class="form-control-position">
+                                    <i class="icon-mail2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="checkbox checkbox-primary">
+                            <input id="chkSendPhone" class="styled" type="checkbox" disabled="disabled">
+                            @*<i class="fa fa-phone" aria-hidden="true"></i>*@
+                            <label for="chkSendPhone" class="label-control" data-i18n="Enrollment_EnvPhone" disabled="disabled" style="color:#0062ab;padding-bottom:3px;font-weight:bolder;">Enviar al teléfono:</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 has-icon-left">
+                                <input id="txtPhone" maxlength="14" class="form-control" disabled="disabled" data-i18n="[placeholder]EnterPhone" />
+                                <div class="form-control-position">
+                                    <i class="icon-mail2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="row" style="padding:0 10px;">
+                        <div class="col-md-6">
+                            <div class="checkbox checkbox-primary">
+                                <input id="chkSendEmail" class="styled" type="checkbox">
+                                <label for="chkSendEmail" class="label-control" data-i18n="Enrollment_Envcorreo" style="color:#0062ab;padding-bottom:3px;font-weight:bolder;">Enviar al correo electrónico:</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 has-icon-left">
+                            <input id="txtEmail" class="form-control" data-i18n="[placeholder]EnterEmail" disabled />
+                            <div class="form-control-position">
+                                <i class="icon-mail2"></i>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <div style="float:left;">
+                    <p id="McoOverCapacity" style="margin: 0px; color: #FF0000; font-size: 11px; text-align: left; display: none;">El <b>MCO</b> seleccionado está sobrecargado.</p>
+                    <p id="PcpOverCapacity" style="margin: 0px; color: #FF0000; font-size: 11px; text-align: left; display: none;">El <b>PCP</b> seleccionado está sobrecargado.</p>
+                    <p id="PmgOverCapacity" style="margin: 0px; color: #FF0000; font-size: 11px; text-align: left; display: none;">El <b>PMG</b> seleccionado está sobrecargado.</p>
+                </div>
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal" data-i18n="Enrollment_CloseWindow">Close</button>
+                <button type="submit" id="btnApplyPcp" class="btn btn-primary" data-i18n="EnrollmentApply">Aplicar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: modalCart -->
+<div id="modalFile" style="display: none">
+    @*<img id="imgFile" width="1280" height="720" />*@
+    <iframe id="ifrFile" width="1280" height="720"></iframe>
+</div>
+<!-- Modal: modalCart -->
+@*<script src="~/app-assets/assets/js/Enrollment.js"></script>*@
+@section scripts{
+    <script src="~/app-assets/assets/js/jquery.actual.min.js"></script>
+    <script src="~/app-assets/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/app-assets/assets/js/Enrollment.js"></script>
+
+
+    <script>
+    //elements
+        var AvailablePcpName = [];
+        var ResultsMcos = [];
+    var UrlThisView = '@Url.Action("Enrollment", "Enrollment")';
+        var ApplicationMemberID = '@TempData["ApplicationMemberID"]';
+        var NotApllyJustCauseId = '@TempData["NotApllyJustCauseId"]';
+
+    var disabledBackground = '@Url.Content("~/app-assets/assets/images/disabledBackgroung.png")';
+    //actions
+    var urlGetMembersByApplicationMemberID = '@Url.Action("GetMembersByApplicationMemberID", "Enrollment")';
+    var urlGetAllMco = '@Url.Action("GetAllMco", "Common")';
+    var urlGetAllPmg = '@Url.Action("GetAllPmg", "Common")';
+        var urlGetAllSpeciality = '@Url.Action("GetAllSpeciality", "Common")';
+        var urlGetMunicipality = '@Url.Action("Get", "Municipality")';
+        var urlGetReasonJustCause = '@Url.Action("GetReasonJustCause", "ReasonJustCause")';
+        var urlGetReasonJustCauseByID = '@Url.Action("GetReasonJustCauseByID", "ReasonJustCause")';
+    var urlGetAllPcp = '@Url.Action("GetAllPcp", "Common")';
+    var urlChangePersonMco = '@Url.Action("ChangePersonMco", "person")';
+        var urlSendConfirmationEmail = '@Url.Action("SendConfirmationEmail", "Common")';
+        var urlCreatePDF = '@Url.Action("CreatePDF", "Common")';
+        var urlSendEnrollmentPeriod = '@Url.Action("SendPEnrollmenteriod", "Enrollment")';
+        var urlGetEnrollmentPeriod = '@Url.Action("GetEnrollmentPeriod", "Enrollment")';
+        var urlGetPDF = '@Url.Action("GetPDF", "File")';
+    @*var urlVerifyOverCapacity = '@Url.Action("VerifyOverCapacity", "Common")';*@
+
+    //fill dynamic data
+        var urlGetPcpWithFilters = '@Url.Action("GetPcpWithFilters", "Common")';
+        var urlGetPcpWithFiltersToList = '@Url.Action("GetPcpWithFiltersToList", "Common")';
+        var urlGetEnrollmentFiles = '@Url.Action("GetEnrollmentFiles", "File")';
+        var urlDisabledEnrollmentFiles = '@Url.Action("DisabledEnrollmentFiles", "File")';
+        var urlSetEnrollmentFiles = '@Url.Action("SetEnrollmentFiles", "File")';
+        var urlGetValidateFiles = '@Url.Action("GetValidateFiles", "File")';
+        var urlGetFile = '@Url.Action("GetFile", "File")';
+    var urlGetEnrollmentHistoryByPersonId = '@Url.Action("GetEnrollmentHistoryByPersonId", "Common")';
+     var urlGetAllOvercapacity = '@Url.Action("GetAllOverCapacity", "Enrollment")';
+        var urlGetAllSpecialityPCP = '@Url.Action("GetAllSpecialityPCP", "Common")';
+        var urlGetAllPmgPCP = '@Url.Action("GetAllPmgPCP", "Common")';
+        var urlGetPrimaryCarePhysicianDetailWithFiltersToList = '@Url.Action("GetPrimaryCarePhysicianDetailWithFiltersToList", "PrimaryCarePhysicianDetail")';
+        var urlChangePersonMcoEnabled = '@Url.Action("ChangePersonMcoEnabled", "Common")';
+        var urlChangeEnrollmentEnabledJustCause = '@Url.Action("ChangeEnrollmentEnabledJustCause", "Common")';
+        var urlSendSms = '@Url.Action("SendSms", "Common")';
+        var urlSendLinkQuitz = '@Url.Action("SendLinkQuitz", "Common")';
+
+
+        //Male Images for PCP
+        var urlMaleFamilyPractice = '@Url.Content("~/app-assets/assets/images/svg/spanish/male/MaleFamilyPractice.png")';
+        var urlMaleGeneralPractice = '@Url.Content("~/app-assets/assets/images/svg/spanish/male/MaleGeneralPractice.png")';
+        var urlMaleGeriatricMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/male/MaleGeriatricPractice.png")';
+        var urlMaleInternalMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/male/MaleInternalMedicine.png")';
+        var urlMalePediatricMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/male/MalePediatricMedicine.png")';
+        var urlMaleGynecologistObstetrianMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/male/MaleGynecologistObstetrianMedicine.png")';
+        var urlMaleGeriatricMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/male/MaleGeriatricMedicine.svg")';
+        //Female Images for PCP
+        var urlFemaleFamilyPractice = '@Url.Content("~/app-assets/assets/images/svg/spanish/female/FemaleFamilyPractice.png")';
+        var urlFemaleGeneralPractice = '@Url.Content("~/app-assets/assets/images/svg/spanish/female/FemaleGeneralPractice.png")';
+        var urlFemaleGeriatricMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/female/FemaleGeriatricPractice.png")';
+        var urlFemaleInternalMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/female/FemaleInternalMedicine.png")';
+        var urlFemalePediatricMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/female/FemalePediatricMedicine.png")';
+        var urlFemaleGynecologistObstetrianMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/female/FemaleGynecologistObstetrianMedicine.png")';
+        var urlFemaleGeriatricMedicine = '@Url.Content("~/app-assets/assets/images/svg/spanish/female/FemaleGeriatricMedicine.svg")';
+        //Generic Images for PCP
+        var urlGenericMedic = '@Url.Content("~/app-assets/assets/images/svg/generic/GenericMedic.svg")';
+        var urlGenericFamilyPractice = '@Url.Content("~/app-assets/assets/images/svg/generic/GenericFamilyPractice.svg")';
+        var urlGenericGeneralPractice = '@Url.Content("~/app-assets/assets/images/svg/generic/GenericGeneralPractice.svg")';
+        var urlGenericGeriatricMedicine = '@Url.Content("~/app-assets/assets/images/svg/generic/GenericGeriatricPractice.svg")';
+        var urlGenericInternalMedicine = '@Url.Content("~/app-assets/assets/images/svg/generic/GenericInternalMedicine.svg")';
+        var urlGenericPediatricMedicine = '@Url.Content("~/app-assets/assets/images/svg/generic/GenericPediatricMedicine.svg")';
+        var urlGenericMaleMedic = '@Url.Content("~/app-assets/assets/images/svg/generic/GenericMaleMedic.svg")';
+        var urlGenericFemaleMedic = '@Url.Content("~/app-assets/assets/images/svg/generic/GenericFemaleMedic.svg")';
+    //
+    var textForDisabledButton = "";
+    //Dinamic data for update
+        var PersonId = '';
+        var PersonFullname = '';
+        var PersonPcpId = '';
+        var PersonPcp = '';
+        var ActualPcp = '';
+        var ActualMcoId = "";
+        var ActualMco = "";
+    var ActualNPI = "";
+        var ActualPmgId = "";
+        var ActualPmg = "";
+    var UpdateMcoId = "";
+        var UpdateNPI = "";
+        var SpecialityId = '';
+        var UpdatePmgId = "";
+        // por overcapacity
+        var jsonover;
+        var jsondatamemory;
+
+        //var UpdateMcoId = "";
+        var UpdateMco = "";
+        //var UpdatePmgId = "";
+        var UpdatePmg = "";
+        var UpdatePcpId = "";
+        var UpdatePcp = "";
+        //var UpdateNPI = "";
+        var resultsPmg = [];
+        var Member = '';
+        // Just cause
+        var permission = false;
+        var justCause = "";
+        var CurrentPersonAddressSelected = '';
+        //var currentLanguage = i18next.language;
+        $(document).ready(function () {
+             $("#search_beneficiary").attr({
+                class: "active"
+             });
+        });
+
+    </script>
+
+}

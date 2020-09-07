@@ -1,0 +1,122 @@
+﻿
+<link href="~/app-assets/assets/css/CustomCards.css" rel="stylesheet" />
+
+<!-- font icons-->
+<!-- END VENDOR CSS-->
+<!-- BEGIN ROBUST CSS-->
+<link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap-extended.css">
+<link rel="stylesheet" type="text/css" href="~/app-assets/css/app.css">
+<link rel="stylesheet" type="text/css" href="~/app-assets/css/colors.css">
+<link rel="stylesheet" type="text/css" href="~/app-assets/css/icomoon.css">
+<!-- END ROBUST CSS-->
+<!-- BEGIN Page Level CSS-->
+
+<div>
+
+    <div class="col-md-12" style="margin-top: 30px ; margin-left: 30px">
+        <label class="Tittle_Settings_Main" style="display:block;margin-bottom:10px;font-weight: bold;" data-i18n="Person_Filters">Filters</label>
+        <label class="Tittle_Settings_secondLine" style="display:block;margin-left:20px;margin-bottom:10px;" data-i18n=""></label>
+
+        <div class="Container_Controls" style="display:block;margin-left:40px;margin-bottom:10px;">
+            <div class="form-group col-md-4">
+                <label data-i18n="Person_Date">Date:</label>
+                <div class="position-relative has-icon-left">
+                    <input type='text' id="DateFilter" class="form-control" placeholder="mm/dd/yyyy" />
+                    <div class="form-control-position">
+                        <i class="icon-calendar"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <div style=" margin: 0 10px;margin-top: 8px;">
+                    <label for=""></label>
+                    <div class="position-relative has-icon-left">
+                        <button class="btn btn-success" id="btnBuscar" type="submit" data-i18n="Person_Filter">Filter</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div class="col-xs-12">
+
+            <div class="card-header">
+                <h4 class="card-title">Aprobaciones de Justa Causa por Centro de Llamadas</h4>
+                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+
+            </div>
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <div id="stacked-column-chart"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <div class="col-md-4 col-xs-12">
+
+
+        <!-- Stacked Column Chart -->
+
+        <div class="col-xs-12">
+            <div>
+                <div class="card-header">
+                    <h4 class="card-title">Aprobaciones de Justa Causa en sitio</h4>
+                    <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+
+                </div>
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <div id="stacked-column-chart2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="col-md-4 col-xs-12">
+
+
+        <!-- Stacked Column Chart -->
+
+        <div class="col-xs-12">
+            <div>
+                <div class="card-header">
+                    <h4 class="card-title">Aprobaciones de Justa Causa por ASES</h4>
+                    <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+
+                </div>
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <div id="stacked-column-chart3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<script>
+
+    var urlGetReportJustaCausa = '@Url.Action("GetReportJustaCausa", "Report")';
+
+        var results_cbTypeExpense = [];
+        var results_cbStateExpense = [];
+        var lst_Projects = [];
+
+
+
+</script>
+<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+<script src="~/app-assets/assets/js/CustomCards.js"></script>
+<script src="~/app-assets/assets/js/ReportJustaCausa.js"></script>

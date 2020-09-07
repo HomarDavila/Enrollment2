@@ -1,0 +1,281 @@
+﻿@using EnrollmentSurvey.Idioma
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Assets/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Assets/slider/bootstrap-slider.min.css")" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <style>
+        #sticky-footer {
+            flex-shrink: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        #page-content {
+            flex: 1 0 auto;
+        }
+
+        .swal2-styled {
+            background: #212529 !important;
+        }
+
+        .swal2-icon {
+            color: #6c757d !important;
+            border-color: #212529 !important;
+        }
+    </style>
+</head>
+<body class="d-flex  flex-column">
+
+    <header class="navbar navbar-expand-lg navbar-light bg-light flex-column flex-md-row bd-navbar">
+        <a class="navbar-brand mr-0 mr-md-2" href="#">
+            <img src="@Url.Content("~/Assets/images/logoVital.png")" width="200" alt="Logo de plan vital" />
+        </a>
+        <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item">
+                    @using (Html.BeginForm())
+                    {
+                        <button class="btn btn-link" value="us" name="cultura" href="#" id="btnEnglish">English</button>
+                        <button class="btn btn-link" value="es" name="cultura" href="#" id="btnSpanish">Español</button>
+                    }
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid" id="page-content">
+        @RenderBody()
+    </div>
+    <footer id="sticky-footer" style="background:white;">
+        <img src="@Url.Content("~/Assets/images/logoAses.png")" style="margin:20px;" width="200" alt="Logo se Ases" />
+    </footer>
+    <script src="@Url.Content("~/Assets/bootstrap/js/jquery-3.4.1.min.js")"></script>
+    <script src="@Url.Content("~/Assets/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Assets/sweetalert2.js")"></script>
+    <script src="@Url.Content("~/Assets/slider/bootstrap-slider.min.js")"></script>
+
+    <script>
+        var preguntas = [];
+        $(document).ready(function () {
+
+            var slider = $("#rangebar").slider({
+                ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                ticks_labels: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+                ticks_snap_bounds: 30
+            });
+            var estado;
+            var valoroption;
+
+            slider.change(function () {
+                estado = 1;
+            });
+
+            $("#liAnterior").hide();
+            $("#barraBtnEnviar").hide();
+            $("#btnRespuesta").hide();
+            var idCola = "@ViewBag.IdCola";
+
+
+
+            var indice = 0;
+            var pregunta = new Object();
+            preguntas = [];
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("Preguntas", "Encuesta")",
+                success: function (data) {
+                    console.log(data);
+                    data.forEach(function (element) {
+                        pregunta.PreguntaId = element.PreguntaId;
+                        pregunta.Spanish = element.Spanish;
+                        pregunta.English = element.English
+                        pregunta.Puntuacion = element.Puntuacion;
+                        pregunta.TipoPregunta = element.TipoPregunta;
+                        preguntas.push(pregunta);
+                        pregunta = new Object();
+                    });
+                    cargarPregunta(indice);
+                    $("#pagePager").text((indice + 1 )+ "/" + (preguntas.length + 1));
+                }
+            });
+
+            $("#btnAnterior").click(function () {
+                $("#barraTitulo").show();
+                $("#barraPuntos").show();
+                $("#barraBtnEnviar").hide();
+
+                if (indice > 0) {
+                    indice--;
+                    $("#liSiguiente").show();
+                    cargarPregunta(indice);
+                    $("#pagePager").text((indice + 1) + "/" + (preguntas.length + 1));
+                    if (indice == 0) {
+                        $("#liAnterior").hide();
+                        $("#barraRecomendacion").show();
+                    }
+                } else {
+                    $("#liAnterior").hide();
+                    $("#liSiguiente").show();
+                }
+            });
+
+            $("#btnSiguiente").click(function () {
+
+                if (estado != 1) {
+                    var msgerror = "";
+                    if (preguntas[posicion - 1].TipoPregunta == 1)
+                        msgerror = "@Resource.txt_error_barra";
+                    else
+                        msgerror = "@Resource.txt_error_sino";
+                    Swal.fire({
+                        title: '@Resource.ases_Advertencia',
+                        text: msgerror,
+                    type: 'warning',
+                    confirmButtonText: "@Resource.txt_Salir"
+                    });
+                    return false;
+                }
+                estado = 0;
+                $("#barraRecomendacion").hide();
+                if (indice == preguntas.length - 1) {
+                    //es la ultima
+                    capturarPuntaje(preguntas.length);
+
+                    $("#liSiguiente").hide();
+                    $("#barraTitulo").hide();
+                    $("#barraPuntos").hide();
+                    $("#barraBtnEnviar").show();
+                    $("#pagePager").text((indice + 2) + "/" + (preguntas.length + 1));
+                }
+                if (indice < preguntas.length-1) {
+                    indice++;
+                    $("#liAnterior").show();
+                    capturarPuntaje(indice);
+                    cargarPregunta(indice);
+                    $("#pagePager").text((indice + 1) + "/" + (preguntas.length + 1));
+                } else {
+                    $("#liSiguiente").hide();
+                    $("#liAnterior").show();
+                }
+            });
+
+            function cargarPregunta(posicion) {
+                var idioma = "@ViewBag.idioma";
+                if (idioma == "en") {
+                    $('#txtTitulo').text(preguntas[posicion].English);
+                    $("#btnEnglish").hide();
+                } else {
+                    $('#txtTitulo').text(preguntas[posicion].Spanish);
+                    $("#btnSpanish").hide();
+                }
+                switch (preguntas[posicion].TipoPregunta) {
+                    case 1:
+                        //slider
+                        $(".controlrespuesta").hide();
+                        $("#barraPuntos").show();
+                        slider.slider("refresh", { useCurrentValue: true});
+                        slider.slider('setValue', preguntas[posicion].Puntuacion);
+
+                        break;
+                    case 2:
+                        //desition yes/no
+                        $("#optionbutton").empty();
+                        valoroption = preguntas[posicion].Puntuacion;
+                        var opt1 = $("<button>")
+                            .attr("type", "button")
+                            .addClass("btn btn-primary mr-1")
+                            .click(function () {
+                                estado = 1;
+                                valoroption = 1;
+                                $("#btnSiguiente").click();
+                                return false;
+                            })
+                            .html("@Html.Raw(Resource.Si)");
+                        $("#optionbutton").append(opt1);
+                        var opt2 = $("<button>")
+                            .attr("type", "button")
+                            .addClass("btn btn-primary")
+                            .click(function () {
+                                preguntas[posicion].Puntuacion = 0;
+                                estado = 1;
+                                valoroption = 0;
+                                $("#btnSiguiente").click();
+                                return false;
+                            })
+                            .html("@Html.Raw(Resource.No)");
+                        $("#optionbutton").append(opt2);
+
+                        $(".controlrespuesta").hide();
+                        $("#optionbutton").show();
+                        break;
+                }
+
+            }
+            function capturarPuntaje(posicion) {
+                console.log($("#puntos").val());
+                preguntas[posicion - 1].Id;
+                preguntas[posicion - 1].Pregunta;
+                if(preguntas[posicion - 1].TipoPregunta==1)
+                    preguntas[posicion - 1].Puntuacion = slider.slider('getValue');
+                if (preguntas[posicion - 1].TipoPregunta == 2)
+                    preguntas[posicion - 1].Puntuacion = valoroption;
+
+            }
+            $("#btnEnviar").click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("GuardarPreguntas", "Encuesta")",
+                    data: {
+                        idCola: idCola,
+                        preguntas: preguntas
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        $("#barraRecomendacion").hide();
+                        $("#barraTitulo").hide();
+                        $("#barraPuntos").hide();
+                        $("#barraBtnEnviar").hide();
+                        $("#paginador").hide();
+                        $("#btnRespuesta").show();
+                        setTimeout(function () {
+                            window.close();
+                        }, 3000)
+                    }
+                });
+            });
+            $("#btnEnglish").submit(function () {
+                $("#btnSpanish").hide();
+            });
+            $("#btnSpanish").submit(function () {
+                $("#btnEnglish").hide();
+            });
+            $("#btnFinal").click(function () {
+                window.close();
+            });
+
+            function lanzarAlerta() {
+                Swal.fire({
+                    title: '@Resource.ases_Advertencia',
+                    text: "@Resource.txt_error_sino",
+                    type: 'warning',
+                    confirmButtonText: "@Resource.txt_Salir"
+                });
+            }
+        });
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

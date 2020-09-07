@@ -1,0 +1,116 @@
+﻿<!-- Navigation -->
+
+<nav class="header-navbar navbar navbar-with-menu navbar-static-top navbar-dark navbar-border green-full-width-line navbar-static-top" style="padding: 0 5rem;border-bottom: 3px solid rgba(0, 0, 0, 0.1);border-top: 10px solid #33B5E5;@*background-color: rgba(0, 0, 0, 0.1) !important;*@">
+    <div class="navbar-wrapper">
+        @*<div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    @*<li class="nav-item mobile-menu hidden-md-up float-xs-left"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-ellipsis font-large-1"></i></a></li>* @
+                    <li class="nav-item"><a href="http://www.pr.gov" class="navbar-brand nav-link"><img alt="Banderas USA/PR" src="http://www2.pr.gov/PublishingImages/flags_logo_prgov.png" data-expand="http://www2.pr.gov/PublishingImages/flags_logo_prgov.pn" data-collapse="http://www2.pr.gov/PublishingImages/flags_logo_prgov.pn" class="brand-logo"></a></li>
+                    <li class="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container"><i class="icon-menu5 pe-2x icon-icon-rotate-right-right"></i></a></li>
+                </ul>
+            </div>*@
+        <div class="navbar-container content container-fluid">
+            <div id="navbar-mobile" class="collapse navbar-toggleable-sm">
+                <ul class="nav navbar-nav">
+                    @*<li class="nav-item hidden-sm-down"><a class="nav-link nav-menu-main hidden-xs" style="padding: 1.2rem 0.4rem 0.8rem 1rem;"><h3 class="AppName">Enrollment<span>System</span></h3></a></li>*@
+                    <li class="nav-item hidden-sm-down"><a class="nav-link nav-menu-main hidden-xs" style="padding: 0;"><img src="~/app-assets/assets/images/logoTop.jpg" /></a></li>
+                    @*<li class="nav-item hidden-sm-down"><a class="nav-link nav-menu-main hidden-xs" href="@Url.Action("Index","Home")"><i class="icon-home22"></i></a></li>*@
+                </ul>
+                <div style="text-align: right;padding: 2rem 0 0;">
+                    <img src="~/app-assets/assets/images/logoTopRight.jpg" />
+                </div>
+                <ul class="nav navbar-nav float-xs-right">
+                    @*<li class="nav-item">
+                            <a href="http://www2.pr.gov/Pages/servicefilter.aspx" target="_blank" class="nav-link">
+                                <img class="icon-menu" src="~/app-assets/assets/images/icon-service.svg" /><p style="float:right;">Servicios</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://www2.pr.gov/Directorios/Pages/DirectoriodeAgencias.aspx" target="_blank" class="nav-link">
+                                <img class="icon-menu" src="~/app-assets/assets/images/icon-agency.svg" /><p style="float:right;">Agencias</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://www2.pr.gov/Directorios/Pages/DirectoriodeMunicipios.aspx" target="_blank" class="nav-link">
+                                <img class="icon-menu" src="~/app-assets/assets/images/icon-Municipality.svg" /><p style="float:right;">Municipios</p>
+                            </a>
+                        </li>*@
+                    <li class="dropdown nav-item">
+                        <a id="dropdown-User" href="#" data-toggle="dropdown" aria-expanded="false" class="nav-link">
+                            <i class="icon-user-check" style="color:#04AEB4;"></i>
+                            <span data-i18n="Navbar_welcome">Bienvenid@@</span>
+                            <i><b>@ViewBag.Usuario</b></i>
+                        </a>
+                        @*<div class="dropdown-menu dropdown-menu-right">
+                                <a onclick="anyFunction()" class="dropdown-item active" data-i18n="CustomNavBar_CloseSesion_Text"><i class="icon-user-minus" style="color:#fe191b;"></i> Cerrar sesión</a>
+                            </div>*@
+                    </li>
+                    <li class="dropdown dropdown-language lng-dropdown nav-item">
+                        <a id="dropdown-active-item" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link"><i class="flag-icon flag-icon-pr"></i> Español</a>
+                        <div aria-labelledby="dropdown-flag" class="dropdown-menu dropdown-menu-right">
+                            <a onclick="changeLanguage('?lng=es', 'es')" class="dropdown-item active" data-lng="es"><i class="flag-icon flag-icon-pr"></i> Español</a>
+                            <a onclick="changeLanguage('?lng=en', 'en')" class="dropdown-item" data-lng="en"><i class="flag-icon flag-icon-us"></i> English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header class="body-header">
+
+    <div class="container">
+        <div class="main-menu">
+            <ul id="submenu-Personas" class="sub-menu active">
+                <li id="home" class="home"><a href=@Url.Action("Index", "Home")><i class="icon-home3"></i></a></li>
+                @foreach (var eachOption in ViewBag.listOptions)
+                {
+
+                    if (eachOption.Code == "01")
+                    {
+                        <li id="search_beneficiary" style="width: 18%;"><a href=@Url.Action("SearchPerson", "Person")><i class="icon-user"></i><span class="text" data-i18n="Navbar_searh_beneficiary">Buscar Beneficiario</span></a></li>
+                    }
+                    if (eachOption.Code == "02")
+                    {
+                        <li id="settings" style="width: 18%;"><a href=@Url.Action("Settings", "Person")><i class="icon-cog"></i><span class="text" data-i18n="Navbar_searh_setting">Configuración</span></a></li>
+                    }
+                    if (eachOption.Code == "03")
+                    {
+                        <li id="reports" style="width: 18%;"><a href=@Url.Action("Reports", "Person")><i class="icon-bar-chart"></i><span class="text" data-i18n="Navbar_searh_report">Reportes</span></a></li>
+                    }
+                    if (eachOption.Code == "04")
+                    {
+                        <li style="width: 18%;"><a href=@Url.Action("AdditionalResource", "Home")><i class="icon-briefcase"></i><span class="text" data-i18n="Index_Conselor_Additional_Resources">Recursos Adicionales del Consejero</span></a></li>
+                    }
+
+                    @*<li id="search_beneficiary" style="width: 18%;"><a href=@Url.Action("SearchPerson", "Person")><i class="icon-user"></i><span class="text" data-i18n="Navbar_searh_beneficiary">Buscar Beneficiario</span></a></li>
+                        <li id="settings" style="width: 18%;"><a href=@Url.Action("Settings", "Person")><i class="icon-cog"></i><span class="text" data-i18n="Navbar_searh_setting">Configuración</span></a></li>
+                        <li id="reports" style="width: 18%;"><a href=@Url.Action("Reports", "Person")><i class="icon-bar-chart"></i><span class="text" data-i18n="Navbar_searh_report">Reportes</span></a></li>
+                        <li style="width: 18%;"><a href=@Url.Action("AdditionalResource", "Home")><i class="icon-briefcase"></i><span class="text" data-i18n="Index_Conselor_Additional_Resources">Recursos Adicionales del Consejero</span></a></li>
+                        <li style="width: 18%;"><a href=@Url.Action("Logout", "User")><i class="icon-switch"></i><span class="text" data-i18n="Navbar_searh_logout">Cerrar Sesión</span></a></li>*@
+                }
+                <li style="width: 18%;"><a href=@Url.Action("Logout", "User")><i class="icon-switch"></i><span class="text" data-i18n="Navbar_searh_logout">Cerrar Sesión</span></a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="blue-full-width-line"></div>
+
+</header>
+
+<!-- Intro Section -->
+@*<section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Hover the Nav-Bar Links for Navigation</h1>
+
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+<!-- About Section -->
+<!-- Services Section -->
+<!-- Contact Section -->

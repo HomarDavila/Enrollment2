@@ -1,0 +1,176 @@
+﻿<link href="~/app-assets/assets/css/CustomCards.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        @foreach (var eachOption in ViewBag.listOptions)
+        {
+
+            if (eachOption.Code == "01")
+            {
+                <div class="col-md-4 col-xs-12">
+                    <div class="card horizontal customCard">
+                        <div class="ch-grid">
+                            <div class="ch-item ch-img-1" onclick="window.location.href = '@Url.Action("SearchPerson", "Person")';">
+                                <div class="ch-info ch-info-1">
+                                    <img class="img-rounded" src="~/app-assets/assets/images/icon-Search.svg" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h3 data-i18n="Index_Search_Person">Buscar Beneficiario</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (eachOption.Code == "02")
+            {
+                <div class="col-md-4 col-xs-12">
+                    <div class="card horizontal customCard">
+                        <div class="ch-grid">
+                            <div class="ch-item ch-img-3" onclick="window.location.href = '@Url.Action("Settings", "Person")';">
+                                <div class="ch-info ch-info-3">
+                                    <img class="img-rounded" src="~/app-assets/assets/images/icon-Search.svg" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h3 data-i18n="Index_Configuration">Configuraci\u00f3n</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (eachOption.Code == "03")
+            {
+                <div class="col-md-4 col-xs-12">
+                    <div class="card horizontal customCard">
+                        <div class="ch-grid">
+                            <div class="ch-item ch-img-4">
+                                <div class="ch-info ch-info-3" onclick="window.location.href = '@Url.Action("Reports", "Person")';">
+                                    <img class="img-rounded" src="~/app-assets/assets/images/icon-Search.svg" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h3 data-i18n="Navbar_searh_report">Reports</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            if (eachOption.Code == "04")
+            {
+                <div class="col-md-4 col-xs-12">
+                    <div class="card horizontal customCard">
+                        <div class="ch-grid">
+                            <div class="ch-item ch-img-2" onclick="window.location.href = '@Url.Action("AdditionalResource", "Home")';">
+                                <div class="ch-info ch-info-2">
+                                    <img class="img-rounded" src="~/app-assets/assets/images/icon-Search.svg" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h3 data-i18n="Index_Conselor_Additional_Resources">Recursos Adicionales del Counselor</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+
+        @*<div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-10">
+                        <div class="ch-info ch-info-10" onclick="window.location.href = '@Url.Action("Rejects", "Enrollment")';">
+                            <img class="img-rounded" src="~/app-assets/assets/images/icon-Search.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Navbar_searh_reject">Gesti\u00f3n de Rechazos</h3>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-11">
+                        <div class="ch-info ch-info-10" onclick="window.open('@ViewBag.BusquedaProveedores','_blank');">
+                            <img class="img-rounded" src="~/app-assets/assets/images/icon-Search.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Navbar_searh_searchpcp">Buscar PCP</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-5" onclick="window.location.href = '@Url.Action("EnrollmentCompare", "Compare")';">
+                        <div class="ch-info ch-info-1">
+                            <img class="img-rounded" src="~/app-assets/assets/images/icon-Search.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Index_Search_PMP">Buscar PCP</h3>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    </div>
+</div>
+
+@*<div class="row">
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-4">
+                        <div class="ch-info ch-info-4">
+                            <img src="~/app-assets/assets/images/icon-Navigation.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Index_Search_PCP/PCM">Buscar PCP/PMG</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-5">
+                        <div class="ch-info ch-info-5">
+                            <img src="~/app-assets/assets/images/icon-Report.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Index_Reporting">Reportes</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<script src="~/app-assets/assets/js/CustomCards.js"></script>
+<script>
+    $("#home").attr({
+        class: "active"
+    });
+</script>

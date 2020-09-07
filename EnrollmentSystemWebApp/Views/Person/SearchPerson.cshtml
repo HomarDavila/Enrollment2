@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "~/Views/Shared/Custom/_MainRobust.cshtml";
+}
+<link href="~/app-assets/assets/css/CustomTabs.css" rel="stylesheet" />
+<link href="~/app-assets/assets/css/SearchPerson.css" rel="stylesheet" />
+
+<main>
+
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label class="tab" for="tab1" data-i18n="SearchPerson_Tittle">Buscar Beneficiario</label>
+
+    <section id="content1">
+        <div class="stv-radio-buttons-wrapper">
+            <input type="radio" class="stv-radio-button" name="radioButtonTest" value="search1" id="btn1" />
+            <label for="btn1" data-i18n="SearchPerson_By_Others">Por Otros</label>
+            <input type="radio" class="stv-radio-button" name="radioButtonTest" value="search2" id="btn2" />
+            <label for="btn2" data-i18n="SearchPerson_By_MPI">Por MPI</label>
+        </div>
+        <div class="search-form" id="search1">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="txtFirstName" data-i18n="SearchPerson_Firstname">Primer Nombre:</label>
+                    <div class="position-relative has-icon-left">
+                        <input id="txtFirstName" class="form-control" data-i18n="[placeholder]AllEnterText" />
+                        <div class="form-control-position">
+                            <i class="icon-head"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="txtLastName" data-i18n="SearchPerson_Last_Name">Apellido Paterno:</label>
+                    <div class="position-relative has-icon-left">
+                        <input id="txtLastName" class="form-control" data-i18n="[placeholder]AllEnterText" />
+                        <div class="form-control-position">
+                            <i class="icon-head"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="txtSecondLastName" data-i18n="SearchPerson_Second_Last_Name">Apellido Materno:</label>
+                    <div class="position-relative has-icon-left">
+                        <input id="txtSecondLastName" class="form-control" data-i18n="[placeholder]AllEnterText" />
+                        <div class="form-control-position">
+                            <i class="icon-head"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="txtSSN4" data-i18n="SearchPerson_SSN4">SSN (Últimos 4 dígitos):</label>
+                    <div class="position-relative has-icon-left">
+                        <input id="txtSSN4" class="form-control" data-i18n="[placeholder]AllEnterText" maxlength="4" />
+                        <div class="form-control-position">
+                            <i class="icon-qrcode"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="txtBirthday" data-i18n="SearchPerson_Birthday">Fecha de Nacimiento:</label>
+                    <div class="position-relative has-icon-left">
+                        <input type='text' id="txtBirthday" name="birthdate" class="form-control" placeholder="mm/dd/yyyy" />
+                        <div class="form-control-position">
+                            <i class="icon-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-3" style="margin-top: 10px;">
+                    <label for="btnClean"></label>
+                    <div class="position-relative has-icon-left">
+                        <button type="button" class="btn btn-primary" id="btnClean" style="float:right;" data-i18n="ClenaPerson_Clean">
+                            <i class="icon-search"></i> Limpiar
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group col-md-1" style="margin-top: 10px;">
+                    <label for="btnSearch"></label>
+                    <div class="position-relative has-icon-left">
+                        <button type="submit" class="btn btn-primary" id="btnSearch" style="float:right;" data-i18n="SearchPerson_Search">
+                            <i class="icon-search"></i> Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-form" id="search2" style="display:none;">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="txtMPI" data-i18n="SearchPerson_MPI">MPI:</label>
+                    <div class="position-relative has-icon-left">
+                        <input id="txtMPI" class="form-control" data-i18n="[placeholder]AllEnterText" maxlength="11" />
+                        <div class="form-control-position">
+                            <i class="icon-qrcode"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-2" style="margin-top: 10px;">
+                    <label for="btnSearchMPI"></label>
+                    <div class="position-relative has-icon-left">
+                        <button type="submit" class="btn btn-primary" id="btnSearchMPI" data-i18n="SearchPerson_Search">
+                            <i class="icon-search"></i> Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="results-tag">
+            <span data-i18n="SearchPerson_Results">Resultados</span>
+        </div>
+        <div id="results-div">
+        </div>
+    </section>
+</main>
+<script>
+     $("#search_beneficiary").attr({
+        class: "active"
+    });
+    @* Variables to use in SearchPerson.js *@
+    var urlGetPeopleByFilters = '@Url.Action("GetPeopleByFilters", "Person")';
+    @*var urlGetApplicationMembers = '@Url.Action("GetApplicationMembers", "Person")';*@
+    var urlEnrollmentPage = '@Url.Action("Enrollment", "Enrollment")';
+</script>
+<script src="~/app-assets/assets/js/SearchPerson.js"></script>

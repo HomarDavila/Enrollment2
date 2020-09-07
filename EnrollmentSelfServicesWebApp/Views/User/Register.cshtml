@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutRegister.cshtml";
+}
+<br />
+<div class="card customCardLogin" style="width: 102%;  display: inline-block;">
+    <div class="card-body">
+        <div class="row mb-2">
+            <div class="col-md-1 hiddenOnSmall">
+                <a class="mt-2" onclick="RedirectToLogin();">
+                    <img src=@Url.Content("~/wwwroot/images/back_icon.png") class="mt-3 ml-3 mr-3" style="width:35px; height:35px;" />
+                </a>
+            </div>
+            <div class="col-md-11">
+                <h5 class="mt-2" data-i18n="registerUser_title">Ingresa su identificación personal</h5>
+                <p data-i18n="registerUser_subTitle">Antes de que pueda acceder a su cuenta, tiene que confirmar su identidad.</p>
+            </div>
+        </div>
+        <form id="registerForm" class="needs-validation" novalidate>
+            <input type="hidden" id="register-isFirstPage-field" class="form-control" value="true">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="register-names-field" data-i18n="registerUser_nombres">Nombres</label>
+                    <input required maxlength="30" id="register-names-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_nombres" placeholder="Nombres">
+                    <div class="valid-feedback"><img src="~/wwwroot/images/CheckMark.svg" /></div>
+                    <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                </div>
+                <div class="col-md-4  mb-3">
+                    <label for="register-lastnameOne-field" data-i18n="registerUser_primerapellido">Primer Apellido</label>
+                    <input maxlength="30" id="register-lastnameOne-field"
+                           class="form-control" name="user"
+                           data-i18n="[placeholder]registerUser_primerapellido" placeholder="Primer Apellido">
+                    <div class="valid-feedback"><img src="~/wwwroot/images/CheckMark.svg" /></div>
+                    <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="register-lastNameTwo-field" data-i18n="registerUser_segundoapellido">Segundo Apellido</label>
+                    <input maxlength="30" id="register-lastNameTwo-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_segundoapellido" placeholder="Segundo Apellido">
+                    @*<div class="valid-feedback"><img src="~/wwwroot/images/CheckMark.svg" /></div>
+                        <div class="invalid-feedback" data-i18n="registerUser_secondlastname_validation"></div>*@
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="register-ssn-field" data-i18n="registerUser_ssn">SSN</label>
+                    <input required maxlength="4" id="register-ssn-field" class="form-control" data-i18n="[placeholder]registerUser_ssn" name="user" placeholder="SSN">
+                    <div class="valid-feedback"><img src="~/wwwroot/images/CheckMark.svg" /></div>
+                    <div class="invalid-feedback" data-i18n="registerUser_ssn_validation"></div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="register-zipcode-field" data-i18n="registerUser_zipcode">Código Postal</label>
+                    <input maxlength="5" required id="register-zipcode-field" class="form-control" data-i18n="[placeholder]registerUser_zipcode" name="user" placeholder="Código Postal">
+                    <div class="valid-feedback"><img src="~/wwwroot/images/CheckMark.svg" /></div>
+                    <div class="invalid-feedback" data-i18n="registerUser_zipcode_validation"></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3 BirthDateDiv">
+                    <label for="register-birthdate-field" data-i18n="registerUser_fechanacimiento">Fecha de Nacimiento</label>
+                    <input onchange="validBirthDate()" required type="hidden" id="register-birthdate-field" class="form-control" name="birthday" data-i18n="[placeholder]registerUser_fechanacimiento" placeholder="Fecha de Nacimiento">
+                    <div class="col-md-12" id="register-message-birthdate-validation"></div>
+                    <div class="valid-feedback" id="register-message-birthdate-validation2"><img src="~/wwwroot/images/CheckMark.svg" /></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4  mb-3">
+                    <label for="register-username-field" data-i18n="registerUser_email">Correo Electrónico</label>
+                    <input type="email" required id="register-username-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_email" placeholder="Correo Electrónico">
+                    <div class="valid-feedback"><img src="~/wwwroot/images/CheckMark.svg" /></div>
+                    <div class="invalid-feedback" data-i18n="registerUser_email_validation"></div>
+                </div>
+                <div class="col-md-8 hiddenOnSmall align-self-center">
+                    <div class="form-group" style="width:100%;">
+                        <div class="col-md-12">
+                            <p data-i18n="registerUser_email_info_title" class="font-weight-bold">Tener en cuenta:</p>
+                            <div style="font-size:12px!important" data-i18n="registerUser_email_info">El correo electrónico será su usuario para acceder a su cuenta</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4  mb-3">
+                    <div class="form-row">
+                        <label for="register-password-field" data-i18n="registerUser_password">Contraseña</label>
+                        <div class="col-md-12  mb-3 input-group">
+                            <input maxlength="20" data-minlength="8" required id="register-password-field" class="form-control PasswordInput" type="password" name="password" data-i18n="[placeholder]registerUser_password" oninput="validPassword2()" placeholder="Contraseña">
+                            <div class="input-group-append">
+                                <button class="btn btn-block btn-primary ShowPassword" type="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="valid-feedback"><img src="~/wwwroot/images/CheckMark.svg" /></div>
+                            <div class="invalid-feedback" data-i18n="registerUser_password_validation"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="register-confirm-password-field" data-i18n="registerUser_confirmpassword">Confirmar Contraseña</label>
+                        <div class="col-md-12  mb-3 input-group">
+                            <input maxlength="20" data-minlength="8" required id="register-confirm-password-field" class="form-control PasswordInput" type="password" name="passwordConfirm" data-i18n="[placeholder]registerUser_confirmpassword" oninput="validPassword()" placeholder="Confirmar Contraseña">
+                            <div class="input-group-append">
+                                <button class="btn btn-block btn-primary ShowPassword" type="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="valid-feedback"><img src="~/wwwroot/images/CheckMark.svg" /></div>
+                            <div class="invalid-feedback" id="confirmPasswordInvalidFeedback" data-i18n="registerUser_password_validation"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 hiddenOnSmall align-self-center">
+
+                    <div class="form-group" style="width:100%;">
+                        <div class="col-md-12">
+                            <p data-i18n="registerUser_password_info_one" class="font-weight-bold">La contraseña debe contener:</p>
+                            <div id="registerUser_password_validation_one" style="font-size:12px!important" data-i18n="registerUser_password_info_two"> 8 a 20, caracteres</div>
+                            <div id="registerUser_password_validation_two" style="font-size:12px!important" data-i18n="registerUser_password_info_three"> Números</div>
+                            <div id="registerUser_password_validation_three" style="font-size:12px!important"><span data-i18n="registerUser_password_info_four">Caracteres especiales como</span> #$%&'()*+,-./:;<=>?[\]^_`{|}~</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12  mb-3">
+                    <input type="submit" style="width:100%;" data-i18n="[value]registerUser_btn" value="Registrar" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <span data-i18n="login_disclaimer_partOne">Al ingresar, estás de acuerdo con los </span>
+                    <a href="#" data-i18n="login_disclaimer_TerminosDeServicio" data-toggle="modal" data-target="#terminosDeServicioModal">Términos de servicio</a>,
+                    <a href="#" data-i18n="login_disclaimer_DeclaracionPrivacidad" data-toggle="modal" data-target="#privacidadModal">Declaración de privacidad</a>,
+                    <span data-i18n="login_disclaimer_partTwo">y</span>
+                    <p>   <a href="#" data-i18n="login_disclaimer_AvisoDeCookies" data-toggle="modal" data-target="#cookiesModal">Aviso de cookies</a>.</p>
+                </div>
+                @*<div class="col-md-2">
+                        <p><a href="#" class="helpLink">Ayuda <i class="far fa-question-circle"></i></a></p>
+                    </div>*@
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/wwwroot/lib/jquery.redirect/dist/jquery.redirect.js"></script>
+    <script src="~/wwwroot/lib/jquery.date-dropdowns/dist/jquery.date-dropdowns.js"></script>
+    <script src="~/wwwroot/js/site.js"></script>
+    <script src="~/wwwroot/js/RegisterUserJS.js"></script>
+    <script>
+
+        var urlSendUserRegisterEmail = '@Url.Action("SendUserRegisterEmail", "Common")';
+        var urlLogin = '@Url.Action("Login", "User")';
+        var urlRegister = '@Url.Action("Register", "User")';
+        var urlRegisterWithQuestion = '@Url.Action("RegisterWithQuestions", "User")';
+        var urlSecurityQuestions = '@Url.Action("Get", "SecurityQuestion")';
+        var dateDropDown;
+    </script>
+}
+

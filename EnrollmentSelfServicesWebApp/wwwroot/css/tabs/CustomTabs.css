@@ -1,0 +1,83 @@
+﻿/*@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+*/
+
+p {
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+main {
+    min-width: 320px;
+    max-width: 1200px;
+    padding: 1.5rem;
+    margin: 0 auto;
+    background: transparent;
+}
+
+section {
+    padding: 1.5rem;
+    border-radius: 0 10px 10px 10px;
+    display: none;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px;
+}
+
+hr.barBottom {
+    margin-top: -63px;
+    width: 41%;
+    float: left;
+    border: 2px solid #eee;
+}
+
+input {
+    display: none;
+}
+
+label.tab {
+    display: inline-block;
+    margin: 0 1px !important;
+    margin-right: -2px !important;
+    padding: 8px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #bbb;
+    border: 1px solid #FFF;
+    background-color: #f2f2f2;
+    border-radius: 5px 5px 0 0;
+}
+    label.tab:hover {
+        color: #888;
+        cursor: pointer;
+    }
+
+input:checked + label.tab {
+    color: #0066AE;
+    border-top: 5px solid #0066AE;
+    background-color: #FFFFFF;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4,
+#tab5:checked ~ #content5 {
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    label.tab {
+        font-size: 0;
+    }
+
+        label.tab:before {
+            margin: 0;
+            font-size: 18px;
+        }
+}
+
+@media screen and (max-width: 400px) {
+    label.tab {
+        padding: 15px;
+    }
+}

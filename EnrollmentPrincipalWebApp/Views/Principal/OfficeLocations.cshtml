@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Medicaid Office Locations";
+    Layout = "~/Views/Shared/_Layout-Principal-English.cshtml";
+    ViewBag.Ruta = "UbicacionOficinas";
+}
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                </div>
+                <div class="col-md-6 col-lg-9">
+                    <h1>Medicaid Office Locations</h1>
+                    <p>
+                        <strong>Find a Medicaid office near you</strong><br>
+                        Choice Counselors are available at Medicaid offices throughout the island for in-person appointments to answer questions 
+                        and help you make an informed decision about choosing the Insurer that best meets you and your family's health care needs. 
+                        (<strong>Note:</strong> If you are uncertain if you are eligible for VITAL Health Plan, 
+                        a Medicaid office can determine your eligibility. For information about Medicaid, call <strong>787-641-4224</strong> 
+                        (TTY/TDD service is available only for Audio Impaired at <strong>787-625-6955</strong>).)
+                    </p>
+                    <p>To find a Medicaid office near you, download the <a href="~/wwwroot/assets/pdf/oficinas-medicaid-en.pdf" target="_blank">Medicaid Office Locations</a>.</p>
+
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="callout">
+                        <h4>Resource Downloads</h4>
+                        <ul>
+                            <li><a href="~/wwwroot/assets/pdf/oficinas-medicaid-en.pdf" target="_blank">Medicaid Office Locations</a></li>
+                        </ul>
+                    </div>
+                    @*<div class="tile" style="font-size:0.7em;">
+                        <img class="imgOverlayColor" src="~/wwwroot/assets/img/PrincipalSelecione2.jpg">
+                        <div class="texto--principal centered text-center" style="width:75%;">
+                            <span class="align-middle">
+                                Make a VITAL Orientation Appointment
+                            </span>
+                            <br />
+                            <a href=@Url.Action("MakeAppointment","Principal") class="btn btn-primary align-text-bottom" style="font-size:0.7em;">MORE INFO</a>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </main>

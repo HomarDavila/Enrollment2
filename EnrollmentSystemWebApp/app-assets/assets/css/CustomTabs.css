@@ -1,0 +1,112 @@
+﻿/*@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    font: 14px/1 'Open Sans', sans-serif;
+    color: #555;
+    background: #eee;
+}*/
+
+p {
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+main {
+    min-width: 320px;
+    max-width: 1200px;
+    /*padding: 1.5rem;*/
+    margin: 0 auto;
+    background: transparent;
+}
+
+section {
+    /*min-height: 350px;*/
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    border-radius: 0 0 20px 20px;
+    display: none;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px;
+
+    /*display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;*/
+}
+
+input {
+    display: none;
+}
+
+label.tab {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #bbb;
+    border: 1px solid transparent;
+}
+
+    label.tab:before {
+        font-family: fontawesome;
+        font-weight: normal;
+        margin-right: 10px;
+    }
+
+    label.tab[for*='1']:before {
+        content: '\f0f0';
+    }
+
+    label.tab[for*='2']:before {
+        content: '\f17d';
+    }
+
+    label.tab[for*='3']:before {
+        content: '\f16b';
+    }
+
+    label.tab[for*='4']:before {
+        content: '\f1a9';
+    }
+
+    label.tab:hover {
+        color: #888;
+        cursor: pointer;
+    }
+
+input:checked + label.tab {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 3px solid #0062AB;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    label.tab {
+        font-size: 0;
+    }
+
+        label.tab:before {
+            margin: 0;
+            font-size: 18px;
+        }
+}
+
+@media screen and (max-width: 400px) {
+    label.tab {
+        padding: 15px;
+    }
+}

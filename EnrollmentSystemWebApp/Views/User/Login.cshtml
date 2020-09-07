@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<br />
+<div class="card customCardLogin" style="width: 26rem;">
+    <img class="card-img-top logoCardHeader" src="~/app-assets/images/Logon_Logo_Header.jpg" alt="">
+    <div class="card-body">
+        <form id="loginForm" class="needs-validation" novalidate>
+            <div class="form-row">
+                <div class="col-md-12  mb-3">
+                    <input id="user-field" required type="text" maxlength="500" class="form-control" name="user" data-i18n="[placeholder]login_userplaceholder" placeholder="Usuario">
+                    @*<div class="invalid-feedback" data-i18n="registerUser_email_validation"></div>*@
+                    <div class="invalid-feedback" data-i18n="registerUser_email_validation"></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12  mb-3">
+                    <input id="password-field" required maxlength="500" class="form-control" type="password" data-i18n="[placeholder]login_passwordplaceholder" name="password" placeholder="Contraseña">
+                    <div class="invalid-feedback" data-i18n="registerUser_password_validation"></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12  mb-3">
+                    <input id="btnLoginSubmit" type="submit" style="width:100%;" data-i18n="[value]login_ingresar" value="Ingresar" />
+                </div>
+            </div>
+            @*<div class="form-row">
+                <div class="col-md-12  mb-3">
+                    <p><a href="~/User/ResetPassword/" data-i18n="login_olvidastepassword">¿Olvidaste su contraseña?</a></p>
+                    <p><a href="~/User/Register/" data-i18n="login_nuevousuario">¿Nuevo usuario?</a></p>
+                </div>
+            </div>*@
+            <div class="form-row">
+                <div class="col-md-12  mb-3">
+                    <span data-i18n="login_disclaimer_partOne">Al ingresar, estás de acuerdo con los </span>
+                    <a href="#" data-i18n="login_disclaimer_TerminosDeServicio" data-toggle="modal" data-target="#terminosDeServicioModal">Normas de Uso</a>,
+                    <a href="#" data-i18n="login_disclaimer_DeclaracionPrivacidad" data-toggle="modal" data-target="#privacidadModal">Declaración de privacidad</a>,
+                    <span data-i18n="login_disclaimer_partTwo">y</span>
+                    <a href="#" data-i18n="login_disclaimer_AvisoDeCookies" data-toggle="modal" data-target="#cookiesModal">Aviso de cookies</a>.
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts{
+    
+    <script src="@Url.Content("~/app-assets/assets/js/site.js")"></script>
+    <script src="@Url.Content("~/app-assets/assets/js/LoginAndResetJS.js")"></script>
+    
+    <script>
+        var urlLogin = '@Url.Action("Login", "User")';
+        var urlHome = '@Url.Action("Index", "Home")';
+    </script>
+}
+
+
+

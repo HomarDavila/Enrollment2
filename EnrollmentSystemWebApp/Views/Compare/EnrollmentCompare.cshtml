@@ -1,0 +1,433 @@
+﻿@{
+    Layout = "~/Views/Shared/Custom/_MainRobust.cshtml";
+}
+
+<link href="~/app-assets/assets/css/CustomTabs.css" rel="stylesheet" />
+<link href="~/app-assets/assets/css/Enrollment.css" rel="stylesheet" />
+<link href="~/app-assets/assets/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+<link href="~/app-assets/assets/css/Compare.css" rel="stylesheet" />
+@*<link href="~/app-assets/assets/css/healthsparq-ui-f6d93a1daef5297e347f956c56a31f0c.css" rel="stylesheet" />*@
+<main>
+    <div class="card">
+        <div class="card-body collapse in">
+            <div class="card-block">
+                <div class="form">
+                    <div class="form-body">
+                        <div class="row m-bottom20px">
+                            <div class="col-md-12">
+                                <h3 data-i18n="Compare_Search">BUSQUE SU PROVEEDOR</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="txtPhName" data-i18n="Enrollment_PCP">PCP</label>
+                                <div class="position-relative has-icon-left">
+                                    <input id="txtPhName" class="form-control" />
+                                    <div class="form-control-position">
+                                        <i class="icon-head"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="txtActualPmg" data-i18n="Enrollment_PMG">PMG</label>
+                                <div class="position-relative has-icon-left">
+                                    <input id="txtActualPmg" class="form-control" />
+                                    <div class="form-control-position">
+                                        <i class="icon-head"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="txtNPI" data-i18n="Enrollment_NPI">NPI</label>
+                                <div class="position-relative has-icon-left">
+                                    <input id="txtNPI" class="form-control" />
+                                    <div class="form-control-position">
+                                        <i class="icon-head"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="btnSearch"></label>
+                                <div class="position-relative has-icon-left">
+                                    <button type="submit" class="btn btn-primary" id="btnSearch" style="float:right;" data-i18n="SearchPerson_Search">
+                                        <i class="icon-search"></i> Buscar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card customCardLogin col-md-3" style="height:1000px">
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <div class="form">
+                        <div class="form-body">
+                            <div class="row m-bottom20px">
+                                <div class="col-md-12">
+                                    <h3 data-i18n="Compare_SearchFilter">SEARCH FILTERS</h3>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="label-control" data-i18n="Compare_MCO">MCO</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="chkAllMCO" class="styled" type="checkbox">
+                                    <label for="chkAllMCO" class="label-control" data-i18n="Compare_SelectALL" style="color:#0062ab;padding-bottom:3px;font-weight:bolder;">Seleccionar Todos</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox">
+                                    <input id="chkFirstMedical" class="styled" type="checkbox">
+                                    <label for="chkFirstMedical" class="label-control" data-i18n="">First Medical</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox">
+                                    <input id="chkMMM" class="styled" type="checkbox">
+                                    <label for="chkMMM" class="label-control" data-i18n="">MMM</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox">
+                                    <input id="chkMolinaHealthCare" class="styled" type="checkbox">
+                                    <label for="chkMolinaHealthCare" class="label-control" data-i18n="">Molina Health Care</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox">
+                                    <input id="chkPlanMenonita" class="styled" type="checkbox">
+                                    <label for="chkPlanMenonita" class="label-control" data-i18n="">Plan Menonita</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox">
+                                    <input id="chkTripleS" class="styled" type="checkbox">
+                                    <label for="chkTripleS" class="label-control" data-i18n="">Triple S</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="label-control" data-i18n="Compare_Ubication">Ubication</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="txtMPIDatosGenerales" data-i18n="Enrollment_NPI">MPI</label>
+                                    <div class="position-relative has-icon-left">
+                                        <input id="txtMPIDatosGenerales" class="form-control" />
+                                        <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="label-control" data-i18n="Compare_Languaje">Languaje</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="chkAllLanguaje" class="styled" type="checkbox">
+                                    <label for="chkAllLanguaje" class="label-control" data-i18n="Compare_SelectALL" style="color:#0062ab;padding-bottom:3px;font-weight:bolder;">Seleccionar Todos</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox">
+                                    <input id="chkSpanish" class="styled" type="checkbox">
+                                    <label for="chkSpanish" class="label-control" data-i18n="Compare_Spanish">Spanish</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox">
+                                    <input id="chkEnglish" class="styled" type="checkbox">
+                                    <label for="chkEnglish" class="label-control" data-i18n="Compare_English">English</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="label-control" data-i18n="Enrollment_Speciality">Speciality</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="chkAllSpeciality" class="styled" type="checkbox">
+                                    <label for="chkAllSpeciality" class="label-control" data-i18n="Compare_SelectALL" style="color:#0062ab;padding-bottom:3px;font-weight:bolder;">Seleccionar Todos</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="btnClear"></label>
+                                    <div class="position-relative has-icon-left">
+                                        <button type="submit" class="btn btn-primary" id="btnClear" style="float:right;" data-i18n="Compare_Clear">
+                                            <i class="icon-search"></i> Clear
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="btnFilter"></label>
+                                    <div class="position-relative has-icon-left">
+                                        <button type="submit" class="btn btn-primary" id="btnFilter" style="float:right;" data-i18n="Person_Filter">
+                                            <i class="icon-search"></i> Filter
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card customCardLogin col-md-9" style="min-height:1000px">
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <div class="form">
+                        <div class="form-body">
+                            <div class="row m-bottom20px">
+                                <div class="col-md-12">
+                                    <h3 data-i18n="Compare_SearchResult">SEARCH FILTERS</h3>
+                                    <div id="results-div"></div>
+                                    <div class="container">
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination" id="pagination"></ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footCompare" class="card customCardLogin col-md-12" style="display: none">
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <div class="form">
+                        <div class="form-body">
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mmnCompare" class="container fixed-bottom bg-white px-3 py-2 b-gray-lighter-1 mb-3" style="display: none">
+        <div class="rowX">
+            <div class="colX">
+                <div class="rowX">
+                    <div id="ember652" class="colX px-1 __23662">
+                        <div id="ember653" class="card-compare rad-card w-100 h-100 card-default">
+                            <div id="ember654" class="p-1 text-center d-flex flex-column justify-content-center compare-card-compare-body card-block card-compare-body">
+                                <div>
+                                    <div id="ember655" class="radius mx-auto __8fc97">
+                                        <svg data-test="provider-photo-svg" id="ember656" class="icon rad-svg icon urgent-care-2 icon-lg transitioning">
+                                            <!---->
+                                            <use href="#urgent-care-2" xlink:href="#urgent-care-2" data-test="svg-id-urgent-care-2" />
+                                        </svg>
+                                    </div>
+
+                                    <button id="ember657" class="rad-button btn border-0 pl-1 btn-remove btn-link btn-unstyled" type="button">
+                                        <svg id="ember658" class="icon rad-svg icon close">
+                                            <title>close</title>
+                                            <use href="#close" xlink:href="#close" data-test="svg-id-close" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <label id="lblCompare1"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ember677" class="colX px-1 __23662">
+                        <div id="ember678" class="card-compare rad-card w-100 h-100 card-default">
+                            <div id="ember679" class="p-1 text-center d-flex flex-column justify-content-center compare-card-compare-body card-compare-block card-compare-body">
+                                <div>
+                                    <div id="ember680" class="radius mx-auto __8fc97">
+                                        <svg data-test="provider-photo-svg" id="ember681" class="icon rad-svg icon user-multiple icon-lg transitioning">
+                                            <!---->
+                                            <use href="#user-multiple" xlink:href="#user-multiple" data-test="svg-id-user-multiple" />
+                                        </svg>
+                                    </div>
+
+                                    <button id="ember682" class="rad-button btn border-0 pl-1 btn-remove btn-link btn-unstyled" type="button">
+                                        <svg id="ember683" class="icon rad-svg icon close">
+                                            <title>close</title>
+                                            <use href="#close" xlink:href="#close" data-test="svg-id-close" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <label id="lblCompare2"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="colX d-flex px-1 align-items-stretch">
+                        <div id="ember46" class="card-compare rad-card w-100 d-flex card-default">
+                            <div id="ember47" class="d-flex flex-column align-items-center justify-content-center bg-gray-lightest card-block card-body" />
+                        </div>
+                    </div>
+                    <div class="colX d-flex px-1 align-items-stretch">
+                        <div class="colX">
+                            @*<div id="ember56" class="card-compare rad-card w-100 d-flex card-default">*@
+                            <button id="ember56" class="rad-button btn btn-block btn-sm btn-primary" type="button" data-i18n="Compare_Compare">
+                                Compare
+                            </button>
+                            <button id="ember57" class="rad-button btn btn-block btn-sm" type="button" data-i18n="Compare_Clear">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="tmpCard" style="display: none">
+@*<div id="tmpCard">*@
+    <label id="labelsearchId">
+        PcpNameChange
+    </label>
+    <div class="row">
+        <div class="form-group col-md-2 checkbox checkbox-primary">
+            <input id="chkCompare" class="styled chkCompareCls" type="checkbox" />
+            <label for="chkCompare" class="label-control" data-i18n="Compare_Compare" style="color:#0062ab;padding-bottom:3px;font-weight:bolder;">Compare</label>
+        </div>
+        <div class="form-group col-md-5">
+            <label id="AddressLineOneChange" class="AdressLineOne label-columns">AdressLineOneChange</label>
+            <label id="AddressLineTwoChange" class="AdressLineOne label-columns">AdressLineTwoChange</label>
+            <label id="NPIChange" class="NPI label-columns">
+                <span>NPI:</span> NPIChange
+            </label>
+            <label id="PcpId" class="Pcp label-columns">
+                <span>PCP:</span> PcpChange
+            </label>
+            <label id="PmgId" class="Pmg label-columns">
+                <span>PMG:</span> PmgChange
+            </label>
+            <label id="McoId" class="Mco label-columns" style="display:none;">
+                <span>MCO:</span> McoChange
+            </label>
+            <label id="CapacityMco" class="CapacityMco label-columns" style="display:none;">
+                <span>CapacityMco:</span> CapacityMco
+            </label>
+        </div>
+        <div id="results-available-div" class="form-group col-md-5">
+            <label id="GP" class="GP label-columns">
+                <span class="GPchange" style="GPstyle" /> MMM Multi Health
+            </label>
+            <label id="FP" class="FP label-columns">
+                <span class="FPchange" style="FPstyle" /> First Medical Plan
+            </label>
+            <label id="IM" class="IM label-columns">
+                <span class="IMchange" style="IMstyle" /> Molina Healthcare of PR
+            </label>
+            <label id="PM" class="PM label-columns">
+                <span class="PMchange" style="PMstyle" /> Plan Menorita
+            </label>
+            <label id="GM" class="GM label-columns">
+                <span class="GMchange" style="GMstyle" /> Triple S
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: modalCart -->
+@*<script src="~/app-assets/assets/js/Enrollment.js"></script>*@
+@section scripts{
+    <script src="~/app-assets/assets/js/jquery.actual.min.js"></script>
+    <script src="~/app-assets/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/app-assets/assets/js/EnrollmentCompare.js"></script>
+
+
+    <script>
+    //elements
+        var AvailablePcpName = [];
+        var ResultsMcos = [];
+    var UrlThisView = '@Url.Action("Enrollment", "Enrollment")';
+    var ApplicationMemberID = '@TempData["ApplicationMemberID"]';
+
+    var disabledBackground = '@Url.Content("~/app-assets/assets/images/disabledBackgroung.png")';
+    //actions
+    var urlGetMembersByApplicationMemberID = '@Url.Action("GetMembersByApplicationMemberID", "Enrollment")';
+    var urlGetAllMco = '@Url.Action("GetAllMco", "Common")';
+    var urlGetAllPmg = '@Url.Action("GetAllPmg", "Common")';
+    var urlGetAllSpeciality = '@Url.Action("GetAllSpeciality", "Common")';
+    var urlGetAllPcp = '@Url.Action("GetAllPcp", "Common")';
+    var urlChangePersonMco = '@Url.Action("ChangePersonMco", "person")';
+        var urlSendConfirmationEmail = '@Url.Action("SendConfirmationEmail", "Common")';
+        var urlCreatePDF = '@Url.Action("CreatePDF", "Common")';
+        var urlSendEnrollmentPeriod = '@Url.Action("SendPEnrollmenteriod", "Enrollment")';
+        var urlGetEnrollmentPeriod = '@Url.Action("GetEnrollmentPeriod", "Enrollment")';
+        var urlGetPDF = '@Url.Action("GetPDF", "File")';
+    @*var urlVerifyOverCapacity = '@Url.Action("VerifyOverCapacity", "Common")';*@
+
+    //fill dynamic data
+        var urlGetPcpWithFilters = '@Url.Action("GetPcpWithFilters", "Common")';
+        var urlGetEnrollmentFiles = '@Url.Action("GetEnrollmentFiles", "File")';
+        var urlDisabledEnrollmentFiles = '@Url.Action("DisabledEnrollmentFiles", "File")';
+        var urlSetEnrollmentFiles = '@Url.Action("SetEnrollmentFiles", "File")';
+        var urlGetValidateFiles = '@Url.Action("GetValidateFiles", "File")';
+        var urlGetFile = '@Url.Action("GetFile", "File")';
+    var urlGetEnrollmentHistoryByPersonId = '@Url.Action("GetEnrollmentHistoryByPersonId", "Common")';
+     var urlGetAllOvercapacity = '@Url.Action("GetAllOverCapacity", "Enrollment")';
+    //
+    var textForDisabledButton = "";
+    //Dinamic data for update
+    var PersonId = '';
+    var ActualMcoId = "";
+    var ActualNPI = "";
+    var ActualPmgId = "";
+    var UpdateMcoId = "";
+    var UpdateNPI = "";
+        var UpdatePmgId = "";
+        // por overcapacity
+        var jsonover;
+        var jsondatamemory;
+
+        //var UpdateMcoId = "";
+        var UpdateMco = "";
+        //var UpdatePmgId = "";
+        var UpdatePmg = "";
+        var UpdatePcpId = "";
+        var UpdatePcp = "";
+        //var UpdateNPI = "";
+        var resultsPmg = [];
+
+        // Just cause
+        var permission = false;
+        var justCause = "";
+    </script>
+
+}

@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Tools";
+    Layout = "~/Views/Shared/_LayoutWelcome.cshtml";
+}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-11">
+                    <h2 class="heading heading--ltblue" data-i18n="ChangeMCO_period_additional_informacion">Informaci&oacute;n Adicional</h2>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                            <a href="/EnrollmentPrincipal/Principal/PanoramaGeneral">
+                                <div class="tile">
+                                    <img class="img-fluid" src="@Url.Content("~/wwwroot/images/welcome/happy-family.jpg")" alt="">
+                                    <h3 class="tile__title tile__title--blue" data-i18n="ChangeMCO_period_overview">Informaci&oacute;n General</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                            <a href="/EnrollmentPrincipal/Principal/PuntosDestacadosDetalles">
+                                <div class="tile">
+                                    <img class="img-fluid" src="@Url.Content("~/wwwroot/images/welcome/pregnant-woman-young-girl.jpg")" alt="">
+                                    <h3 class="tile__title tile__title--blue" data-i18n="ChangeMCO_period_detail_highlights">Temas Importantes</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                            <a href="/EnrollmentPrincipal/Principal/BusquedaProveedores">
+                                <div class="tile">
+                                    <img class="img-fluid" src="@Url.Content("~/wwwroot/images/welcome/medical-symbol.jpg")" alt="">
+                                    <h3 class="tile__title tile__title--blue" data-i18n="ChangeMCO_period_provider_search">B&uacute;squeda de Proveedores</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                            <a href="/EnrollmentPrincipal/Principal/UbicacionOficinas">
+                                <div class="tile">
+                                    <img class="img-fluid" src="@Url.Content("~/wwwroot/images/welcome/doctor-patient.jpg")" alt="">
+                                    <h3 class="tile__title tile__title--blue" data-i18n="ChangeMCO_period_medicaid_office_locations">Oficinas de Medicaid</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                @*Choose Your New Insurer (MCO)*@
+                <div class="col-md-12 mt-md-3 mb-md-3">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-11">
+                            <h2 class="heading heading--green" data-i18n="ChangeMCO_period_choose_new_ensurer">Seleccione su Aseguradora de Preferencia</h2>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                                    <a href="/EnrollmentPrincipal/Principal/CambiarMco">
+                                        <div class="tile">
+                                            <img class="img-fluid" src="@Url.Content("~/wwwroot/images/welcome/doctor-patient-2.jpg")" alt="">
+                                            <h3 class="tile__title tile__title--green" data-i18n="ChangeMCO_period_select_prefered_insurer">Cambie su Aseguradora (MCO)</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                                    <a href="/EnrollmentPrincipal/Principal/HacerCita">
+                                        <div class="tile">
+                                            <img class="img-fluid" src="@Url.Content("~/wwwroot/images/welcome/man-and-woman.jpg")" alt="">
+                                            <h3 class="tile__title tile__title--green" data-i18n="ChangeMCO_period_make_appointment">Haga una Cita con el Centro de Orientaci&oacute;n VITAL</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                                    <a href="/EnrollmentPrincipal/Principal/ContactaAseguradora">
+                                        <div class="tile">
+                                            <img class="img-fluid" src="@Url.Content("~/wwwroot/images/welcome/medical-professionals.jpg")" alt="">
+                                            <h3 class="tile__title tile__title--green" data-i18n="ChangeMCO_period_contact_insurer">Contacte su Aseguradora (MCO)</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

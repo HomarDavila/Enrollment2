@@ -1,0 +1,887 @@
+﻿@model Security.API.Model.Response.User_Response_v1
+@{
+    ViewBag.Title = "Home";
+}
+@section head{
+    <link href="~/wwwroot/lib/bootzard-bootstrap-wizard-template/assets/css/form-elements.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootzard-bootstrap-wizard-template/assets/css/style.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+}
+
+<style>
+    .popupTd {
+        padding: 10px !important;
+        vertical-align: middle !important;
+    }
+
+    #tbChanges th {
+        line-height: 0;
+        text-align: center;
+    }
+
+    #tbChanges td {
+        line-height: 0;
+        padding: 0;
+    }
+
+    #tb_Members {
+        border: 1px solid #eee;
+    }
+
+    .marginsMCO {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        padding: 2rem 8rem;
+    }
+    /*
+    table th {
+        font-size: .9rem;
+        font-weight: 400;
+        background-color: #0079c1;
+        color: #FFF;
+        padding: 5px 0;
+    }*/
+
+    .dataTables_length {
+        display: inline-block;
+        float: left;
+        margin-bottom: 15px;
+    }
+
+    .dataTables_scroll {
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+
+    table.dataTable tbody tr:hover {
+        background-color: #e8f4fd !important;
+    }
+
+    .CardBody {
+        cursor: pointer;
+    }
+
+        .CardBody:hover {
+            box-shadow: 0 0 5px #1F1F21; /*#0079C1*/
+        }
+
+    .form-inline {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .dataTables_length {
+        display: inline-block;
+        float: left;
+    }
+
+    .dataTables_info {
+        float: right;
+    }
+
+    .sorting_disabled {
+        text-align: center;
+    }
+
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active,
+    .btn-primary.active,
+    .btn-primary.focus,
+    .btn-primary:active,
+    .btn-primary:focus,
+    .btn-primary:hover,
+    .open > .dropdown-toggle.btn-primary {
+        background-color: #3bc0c3;
+        border: 1px solid #3bc0c3;
+    }
+
+    .p-t-10 {
+        border: 1px solid #a0a0a0;
+        padding: 15px 10px;
+        border-radius: 5px;
+        box-shadow: 10px 10px 25px -11px rgba(0,0,0,0.2);
+        margin: 15px 0;
+        background-color: #fff;
+    }
+
+    .media-main {
+        display: inline-flex;
+        width: 100%;
+    }
+
+        .media-main a.pull-left {
+            width: 100px;
+        }
+
+    .thumb-lg {
+        height: 100px;
+        width: 100px;
+        /*border: 1px solid #b1b1b1;
+        border-radius: 50%;*/
+    }
+
+    .media-main .info {
+        overflow: hidden;
+        color: #000;
+        margin-left: 10pX;
+        width: 100%;
+    }
+
+        .media-main .info h4 {
+            padding-top: 10px;
+            margin-bottom: 5px;
+        }
+
+    .name {
+        font-size: 15px;
+        color: forestgreen;
+        font-weight: 600 !important;
+    }
+
+    .text-muted {
+        margin-bottom: .1rem;
+    }
+
+    .bolder {
+        font-weight: bolder !important;
+    }
+    /* The container for custom radio */
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 18px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: inherit;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default radio button */
+        .containerRadio input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+    /* Create a custom radio button */
+    .checkmarkRadio {
+        position: absolute;
+        top: 5px;
+        left: 15px;
+        height: 12px;
+        width: 12px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmarkRadio {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmarkRadio {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmarkRadio:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmarkRadio:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmarkRadio::after {
+        top: 3px;
+        left: 3px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: white;
+    }
+    /*****************************/
+    /* Checkmarks for input radio buttons */
+    .containercheck {
+        display: block;
+        position: relative;
+        padding-left: 16px;
+        margin-bottom: 2px;
+        cursor: pointer;
+        font-size: 12px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .containercheckSquare {
+        display: block;
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 2px;
+        cursor: pointer;
+        font-size: 15px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+        /* Hide the browser's default checkbox */
+        .containercheck input,
+        .containercheckSquare input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark, .checkmarkRed {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        height: 12px;
+        width: 12px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    .checkmarkSquare {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: #eee;
+        border-radius: 2px;
+        border: 1px solid #d3d5d7;
+    }
+    /* On mouse-over, add a grey background color */
+    .containercheck:hover input ~ .checkmark,
+    .containercheck:hover input ~ .checkmarkRed,
+    .containercheckSquare:hover input ~ .checkmarkSquare {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .containercheck input:checked ~ .checkmark,
+    .containercheckSquare input:checked ~ .checkmarkSquare {
+        background-color: #2196F3;
+    }
+
+    .containercheck input:checked ~ .checkmarkRed {
+        background-color: #ff3232;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after, .checkmarkRed:after, .checkmarkSquare:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .containercheck input:checked ~ .checkmark:after,
+    .containercheck input:checked ~ .checkmarkRed:after,
+    .containercheckSquare input:checked ~ .checkmarkSquare:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .containercheck .checkmark:after {
+        left: 4px;
+        top: 2px;
+        width: 5px;
+        height: 7px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .containercheckSquare .checkmarkSquare:after {
+        left: 7px;
+        top: 4px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .container .checkmarkClose::before, .container .checkmarkClose::after {
+        position: absolute;
+        left: 5px;
+        top: 2px;
+        content: ' ';
+        height: 8px;
+        width: 2px;
+        background-color: white;
+    }
+
+    .container .checkmarkClose:before {
+        transform: rotate(45deg);
+    }
+
+    .container .checkmarkClose:after {
+        transform: rotate(-45deg);
+    }
+
+    .checkmarkGreen, .checkmarkRed2 {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        height: 12px;
+        width: 12px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containercheck:hover input ~ .checkmarkGreen,
+    .containercheck:hover input ~ .checkmarkRed2 {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .containercheck input:checked ~ .checkmarkGreen {
+        background-color: #fff;
+    }
+
+    .containercheck input:checked ~ .checkmarkRed2 {
+        background-color: #fff;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmarkGreen:after, .checkmarkRed2:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .containercheck input:checked ~ .checkmarkGreen:after,
+    .containercheck input:checked ~ .checkmarkRed2:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .containercheck .checkmarkGreen:after {
+        left: 4px;
+        top: 2px;
+        width: 5px;
+        height: 7px;
+        border: solid #388e3c;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .container .checkmarkClose2::before, .container .checkmarkClose2::after {
+        position: absolute;
+        left: 5px;
+        top: 2px;
+        content: ' ';
+        height: 8px;
+        width: 2px;
+        background-color: red;
+    }
+
+    .container .checkmarkClose2:before {
+        transform: rotate(45deg);
+    }
+
+    .container .checkmarkClose2:after {
+        transform: rotate(-45deg);
+    }
+
+    .radioDiv.selected {
+        box-shadow: 0 0 20px #0079C1;
+    }
+
+    .table tbody td img.imgUpdate {
+        width: 12px;
+        margin-top: 10px;
+    }
+
+    .f1-step {
+        position: relative;
+        float: left;
+        width: 25%;
+        padding: 0 5px;
+        text-align: center;
+    }
+
+    .fa-check {
+        color: green;
+    }
+
+    .fa-times {
+        color: red;
+    }
+
+    .fa-map-marker-alt {
+        color: red;
+    }
+
+    /*#PersonDirections tr:hover td {
+        border-bottom: 1px solid blue;
+        border-top: 1px solid blue;
+    }*/
+
+    #PersonDirections td:not(.dontCenter) {
+        text-align: center;
+    }
+
+    table#PersonDirections {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .select2-selection__clear {
+        font-size: 1.5em;
+        color: red;
+    }
+    
+    @@media print {
+        @@page {
+            size: A4;
+        }
+        
+        body * { 
+            margin:0;
+            padding:0;
+            visibility: hidden;
+        }
+
+        .printSection *:not(button) {
+            visibility: visible; 
+        }        
+
+        .printSection { 
+            margin:0;
+            padding:0;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        button {
+            display: none;
+        }
+    }
+</style>
+
+<br />
+
+<div class="card customCardLogin" style="min-height:600px; width: 102%;  display: inline-block;">
+    <div class="card-header text-muted">
+    </div>
+    <div class="card-body">
+        <div class="top-content">
+
+            <form role="form" action="" method="post" class="f1 needs-validation" novalidate>
+                <div class="f1-steps">
+                    <div class="f1-progress">
+                        <div class="f1-progress-line" data-now-value="20" data-number-of-steps="4" style="width: 25%;"></div>
+                    </div>
+                    <div class="f1-step active">
+                        <div class="f1-step-icon"><i class="fas fa-building"></i></div>
+                        <p data-i18n="EnrollmentChooseOrganitation">Escoger Aseguradora</p>
+                    </div>
+                    <div class="f1-step">
+                        <div class="f1-step-icon"><i class="fas fa-search"></i></div>
+                        <p data-i18n="EnrollmentSearchProviders">Buscar Proveedores</p>
+                    </div>
+                    <div class="f1-step">
+                        <div class="f1-step-icon"><i class="fas fa-user-md"></i></div>
+                        <p data-i18n="EnrollmentChooseProvider">Escoger Proveedor</p>
+                    </div>
+                    <div class="f1-step">
+                        <div class="f1-step-icon"><i class="fas fa-address-card"></i></div>
+                        <p data-i18n="EnrollmentDirection">Seleccione Dirección</p>
+                    </div>
+                </div>
+                <fieldset id="fet2">
+                    <h4 data-i18n="EnrollmentSelectCarrierNA">Seleccione las aseguradoras a consultar</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="containercheckSquare">
+                                First Medical Plan
+                                <input id="1" class="MCO" name="MCO" type="checkbox" checked>
+                                <span class="checkmarkSquare"></span>
+                            </label>
+                            <label class="containercheckSquare">
+                                MMM Multi Health
+                                <input id="2" class="MCO" name="MCO" type="checkbox" checked>
+                                <span class="checkmarkSquare"></span>
+                            </label>
+                            <label class="containercheckSquare">
+                                Molina HealthCare of PR
+                                <input id="3" class="MCO" name="MCO" type="checkbox" checked>
+                                <span class="checkmarkSquare"></span>
+                            </label>
+                            <label class="containercheckSquare">
+                                Plan Menonita
+                                <input id="4" class="MCO" name="MCO" type="checkbox" checked>
+                                <span class="checkmarkSquare"></span>
+                            </label>
+                            <label class="containercheckSquare">
+                                Triple S
+                                <input id="5" class="MCO" name="MCO" type="checkbox" checked>
+                                <span class="checkmarkSquare"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="f1-buttons">
+                        <button type="button" id="StepTwo" class="btn btn-next" data-i18n="common_ButtonContinue">Siguiente</button>
+                    </div>
+                </fieldset>
+                <fieldset id="fet3">
+                    <h4 data-i18n="EnrollmentSelectCriteriaSearchProvider">Seleccione algunos filtros para buscar a su proveedor</h4>
+                    <h6 data-i18n="EnrollmentOnlySeeResumen">(Si desea ver el resultado completo, puede omitir este paso)</h6><br /><br />
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="form-group col-md-2" style="padding-top: 10px;">
+                            <label for="txtPhName" data-i18n="Enrollment_PhisycianName">Phisycian Name:</label>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <div class="position-relative has-icon-left">
+                                <input id="txtPhName" class="form-control" data-i18n="[placeholder]AllEnterText" />
+                                <div class="form-control-position">
+                                    <i class="icon-head"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="form-group col-md-2" style="padding-top: 10px;">
+                            <label for="cbSpeciality" data-i18n="Enrollment_Speciality">Speciality:</label>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <div class="position-relative has-icon-left">
+                                <div class="position-relative has-icon-left">
+                                    <select type="text" class="js-example-basic-single" id="cbSpeciality" style="width: 100%; ">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="form-group col-md-2" style="padding-top: 10px;">
+                            <label for="cbPmg" data-i18n="Enrollment_Medical">Grupo Médico Primario:</label>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <div class="position-relative has-icon-left">
+                                <div class="position-relative has-icon-left">
+                                    <select type="text" class="cbPmg" id="cbPmg" style="width: 100%; ">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="form-group col-md-2" style="padding-top: 10px;">
+                            <label for="cbMunicipality" data-i18n="Enrollment_Municipality">Pueblo:</label>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <div class="position-relative has-icon-left">
+                                <div class="position-relative has-icon-left">
+                                    <select type="text" class="cbPmg" id="cbMunicipality" style="width: 100%;">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                    <div class="f1-buttons">
+                        <button type="button" class="btn btn-previous" data-i18n="common_ButtonPrevious">Anterior</button>
+                        <button type="button" id="btnSearch" class="btn btn-next" data-i18n="common_ButtonNext">Siguiente</button>
+                    </div>
+                </fieldset>
+                <fieldset id="fet4">
+                    @*<h4 data-i18n="Suppliers_of_list">Lista de proveedores</h4>
+        <nav aria-label="Page navigation">
+            <ul class="pagination"></ul>
+        </nav>*@
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 data-i18n="Suppliers_of_list">Suppliers of list</h4>
+
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination"></ul>
+                            </nav>
+                        </div>
+                        <div class="col-md-4">
+                            <br>
+                            <label class="containercheck"> <span data-i18n="Enrollment_Contract">Contratado por la aseguradora</span> <input type="checkbox" checked="checked" disabled="disabled"> <span class="checkmarkGreen"></span> </label>
+                            <label class="containercheck"> <span data-i18n="Enrollment_NoContract">No contratado por la aseguradora</span> <input type="checkbox" checked="checked" disabled="disabled"> <span class="checkmarkRed2"><a class="checkmarkClose2"></a></span> </label>
+                        </div>
+                    </div>
+                    <div class="f1-buttons">
+                        <button type="button" class="btn btn-previous" data-i18n="common_ButtonPrevious">Anterior</button>
+                        <button type="button" class="btn btn-next StepThree" data-i18n="common_ButtonNext" disabled>Siguiente</button>
+                    </div>
+                    <br />
+                    <div class="d-flex flex-wrap radio-group" id="DinamicSection"></div>
+                    <br />
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination"></ul>
+                    </nav>
+                    <div class="f1-buttons">
+                        <button type="button" class="btn btn-previous" id="btnPreviusSerach" data-i18n="common_ButtonPrevious">Anterior</button>
+                        <button type="button" class="btn btn-next StepThree" data-i18n="common_ButtonNext" disabled>Siguiente</button>
+                    </div>
+                </fieldset>
+                <fieldset id="fet5">
+                    @*<h4 data-i18n="Select_your_provider_address">Seleccione la dirección de su proveedor</h4>*@
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 data-i18n="Select_your_provider_addressNA">Las siguientes son las direcciones en las que usted puede visitar a su proveedor seleccionado</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <br>
+                            <label class="containercheck"> <span data-i18n="Enrollment_Contract">Contratado por la aseguradora</span> <input type="checkbox" checked="checked" disabled="disabled"> <span class="checkmarkGreen"></span> </label>
+                            <label class="containercheck"> <span data-i18n="Enrollment_NoContract">No contratado por la aseguradora</span> <input type="checkbox" checked="checked" disabled="disabled"> <span class="checkmarkRed2"><a class="checkmarkClose2"></a></span> </label>
+                        </div>
+                    </div>
+                    <div class="f1-buttons">
+                        <button type="button" id="btnPrint" onclick="window.print();" class="btn btn-info" data-i18n="common_ButtonPrint">Imprimir</button>
+                        <button type="button" class="btn btn-previous" data-i18n="common_ButtonPrevious">Anterior</button>
+                    </div>
+                    <br />
+                    <!---->
+                    <div class="printSection">
+                        <div class="row">
+                            <div class="col-12 justify-content-center text-center">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row justify-content-center">
+                                            <div class="col-sm-12 col-lg-3">
+                                                <h4 class="name" id="PCPDFullName">PCPDFullName</h4>
+                                                <a><img class="thumb-lg img-circle bx-s" id="imgPCP" src="/EnrollmentSelfServices/wwwroot/images/svg/spanish/male/MaleGeneralPractice.png" alt=""> </a>
+                                                @*<p>
+                                                    NPI: <span class="bolder" id="PCPDNPINumber">0000000</span>
+                                                </p>*@
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <div class="row">
+                                                    <p data-i18n="Enrollment_MessageButtonSearch">Si el proveedor seleccionado tiene más de una Especialidad y/o PMG, seleccione los mismos y precione el botón BUSCAR.</p>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <p class="text-muted text-right"><span data-i18n="Enrollment_Speciality">Speciality</span>:</p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <select type="text" class="js-example-basic-single" id="cbSpecialityPCP" style="width: 100%;">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <p class="text-muted text-right">PMG:</p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <select type="text" class="js-example-basic-single" id="cbPmgPCP" style="width: 100%;">
+                                                            <option></option>
+                                                        </select>
+                                                        <p data-i18n="Enrollment_NotePMG">NOTA: Sus resultados pueden presentar Médicos Primarios (PCP), que aún no están asociados a un Grupo Médico Primario (PMG).</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12" style="padding-left:40%;">
+                                                        <button type="button" class="btn btn-info" id="btnBuscarDireccion" data-i18n="SearchPerson_Search">Buscar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <!---->
+                        <div class="table-responsive">
+
+                            <table id="PersonDirections" class="table table-borderless table-striped table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" colspan="2" style="align-content:center;" data-i18n="Direction">Dirección</th>
+                                        <th scope="col">First Medical Plan</th>
+                                        <th scope="col">MMM Multi Health</th>
+                                        <th scope="col">Molina HealthCare of PR</th>
+                                        <th scope="col">Plan Menonita</th>
+                                        <th scope="col">TripleS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="PersonTBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="f1-buttons">
+                        <button id="btnBackToFet4" type="button" class="btn btn-previous" data-i18n="common_ButtonPrevious">Anterior</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    @*<script src="~/wwwroot/lib/jquery.redirect/dist/jquery.redirect.js"></script>*@
+    <script src="~/wwwroot/lib/jquery.date-dropdowns/dist/jquery.date-dropdowns.js"></script>
+    <script src="~/wwwroot/js/site.js"></script>
+    <script src="~/wwwroot/js/EnrollmentJSNA.js"></script>
+    <script src="~/wwwroot/lib/bootzard-bootstrap-wizard-template/assets/js/jquery.backstretch.js"></script>
+    <script src="~/wwwroot/lib/bootzard-bootstrap-wizard-template/assets/js/retina-1.1.0.js"></script>
+    <script src="~/wwwroot/lib/bootzard-bootstrap-wizard-template/assets/js/scripts.js"></script>
+
+    @*<script src="@Url.Content("~/wwwroot/vendors/js/extensions/i18next.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/wwwroot/vendors/js/extensions/i18nextXHRBackend.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/wwwroot/vendors/js/extensions/i18nextBrowserLanguageDetector.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/wwwroot/vendors/js/extensions/jquery-i18next.min.js")" type="text/javascript"></script>
+
+        <script src="@Url.Content("~/wwwroot/js/scripts/extensions/internationalization/query-string.js")" type="text/javascript"></script>*@
+
+    @*<script src="~/wwwroot/vendors/js/extensions/i18next.min.js"></script>
+        <script src="~/wwwroot/vendors/js/extensions/i18nextXHRBackend.min.js"></script>
+        <script src="~/wwwroot/vendors/js/extensions/i18nextBrowserLanguageDetector.min.js"></script>
+        <script src="~/wwwroot/vendors/js/extensions/jquery-i18next.min.js"></script>
+        <script src="~/wwwroot/js/scripts/extensions/internationalization/query-string.js"></script>*@
+
+    <script>
+        //$('#myTopnav').hide();
+        var urlLogin = '@Url.Action("Login", "User")';
+        var urlRegister = '@Url.Action("Register", "User")';
+        var urlRegisterWithQuestion = '@Url.Action("RegisterWithQuestions", "User")';
+        var urlSecurityQuestions = '@Url.Action("Get", "SecurityQuestion")';
+
+        //bghrtgh
+        var urlChangePersonMco = '@Url.Action("ChangePersonMco", "Common")';
+        var urlSendConfirmationEmail = '@Url.Action("SendConfirmationEmail", "Common")';
+        var UrlThisView = '@Url.Action("Index", "Home")';
+        var urlGetMembers = '@Url.Action("GetPeopleByMemberId", "Common")';
+        var AvailablePcpName = [];
+        var urlGetAllPcp = '@Url.Action("GetAllPcp", "Common")';
+        var urlGetAllMco = '@Url.Action("GetAllMco", "Common")';
+        var urlGetAllPmg = '@Url.Action("GetAllPmg", "Common")';
+        var urlGetAllPmgPCP = '@Url.Action("GetAllPmgPCP", "Common")';
+        var urlGetAllSpeciality = '@Url.Action("GetAllSpeciality", "Common")';
+        var urlGetAllSpecialityPCP = '@Url.Action("GetAllSpecialityPCP", "Common")';
+        //var urlGetAllManagedCareOrganizations = '@Url.Action("Get", "ManagedCareOrganization")';
+        var urlGetPcpWithFilters = '@Url.Action("GetPcpWithFilters", "Common")';
+        var urlGetPcpWithFiltersToList = '@Url.Action("GetPcpWithFiltersToList", "Common")';
+        var urlGetPrimaryCarePhysicianDetailWithFiltersToList = '@Url.Action("GetPrimaryCarePhysicianDetailWithFiltersToList", "PrimaryCarePhysicianDetail")';
+        var urlGetMunicipality = '@Url.Action("Get", "Municipality")';
+        var MemberIdentify = '@ViewBag.MemberId';
+
+        //Male Images for PCP
+        var urlMaleFamilyPractice = '@Url.Content("~/wwwroot/images/svg/spanish/male/MaleFamilyPractice.png")';
+        var urlMaleGeneralPractice = '@Url.Content("~/wwwroot/images/svg/spanish/male/MaleGeneralPractice.png")';
+        var urlMaleGeriatricMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/male/MaleGeriatricPractice.png")';
+        var urlMaleInternalMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/male/MaleInternalMedicine.png")';
+        var urlMalePediatricMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/male/MalePediatricMedicine.png")';
+        var urlMaleGynecologistObstetrianMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/male/MaleGynecologistObstetrianMedicine.png")';
+        var urlMaleGeneric = '@Url.Content("~/wwwroot/images/svg/spanish/male/Generic.png")';
+        var urlMaleGeriatricMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/male/MaleGeriatricMedicine.svg")';
+        //Female Images for PCP
+        var urlFemaleFamilyPractice = '@Url.Content("~/wwwroot/images/svg/spanish/female/FemaleFamilyPractice.png")';
+        var urlFemaleGeneralPractice = '@Url.Content("~/wwwroot/images/svg/spanish/female/FemaleGeneralPractice.png")';
+        var urlFemaleGeriatricMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/female/FemaleGeriatricPractice.png")';
+        var urlFemaleInternalMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/female/FemaleInternalMedicine.png")';
+        var urlFemalePediatricMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/female/FemalePediatricMedicine.png")';
+        var urlFemaleGynecologistObstetrianMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/female/FemaleGynecologistObstetrianMedicine.png")';
+        var urlFemaleGeriatricMedicine = '@Url.Content("~/wwwroot/images/svg/spanish/female/FemaleGeriatricMedicine.svg")';
+        //var urlMaleGeneric = '@Url.Content("~/wwwroot/images/svg/spanish/male/Generic.png")';
+
+        //Generic Images for PCP
+        var urlGenericMedic = '@Url.Content("~/wwwroot/images/svg/generic/GenericMedic.svg")';
+        var urlGenericFamilyPractice = '@Url.Content("~/wwwroot/images/svg/generic/GenericFamilyPractice.svg")';
+        var urlGenericGeneralPractice = '@Url.Content("~/wwwroot/images/svg/generic/GenericGeneralPractice.svg")';
+        var urlGenericGeriatricMedicine = '@Url.Content("~/wwwroot/images/svg/generic/GenericGeriatricPractice.svg")';
+        var urlGenericInternalMedicine = '@Url.Content("~/wwwroot/images/svg/generic/GenericInternalMedicine.svg")';
+        var urlGenericPediatricMedicine = '@Url.Content("~/wwwroot/images/svg/generic/GenericPediatricMedicine.svg")';
+        var urlGenericMaleMedic = '@Url.Content("~/wwwroot/images/svg/generic/GenericMaleMedic.svg")';
+        var urlGenericFemaleMedic = '@Url.Content("~/wwwroot/images/svg/generic/GenericFemaleMedic.svg")';
+
+        var urlCreatePDF = '@Url.Action("CreatePDF", "Common")';
+
+        var CardIdSelect = '';
+        //Dinamic data for update
+        var PersonId = '';
+        var ActualMcoId = "";
+        var ActualMco = "";
+        //var ActualNPI = "";
+        var ActualPmgId = "";
+        var ActualPmg = "";
+        var ActualPcpId = "";
+        var ActualPcp = "";
+
+        var SpecialityId = '';
+        var PrimaryMedicalGroupId = '';
+
+        var UpdateMcoId = "";
+        var UpdateMco = "";
+        var UpdatePmgId = "";
+        var UpdatePmg = "";
+        var UpdatePcpId = "";
+        var UpdatePcp = "";
+        //var UpdateNPI = "";
+        var resultsPmg = [];
+        var jsondatamemory;
+        var CardUpdatePcpIdValue;
+        var CurrentPersonSelected;
+        var CurrentPersonAddressSelected;
+
+        let trSelected;
+        let dirIndex;
+        let Member;
+    </script>
+}

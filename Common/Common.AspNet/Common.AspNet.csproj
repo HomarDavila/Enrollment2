@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Common_AspNet_TruenorthApps</PackageId>
+    <Company>Truenorth Corporation</Company>
+    <Authors>Truenorth Corporation</Authors>
+    <Description>Common Libraries for Asp Net Framework</Description>
+    <Configurations>Debug;Release;WebConfigDEV;Test;WebConfigPRO;Produccion</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logging\CustomLogGenerate.cs" />
+    <Compile Remove="Logging\CustomLogManager.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.0.100" />
+    <PackageReference Include="LightInject" Version="5.2.0" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
+
+</Project>

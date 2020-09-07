@@ -1,0 +1,549 @@
+﻿@charset "UTF-8";
+
+@font-face {
+    font-family: 'bbva-icons';
+    src: url(fonts/bbva-icons/bbva-icons.eot?7acgag);
+    src: url(fonts/bbva-icons/bbva-icons.eot?7acgag#iefix) format("embedded-opentype"), url(fonts/bbva-icons/bbva-icons.ttf?7acgag) format("truetype"), url(fonts/bbva-icons/bbva-icons.woff?7acgag) format("woff"), url(fonts/bbva-icons/bbva-icons.svg?7acgag#bbva-icons) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+
+.bbva-icon {
+    font-family: 'bbva-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    width: auto;
+    height: auto;
+    background: 0 0;
+    margin-top: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.icon-uniE084:before {
+    content: "\e084"
+}
+
+.icon-uniE021:before {
+    content: "\e021"
+}
+
+.icon-uniE023:before {
+    content: "\e023"
+}
+
+
+
+
+.body-header {
+    position: relative
+}
+
+
+.gray-menu header.body-header .container .main-menu .sub-menu.active {
+    top: 30px;
+    background: #f1f4f7;
+    background: -moz-linear-gradient(top, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f1f4f7), color-stop(0%, #f1f4f7), color-stop(100%, #e2e5e9));
+    background: -webkit-linear-gradient(top, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%);
+    background: -o-linear-gradient(top, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%);
+    background: -ms-linear-gradient(top, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%);
+    background: linear-gradient(to bottom, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#F1F4F7', endColorstr='#E2E5E9', GradientType=0)
+}
+
+body.frances header.body-header .container .main-menu .menu-trigger {
+    top: -48px;
+    left: 300px
+}
+
+    body.frances header.body-header .container .main-menu .menu-trigger.frances header.body-header .container .main-menu .menu-trigger a[title="Pymes y Negocios"],
+    body.frances header.body-header .container .main-menu .menu-trigger:nth-child(8) > a {
+        border-right: none
+    }
+
+    body.frances header.body-header .container .main-menu .menu-trigger.pull-down {
+        clear: left;
+        margin-left: 20px
+    }
+
+.blue-full-width-line {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    z-index: -1;
+    background: #0079c1;
+    background: -moz-linear-gradient(top, #0079c1 0, #00529b 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0079c1), color-stop(100%, #00529b));
+    background: -webkit-linear-gradient(top, #0079c1 0, #00529b 100%);
+    background: -o-linear-gradient(top, #0079c1 0, #00529b 100%);
+    background: -ms-linear-gradient(top, #0079c1 0, #00529b 100%);
+    background: linear-gradient(to bottom, #0079c1 0, #00529b 100%);
+    top: -5px
+}
+
+.blue-full-width-line {
+    top: -5px
+}
+
+@media screen and (min-width:0\0) {
+    .blue-full-width-line {
+        top: -5px
+    }
+}
+
+@-moz-document url-prefix() {
+    .blue-full-width-line {
+        top: -5px
+    }
+}
+
+.gray-menu .blue-full-width-line {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    top: 10px;
+    z-index: -1;
+    background: #f1f4f7;
+    background: -moz-linear-gradient(top, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f1f4f7), color-stop(0, #f1f4f7), color-stop(100%, #e2e5e9));
+    background: -webkit-linear-gradient(top, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%);
+    background: -o-linear-gradient(top, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%);
+    background: -ms-linear-gradient(top, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%);
+    background: linear-gradient(to bottom, #f1f4f7 0, #f1f4f7 0, #e2e5e9 100%)
+}
+
+@media screen and (min-width:0\0) {
+    .gray-menu .blue-full-width-line {
+        top: 9px
+    }
+}
+
+.gray-menu .blue-full-width-line {
+    top: 9px
+}
+
+@-moz-document url-prefix() {
+    .gray-menu .blue-full-width-line {
+        top: 9px
+    }
+}
+
+.frances .blue-full-width-line {
+    top: -25px
+}
+
+@media screen and (min-width:0\0) {
+    .frances .blue-full-width-line {
+        top: -25px
+    }
+}
+
+.frances .blue-full-width-line {
+    top: -25px
+}
+
+@-moz-document url-prefix() {
+    .frances .blue-full-width-line {
+        top: -27px
+    }
+}
+
+.frances.gray-menu .blue-full-width-line {
+    top: -10px
+}
+
+@media screen and (min-width:0\0) {
+    .frances.gray-menu .blue-full-width-line {
+        top: -11px
+    }
+}
+
+.frances.gray-menu .blue-full-width-line,
+_:-ms-lang(x) {
+    top: -11px
+}
+
+@-moz-document url-prefix() {
+    .frances.gray-menu .blue-full-width-line {
+        top: -12px
+    }
+}
+
+@media (max-width:800px) {
+    .header-buttons {
+        width: 100%
+    }
+
+    .form-client-access a {
+        padding: 3px 0;
+        margin: 2px 0
+    }
+
+    header.body-header.logged .container .main-menu > div.header-buttons .input-search,
+    header.body-header.logged .container .main-menu > div.header-buttons input[type=search],
+    header.body-header.logged .container .main-menu > div.header-buttons:hover .input-search,
+    header.body-header.logged .container .main-menu > div.header-buttons:hover input[type=search] {
+        position: static;
+        width: 100%
+    }
+
+    header.body-header.logged .sub-menu li a {
+        padding: 10px 20px
+    }
+
+
+
+    header.body-header .container .top-menu.idiomas {
+        display: block;
+        position: static
+    }
+
+    header.body-header .container .logo-container {
+        margin-top: 10px
+    }
+
+        header.body-header .container .logo-container .navbar-trigger {
+            float: right;
+            background: 0 0;
+            border-bottom: 14px double #004c99;
+            border-top: 5px solid #004c99;
+            height: 4px;
+            width: 32px;
+            cursor: pointer;
+            margin-top: 5px
+        }
+
+    body.bancomer header.body-header .container .logo-container img.logo-tablet,
+    body.continental header.body-header .container .logo-container img.logo-tablet,
+    body.frances header.body-header .container .logo-container img.logo-tablet,
+    body.provincial header.body-header .container .logo-container img.logo-tablet {
+        height: auto;
+        width: 190px
+    }
+
+    
+    header.body-header .container .main-menu > div {
+        cursor: pointer;
+        padding: 15px;
+        border-bottom: 1px solid #fff;
+        background-color: #8b9098;
+        background-image: url(img/arrow-down-white.png);
+        background-repeat: no-repeat;
+        background-position: 95% center
+    }
+
+        header.body-header .container .main-menu > div.header-buttons {
+            background: 0 0 #eaeaea;
+            position: relative;
+            cursor: auto;
+            border-top: 1px solid #aaa;
+            background: #fff;
+            padding: 5px 12px;
+            margin-bottom: -6px
+        }
+
+            header.body-header .container .main-menu > div.header-buttons form,
+            header.body-header .container .main-menu > div.header-buttons:hover form {
+                position: relative;
+                margin: 0;
+                width: 100%
+            }
+
+    header.body-header .container .sub-menu li {
+        width: auto !important;
+        background-color: #eaeaea;
+        border-bottom: 1px solid #fff
+    }
+
+    header.body-header .container .main-menu > div > a {
+        font-family: BBVA Web Book;
+        font-size: 15px;
+        color: #fff
+    }
+
+    header.body-header .container .sub-menu li a [class*=icon-] {
+        margin-right: 10px;
+        background-image: url(img/blue-24x.png)
+    }
+
+    header.body-header .container .main-menu > div.header-buttons .input-search,
+    header.body-header .container .main-menu > div.header-buttons input[type=search],
+    header.body-header .container .main-menu > div.header-buttons:hover .input-search,
+    header.body-header .container .main-menu > div.header-buttons:hover input[type=search] {
+        bottom: -1px
+    }
+
+    header.body-header .container .main-menu > div.header-buttons img,
+    header.body-header .container .main-menu > div.header-buttons:hover img {
+        position: absolute;
+        right: 32px;
+        top: 9px
+    }
+
+    .ico-acceso-clientes.white {
+        background-image: url(img/ico-user-login-white.png);
+        background-position: 0 0;
+        padding: 2px
+    }
+
+    header.body-header .container .input-search {
+        width: 60px;
+        height: 0
+    }
+
+    header.body-header .container {
+        padding: 10px 0 0
+    }
+
+        header.body-header .container .logo-container img.logo-desktop,
+        header.body-header .container .main-menu > div.header-buttons .extra-desc,
+        header.body-header .container .main-menu > div.header-buttons:hover .extra-desc,
+        header.body-header .container .top-menu {
+            display: none
+        }
+
+        header.body-header .container .logo-container {
+            padding: 15px 17px 17px 15px
+        }
+
+            header.body-header .container .logo-container img.logo-tablet {
+                width: 102px;
+                height: 31px
+            }
+
+        header.body-header .container .main-menu {
+            display: block;
+            overflow: hidden;
+            height: 46px;
+            border-bottom: 1px solid #858585
+        }
+
+            header.body-header .container .main-menu.in {
+                border-bottom: 2px solid #8b9098
+            }
+
+            .row.like.desktop .like-title,
+            header.body-header .container .main-menu > div.header-buttons .extra-desc-sec,
+            header.body-header .container .main-menu > div.header-buttons:hover .extra-desc-sec {
+                display: block
+            }
+
+            header.body-header .container .main-menu > div.header-buttons button,
+            header.body-header .container .main-menu > div.header-buttons:hover button {
+                font-size: 14px;
+                line-height: 24px;
+                padding: 4px 8px
+            }
+
+            header.body-header .container .main-menu > div.header-buttons a,
+            header.body-header .container .main-menu > div.header-buttons:hover a {
+                font-size: 14px;
+                line-height: 26px;
+                height: 28px;
+                font-family: BBVA Web Medium
+            }
+
+            header.body-header .container .main-menu > div.header-buttons .input-search,
+            header.body-header .container .main-menu > div.header-buttons input[type=search],
+            header.body-header .container .main-menu > div.header-buttons:hover .input-search,
+            header.body-header .container .main-menu > div.header-buttons:hover input[type=search] {
+                position: initial;
+                right: 0;
+                line-height: 18px;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                padding: 0 20px 0 2px;
+                height: 34px;
+                box-shadow: 1px 1px 3px #ccc inset;
+                display: inline-block
+            }
+
+            header.body-header .container .main-menu > div.header-buttons input:hover,
+            header.body-header .container .main-menu > div.header-buttons:hover input:hover {
+                border-color: #ccc
+            }
+
+            header.body-header .container .main-menu > div.acceso-clientes {
+                background: 0 0;
+                background-color: #eaeaea
+            }
+
+                header.body-header .container .main-menu > div.acceso-clientes > a {
+                    color: #434a58
+                }
+
+            header.body-header .container .main-menu > div.open {
+                background-color: #b9bfc7;
+                background-image: url(img/arrow-up-white.png)
+            }
+
+            header.body-header .container .main-menu > div.active {
+                background-color: #003f8c
+            }
+
+                header.body-header .container .main-menu > div.active > a,
+                header.body-header .container .main-menu > div:hover > a {
+                    color: #fff
+                }
+
+            header.body-header .container .main-menu .menu-idiomas {
+                background: #bfc5cd;
+                border-top: 1px solid #dcdcdc;
+                border-bottom: 1px solid #dcdcdc;
+                padding: 0
+            }
+
+                header.body-header .container .main-menu .menu-idiomas.active {
+                    background: #fff;
+                    padding: 5%
+                }
+
+                header.body-header .container .main-menu .menu-idiomas a.showMenuIdiomas {
+                    padding: 15px;
+                    display: block
+                }
+
+                    header.body-header .container .main-menu .menu-idiomas a.showMenuIdiomas span {
+                        float: right
+                    }
+
+                .contacto-gestor,
+                header.body-header .container .main-menu .menu-idiomas .row,
+                header.body-header .container .main-menu .menu-idiomas .row form .checkboxes a,
+                header.body-header .container .sub-menu li.search {
+                    display: none
+                }
+
+                    header.body-header .container .main-menu .menu-idiomas .row h2 {
+                        width: 90%;
+                        display: block;
+                        float: left
+                    }
+
+                    header.body-header .container .main-menu .menu-idiomas .row a.ui-icon-closethick {
+                        background: url(img/lightbox-close-blue-circle.png) no-repeat left bottom;
+                        height: 30px;
+                        width: 10%;
+                        display: block;
+                        text-indent: -9999px;
+                        float: left
+                    }
+
+                    header.body-header .container .main-menu .menu-idiomas .row form .checkboxes {
+                        display: table;
+                        list-style: none;
+                        width: 90%;
+                        border-top: 1px solid #dcdcdc;
+                        border-bottom: 1px solid #dcdcdc;
+                        padding: 5%;
+                        margin: 0
+                    }
+
+                        header.body-header .container .main-menu .menu-idiomas .row form .checkboxes label {
+                            width: 100%;
+                            margin: 10px 0
+                        }
+
+                    header.body-header .container .main-menu .menu-idiomas .row button {
+                        display: block;
+                        width: 100%;
+                        margin: 15px auto
+                    }
+
+        header.body-header .container .sub-menu {
+            display: none;
+            list-style: none;
+            margin: 0
+        }
+
+            header.body-header .container .sub-menu li.active a {
+                background-color: #e0f6fc;
+                color: #003f8c
+            }
+
+            header.body-header .container .sub-menu li a {
+                font-family: BBVA Web Book;
+                font-size: 15px;
+                color: #434a58;
+                padding: 10px;
+                display: block;
+                text-decoration: none
+            }
+
+                header.body-header .container .sub-menu li a:hover [class*=icon-],
+                header.body-header .container .sub-menu li.active a [class*=icon-] {
+                    background-image: url(img/blue-24x.png)
+                }
+
+                header.body-header .container .sub-menu li a:active,
+                header.body-header .container .sub-menu li a:hover {
+                    background-color: #e0f6fc;
+                    color: #b9bfc7
+                }
+
+    
+
+        
+
+    header.body-header .container .main-menu div.header-buttons {
+        display: inline-block
+    }
+
+        header.body-header .container .main-menu div.header-buttons input[type=search] {
+            position: initial;
+            float: right;
+            margin-right: 28px;
+            width: 15%
+        }
+
+        header.body-header .container .main-menu div.header-buttons a {
+            float: left;
+            margin: 0 2px
+        }
+
+        header.body-header .container .main-menu div.header-buttons img {
+            right: 32px
+        }
+
+    body.bancomer header.body-header .container .main-menu {
+        display: none;
+        height: initial
+    }
+}
+
+
+header.body-header .container .sub-menu li a [class*=icon-] {
+    font-size: 28px;
+    color: #0079c1;
+    background-image: none;
+    vertical-align: middle;
+    max-width: 28px;
+    overflow: hidden
+}
+
+header.body-header .container .sub-menu li.active a [class*=icon-],
+header.body-header .container .sub-menu li:active a [class*=icon-],
+header.body-header .container .sub-menu li:hover a [class*=icon-] {
+    background-image: none
+}
+
+header.body-header .container .main-menu div.header-buttons .search-icon {
+    position: absolute;
+    right: 35px;
+    top: 9px;
+    color: #004c99;
+    font-size: 18px;
+    font-weight: 700
+}
+
+    header.body-header .container .main-menu div.header-buttons .search-icon.icon-glyph-14 {
+        color: #999
+    }
+
+
+/*# sourceMappingURL=generalBase-mobile.min.css.map */

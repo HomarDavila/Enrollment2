@@ -1,0 +1,162 @@
+﻿@model Security.API.Model.Request.User_Request_v1
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutIdentity2.cshtml";
+}
+@section head{
+    <link href="~/wwwroot/lib/select2/dist/css/select2.css" rel="stylesheet" />
+}
+<br />
+<div class="card customCardLogin" style="width: 100%;  display: inline-block;">
+    <div class="card-body">
+        <h5 class="card-title">Ingresa su identificación personal</h5>
+        <p>Antes de que puedas acceder a su cuenta, tienes que confirmar su identidad.</p>
+        <form id="registerForm" role="form" data-toggle="validator" action="">
+            <div class="form-horizontal">
+                @Html.HiddenFor(m => m.UserName, new { id = "register-username-field" })
+                @Html.HiddenFor(m => m.PassWithoutEncrypt, new { id = "register-password-field" })
+                @Html.HiddenFor(m => m.FirstName, new { id = "register-names-field" })
+                @Html.HiddenFor(m => m.LastName1, new { id = "register-lastnameOne-field" })
+                @Html.HiddenFor(m => m.LastName2, new { id = "register-lastNameTwo-field" })
+                @Html.HiddenFor(m => m.SSNLast4, new { id = "register-ssn-field" })
+                @Html.HiddenFor(m => m.DateoFBirth, new { id = "register-birthdate-field" })
+                @Html.HiddenFor(m => m.IsAdministrator, new { id = "register-isAdministrator-field" })
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="form-group" style="width:100%;">
+                                <div class="col-md-12">
+                                    <div class="form-group" style="width:100%;">
+                                        <select class="securityquestions form-control" id="registerwq-question-one-field"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="form-group" style="width:100%;">
+                                <div class="col-md-12">
+                                    <p>Escoja una de las siguientes preguntas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="form-group" style="width:100%;">
+                                <div class="col-md-12">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-check"></i></span>
+                                        </div>
+                                        <input required id="registerwq-answer-one-field" class="form-control" name="user" placeholder="Respuesta">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="form-group" style="width:100%;">
+                                <div class="col-md-12">
+                                    <p>Escriba su respuesta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="form-group" style="width:100%;">
+                                <div class="col-md-12">
+                                    <div class="form-group" style="width:100%;">
+                                        <select class="securityquestions form-control" id="registerwq-question-two-field"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="form-group" style="width:100%;">
+                                <div class="col-md-12">
+                                    <p>Escoja una de las siguientes preguntas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="form-group" style="width:100%;">
+                                <div class="col-md-12">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-check"></i></span>
+                                        </div>
+                                        <input required id="registerwq-answer-two-field" class="form-control" name="user" placeholder="Respuesta">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="form-group" style="width:100%;">
+                                <div class="col-md-12">
+                                    <p>Escriba su respuesta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" style="width:100%;">
+                                    <input id="btnCancel" style="width:100%;" value="Cancelar" class="btn btn-inverse" onclick="RedirectToLogin();" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" style="width:100%;">
+                                    <input type="submit" style="width:100%;" value="Registrar" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group" style="width:100%;">
+                        <div class="col-md-12">
+                            <p>Al ingresar, estás de acuerdo con los <a href="#">Términos de servicio</a>, <a href="#">Declaración de privacidad</a>, y <a href="#">Aviso de cookies</a>.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="float: right;">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p><a href="#" class="helpLink">Ayuda <i class="far fa-question-circle"></i></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script src="~/wwwroot/lib/select2/dist/js/select2.js"></script>
+    <script src="~/wwwroot/js/site.js"></script>
+    <script src="~/wwwroot/js/RegisterUserWithQuestionsJS.Js"></script>
+    <script>
+        var urlLogin = '@Url.Action("Login", "User")';
+        var urlRegister = '@Url.Action("Register", "User")';
+        var urlRegisterWithQuestion = '@Url.Action("RegisterWithQuestions", "User")';
+        var urlSecurityQuestions = '@Url.Action("Get", "SecurityQuestion")';
+    </script>
+}

@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/wwwroot/assets/css/styles.min.css">
+    <!-- BEGIN CUSTOM CSS-->
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css/customStyle2.css">
+    <!-- END CUSTOM CSS-->
+    <script src="~/wwwroot/lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="~/wwwroot/assets/js/scripts.min.js"></script>
+    <title>Centro de Orientaci&oacute;n Plan de Salud VITAL | @ViewBag.Title  </title>
+</head>
+<body>
+    <header>
+
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+                <a class="navbar-brand" href="/EnrollmentPrincipal">
+                    <img class="imgBlackToWhite" src="~/wwwroot/assets/img/logo-Vital-BLACK.png" style="height:60px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+                    <ul class="navbar-nav" style="font-size:1.3em;">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("Index", "Principal")">INICIO <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                INFORMACIÓN ADICIONAL
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="~/Principal/PanoramaGeneral">INFORMACIÓN GENERAL</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="~/Principal/PuntosDestacadosDetalles">TEMAS IMPORTANTES</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="~/Principal/BusquedaProveedores">BÚSQUEDA DE PROVEEDORES</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="~/Principal/UbicacionOficinas">OFICINAS DE MEDICAID</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                SELECCIONE SU ASEGURADORA
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="~/Principal/CambiarMco">CAMBIE SU ASEGURADORA (MCO)</a>
+                                <div class="dropdown-divider"></div>
+                                @*<a class="dropdown-item" href="~/Principal/HacerCita">HAGA UNA CITA CON EL CENTRO DE ORIENTACIÓN VITAL</a>
+                                <div class="dropdown-divider"></div>*@
+                                <a class="dropdown-item" href="~/Principal/ContactaAseguradora">CONTACTE SU ASEGURADORA (MCO)</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-info" href="@ViewBag.Selfservices" target="_blank">MI PORTAL</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <nav class="navbar navbar-light">
+                @if (ViewBag.logos == true)
+                {                    
+                    <div class="flex-grow-1">
+                        <a href="http://www2.pr.gov/Pages/default.aspx"><img src="~/wwwroot/assets/img/logoPuertoRico.png" style="height:60px;" alt="logo-2"></a>
+                        <a href="http://www.asespr.org"><img src="~/wwwroot/assets/img/logoAses.png" style="height:60px;" alt="logo-2"></a>
+                    </div>
+                }
+
+
+                <div class="ml-auto mr-3">
+                    <a href="@ViewBag.Ruta" class="navbar__language"><span lang="en-US" style="font-size:1.5em;">English</span></a>
+                </div>
+                <div class="d-flex mr-3 mb-1">
+                    <button type="button" title="Normal size" rel="nofollow" class="btn btn-info btn-sm mr-1 align-self-end text-light text-normal" onclick="fontSize('normal')">A</button>
+                    <button type="button" title="Medium size" rel="nofollow" class="btn btn-info btn-sm mr-1 align-self-end text-light text-medium" onclick="fontSize('medium')">A</button>
+                    @*<button type="button" title="Large size" rel="nofollow" class="btn btn-info btn-sm align-self-end text-light text-large" onclick="fontSize('large')">A</button>*@
+                </div>
+            </nav>
+        </div>
+    </header>
+    @RenderBody()
+
+    <footer class="footer">
+        <div class="container">
+            <div class="accordion">
+                <div class="card">
+                    <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus button--accordion">
+                        <p class="mb-0 accordion__title" style="font-weight:bold;">Asistencia y Derechos de Beneficiarios</p>
+                    </button>
+                    <div class="collapse">
+                        <div class="card-body accordion__body">
+                            <p>Este portal proporciona informaci&oacute;n general relacionada al Plan de Salud VITAL. El mismo no provee detalles sobre requisitos de elegibilidad bajo el Programa de Medicaid, del Plan de Salud VITAL, beneficios, excepciones, t&eacute;rminos generales o limitaciones del Plan de Salud del Gobierno de Puerto Rico. Las determinaciones de elegibilidad para el Plan de Salud VITAL son efectuadas por el Programa de Medicaid de Puerto Rico. Este portal no representa un contrato entre usted y la Administraci&oacute;n de Seguros de Salud de Puerto Rico (ASES), el Programa de Medicaid de Puerto Rico o cualquiera de las aseguradoras participantes (MCOs).</p>
+                            <p>La informaci&oacute;n sobre las redes de proveedores que se presentan en este portal es proporcionada a ASES por aseguradoras contratadas para el Plan de Salud VITAL. Este portal no modifica las reglas, beneficios, excepciones, t&eacute;rminos generales ni limitaciones del Programa de Medicaid y de su Plan de Salud del Gobierno de Puerto Rico. Se realizar&aacute;n actualizaciones peri&oacute;dicas de la informaci&oacute;n provista en un periodo de 48 horas. Usted puede solicitar informaci&oacute;n m&aacute;s reciente directamente con las aseguradoras.</p>
+                            <p>Para servicios de interpretaci&oacute;n en otros idiomas comun&iacute;quese al <strong>Centro de Orientaci&oacute;n VITAL</strong> al <strong>1-833-253-7721</strong>, libre de costo de lunes a viernes de 8:00 a.m. a 6:00 p.m.</p>
+                            <p>Servicio de TTY/TDD disponible s&oacute;lo Audio Impedido en el <strong>1-888-984-0128</strong>.</p>
+                            <p>Si necesita ayuda para navegar a trav&eacute;s del portal VITAL o para completar su cambio de aseguradora, comun&iacute;quese con un Consejero de Inscripci&oacute;n llamando al <strong>1-833-253-7721</strong>.</p>
+                            <h4><a href="~/wwwroot/assets/pdf/Disponibilidad-de-Asistencia-Derecho-de-los-Beneficiarios.pdf" class="text-info" target="_blank">Descargar PDF</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus button--accordion">
+                        <p class="mb-0 accordion__title" style="font-weight:bold;">Servicio de Int&eacute;rprete</p>
+                    </button>
+                    <div class="collapse">
+                        <div class="card-body accordion__body">
+                            <h4><a href="~/wwwroot/assets/pdf/servicio-de-interprete-es.pdf" class="text-info" target="_blank">Descargar PDF</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <a href="http://www2.pr.gov/Pages/default.aspx"><img src="~/wwwroot/assets/img/logoPuertoRico.png" style="height:60px;" alt="logo-2"></a>
+                        <a href="http://www.asespr.org"><img src="~/wwwroot/assets/img/logoAses.png" style="height:60px;" alt="logo-2"></a>
+                    </div>
+                    <div class="col-sm align-self-end">
+                        <p class="text-md-center">
+                            Sometido a la Comisión Estatal de Elecciones de Puerto Rico: CEE-SA-2020-8878
+                        </p>
+                    </div>
+                    <div class="col-sm align-self-end">
+                        <p class="text-md-right">
+                            &copy;
+                            <script>document.write(new Date().getFullYear());</script> Reservados todos los derechos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+
+        $(document).ready(function () {
+            $(".btn_LoginSelfEnrollment").attr({ href: window.location.origin + "/EnrollmentSelfServices" });
+            console.log($(".btn_LoginSelfEnrollment"));
+        });
+
+    </script>
+</body>
+</html>

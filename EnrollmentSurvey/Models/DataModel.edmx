@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AsesQModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EnrollmentHistories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberId" Type="int" Nullable="false" />
+          <Property Name="FamilyId" Type="int" Nullable="false" />
+          <Property Name="SSN" Type="nvarchar" MaxLength="9" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="2" />
+          <Property Name="MPI" Type="nvarchar" MaxLength="13" />
+          <Property Name="MPIshort" Type="nvarchar" MaxLength="11" />
+          <Property Name="MPIContactMember" Type="nvarchar" MaxLength="11" />
+          <Property Name="FirstLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="CertificationDate" Type="date" />
+          <Property Name="PlanType" Type="nvarchar" MaxLength="2" />
+          <Property Name="PlanVersion" Type="nvarchar" MaxLength="2" />
+          <Property Name="MemberPrimaryCenter" Type="nvarchar" MaxLength="4" />
+          <Property Name="MedicaidIndicator" Type="nvarchar" MaxLength="2" />
+          <Property Name="MedicareIndicator" Type="nvarchar" MaxLength="2" />
+          <Property Name="HICNumber" Type="nvarchar" MaxLength="12" />
+          <Property Name="MCOId" Type="int" />
+          <Property Name="MCOModifiedSource" Type="nvarchar" MaxLength="100" />
+          <Property Name="MCOModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="MCOModifiedDate" Type="date" />
+          <Property Name="MCOEffectiveDate" Type="date" />
+          <Property Name="PMGId" Type="int" />
+          <Property Name="PMGModifiedSource" Type="nvarchar" MaxLength="100" />
+          <Property Name="PMGModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="PMGModifiedDate" Type="date" />
+          <Property Name="PMGEffectiveDate" Type="date" />
+          <Property Name="PCPId" Type="int" />
+          <Property Name="PCPModifiedSource" Type="nvarchar" MaxLength="100" />
+          <Property Name="PCPModifiedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="PCPModifiedDate" Type="date" />
+          <Property Name="PCPEffectiveDate" Type="date" />
+          <Property Name="TranId" Type="nvarchar" MaxLength="2" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="filePDF" Type="varchar" MaxLength="250" />
+          <Property Name="PreviusPmg" Type="int" />
+          <Property Name="PreviusPcp" Type="int" />
+          <Property Name="PreviusMco" Type="int" />
+          <Property Name="ChangeReason" Type="varchar" MaxLength="1" />
+          <Property Name="State" Type="varchar" MaxLength="20" />
+          <Property Name="JustCauseReasonId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="200" />
+          <Property Name="EstadoEncuesta" Type="bit" />
+          <Property Name="MCOChange" Type="bit" />
+          <Property Name="PCPChange" Type="bit" />
+          <Property Name="PMGChange" Type="bit" />
+          <Property Name="JustCauseComment" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Spanish" Type="varchar(max)" />
+          <Property Name="English" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="TipoPregunta" Type="int" />
+        </EntityType>
+        <EntityType Name="Puntuacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Puntos" Type="int" />
+          <Property Name="PreguntasId" Type="int" />
+          <Property Name="EnrollmentHistoryID" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Puntuacio__Enrol__5F141958">
+          <End Role="EnrollmentHistories" Type="Self.EnrollmentHistories" Multiplicity="0..1" />
+          <End Role="Puntuacion" Type="Self.Puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollmentHistories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Puntuacion">
+              <PropertyRef Name="EnrollmentHistoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Puntuacio__Pregu__5E1FF51F">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="0..1" />
+          <End Role="Puntuacion" Type="Self.Puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Puntuacion">
+              <PropertyRef Name="PreguntasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AsesQModelStoreContainer">
+          <EntitySet Name="EnrollmentHistories" EntityType="Self.EnrollmentHistories" Schema="Enrollment" store:Type="Tables" />
+          <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="Enrollment" store:Type="Tables" />
+          <EntitySet Name="Puntuacion" EntityType="Self.Puntuacion" Schema="Enrollment" store:Type="Tables" />
+          <AssociationSet Name="FK__Puntuacio__Enrol__5F141958" Association="Self.FK__Puntuacio__Enrol__5F141958">
+            <End Role="EnrollmentHistories" EntitySet="EnrollmentHistories" />
+            <End Role="Puntuacion" EntitySet="Puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Puntuacio__Pregu__5E1FF51F" Association="Self.FK__Puntuacio__Pregu__5E1FF51F">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Puntuacion" EntitySet="Puntuacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AsesQModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AsesQEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EnrollmentHistories" EntityType="AsesQModel.EnrollmentHistories" />
+          <EntitySet Name="Puntuacion" EntityType="AsesQModel.Puntuacion" />
+          <AssociationSet Name="FK__Puntuacio__Enrol__3552E9B6" Association="AsesQModel.FK__Puntuacio__Enrol__3552E9B6">
+            <End Role="EnrollmentHistories" EntitySet="EnrollmentHistories" />
+            <End Role="Puntuacion" EntitySet="Puntuacion" />
+          </AssociationSet>
+          <EntitySet Name="Preguntas" EntityType="AsesQModel.Preguntas" />
+          <AssociationSet Name="FK__Puntuacio__Pregu__1C1D2798" Association="AsesQModel.FK__Puntuacio__Pregu__1C1D2798">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Puntuacion" EntitySet="Puntuacion" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EnrollmentHistories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+          <Property Name="FamilyId" Type="Int32" Nullable="false" />
+          <Property Name="SSN" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MPI" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="MPIshort" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MPIContactMember" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="FirstLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="CertificationDate" Type="DateTime" Precision="0" />
+          <Property Name="PlanType" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="PlanVersion" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MemberPrimaryCenter" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MedicaidIndicator" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MedicareIndicator" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="HICNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MCOId" Type="Int32" />
+          <Property Name="MCOModifiedSource" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MCOModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MCOModifiedDate" Type="DateTime" Precision="0" />
+          <Property Name="MCOEffectiveDate" Type="DateTime" Precision="0" />
+          <Property Name="PMGId" Type="Int32" />
+          <Property Name="PMGModifiedSource" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PMGModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PMGModifiedDate" Type="DateTime" Precision="0" />
+          <Property Name="PMGEffectiveDate" Type="DateTime" Precision="0" />
+          <Property Name="PCPId" Type="Int32" />
+          <Property Name="PCPModifiedSource" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PCPModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PCPModifiedDate" Type="DateTime" Precision="0" />
+          <Property Name="PCPEffectiveDate" Type="DateTime" Precision="0" />
+          <Property Name="TranId" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="filePDF" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PreviusPmg" Type="Int32" />
+          <Property Name="PreviusPcp" Type="Int32" />
+          <Property Name="PreviusMco" Type="Int32" />
+          <Property Name="ChangeReason" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="JustCauseReasonId" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <NavigationProperty Name="Puntuacion" Relationship="AsesQModel.FK__Puntuacio__Enrol__3552E9B6" FromRole="EnrollmentHistories" ToRole="Puntuacion" />
+          <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoEncuesta" Type="Boolean" />
+          <Property Name="MCOChange" Type="Boolean" />
+          <Property Name="PCPChange" Type="Boolean" />
+          <Property Name="PMGChange" Type="Boolean" />
+          <Property Name="JustCauseComment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Puntuacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Puntos" Type="Int32" />
+          <Property Name="PreguntasId" Type="Int32" />
+          <Property Name="EnrollmentHistoryID" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="EnrollmentHistories" Relationship="AsesQModel.FK__Puntuacio__Enrol__3552E9B6" FromRole="Puntuacion" ToRole="EnrollmentHistories" />
+          <NavigationProperty Name="Preguntas" Relationship="AsesQModel.FK__Puntuacio__Pregu__1C1D2798" FromRole="Puntuacion" ToRole="Preguntas" />
+        </EntityType>
+        <Association Name="FK__Puntuacio__Enrol__3552E9B6">
+          <End Type="AsesQModel.EnrollmentHistories" Role="EnrollmentHistories" Multiplicity="0..1" />
+          <End Type="AsesQModel.Puntuacion" Role="Puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollmentHistories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Puntuacion">
+              <PropertyRef Name="EnrollmentHistoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Spanish" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="English" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="Puntuacion" Relationship="AsesQModel.FK__Puntuacio__Pregu__1C1D2798" FromRole="Preguntas" ToRole="Puntuacion" />
+          <Property Name="TipoPregunta" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__Puntuacio__Pregu__1C1D2798">
+          <End Type="AsesQModel.Preguntas" Role="Preguntas" Multiplicity="0..1" />
+          <End Type="AsesQModel.Puntuacion" Role="Puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Puntuacion">
+              <PropertyRef Name="PreguntasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AsesQModelStoreContainer" CdmEntityContainer="AsesQEntities">
+          <EntitySetMapping Name="EnrollmentHistories">
+            <EntityTypeMapping TypeName="AsesQModel.EnrollmentHistories">
+              <MappingFragment StoreEntitySet="EnrollmentHistories">
+                <ScalarProperty Name="JustCauseComment" ColumnName="JustCauseComment" />
+                <ScalarProperty Name="PMGChange" ColumnName="PMGChange" />
+                <ScalarProperty Name="PCPChange" ColumnName="PCPChange" />
+                <ScalarProperty Name="MCOChange" ColumnName="MCOChange" />
+                <ScalarProperty Name="EstadoEncuesta" ColumnName="EstadoEncuesta" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="JustCauseReasonId" ColumnName="JustCauseReasonId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ChangeReason" ColumnName="ChangeReason" />
+                <ScalarProperty Name="PreviusMco" ColumnName="PreviusMco" />
+                <ScalarProperty Name="PreviusPcp" ColumnName="PreviusPcp" />
+                <ScalarProperty Name="PreviusPmg" ColumnName="PreviusPmg" />
+                <ScalarProperty Name="filePDF" ColumnName="filePDF" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="TranId" ColumnName="TranId" />
+                <ScalarProperty Name="PCPEffectiveDate" ColumnName="PCPEffectiveDate" />
+                <ScalarProperty Name="PCPModifiedDate" ColumnName="PCPModifiedDate" />
+                <ScalarProperty Name="PCPModifiedBy" ColumnName="PCPModifiedBy" />
+                <ScalarProperty Name="PCPModifiedSource" ColumnName="PCPModifiedSource" />
+                <ScalarProperty Name="PCPId" ColumnName="PCPId" />
+                <ScalarProperty Name="PMGEffectiveDate" ColumnName="PMGEffectiveDate" />
+                <ScalarProperty Name="PMGModifiedDate" ColumnName="PMGModifiedDate" />
+                <ScalarProperty Name="PMGModifiedBy" ColumnName="PMGModifiedBy" />
+                <ScalarProperty Name="PMGModifiedSource" ColumnName="PMGModifiedSource" />
+                <ScalarProperty Name="PMGId" ColumnName="PMGId" />
+                <ScalarProperty Name="MCOEffectiveDate" ColumnName="MCOEffectiveDate" />
+                <ScalarProperty Name="MCOModifiedDate" ColumnName="MCOModifiedDate" />
+                <ScalarProperty Name="MCOModifiedBy" ColumnName="MCOModifiedBy" />
+                <ScalarProperty Name="MCOModifiedSource" ColumnName="MCOModifiedSource" />
+                <ScalarProperty Name="MCOId" ColumnName="MCOId" />
+                <ScalarProperty Name="HICNumber" ColumnName="HICNumber" />
+                <ScalarProperty Name="MedicareIndicator" ColumnName="MedicareIndicator" />
+                <ScalarProperty Name="MedicaidIndicator" ColumnName="MedicaidIndicator" />
+                <ScalarProperty Name="MemberPrimaryCenter" ColumnName="MemberPrimaryCenter" />
+                <ScalarProperty Name="PlanVersion" ColumnName="PlanVersion" />
+                <ScalarProperty Name="PlanType" ColumnName="PlanType" />
+                <ScalarProperty Name="CertificationDate" ColumnName="CertificationDate" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondLastName" ColumnName="SecondLastName" />
+                <ScalarProperty Name="FirstLastName" ColumnName="FirstLastName" />
+                <ScalarProperty Name="MPIContactMember" ColumnName="MPIContactMember" />
+                <ScalarProperty Name="MPIshort" ColumnName="MPIshort" />
+                <ScalarProperty Name="MPI" ColumnName="MPI" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puntuacion">
+            <EntityTypeMapping TypeName="AsesQModel.Puntuacion">
+              <MappingFragment StoreEntitySet="Puntuacion">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EnrollmentHistoryID" ColumnName="EnrollmentHistoryID" />
+                <ScalarProperty Name="PreguntasId" ColumnName="PreguntasId" />
+                <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preguntas">
+            <EntityTypeMapping TypeName="AsesQModel.Preguntas">
+              <MappingFragment StoreEntitySet="Preguntas">
+                <ScalarProperty Name="TipoPregunta" ColumnName="TipoPregunta" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="English" ColumnName="English" />
+                <ScalarProperty Name="Spanish" ColumnName="Spanish" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,90 @@
+﻿.green-full-width-line {
+    background: #FFFFFF !important;
+    background: -moz-linear-gradient(top,#89BF04 0,#00529b 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#89BF04),color-stop(100%,#00529b));
+    background: -webkit-linear-gradient(top,#89BF04 0,#00529b 100%);
+    background: -o-linear-gradient(top,#89BF04 0,#00529b 100%);
+    background: -ms-linear-gradient(top,#89BF04 0,#00529b 100%);
+    background: linear-gradient(to bottom,#89BF04 0,#00529b 100%);
+    top: -5px;
+}
+
+/*ul.navbar-nav li.nav-item:hover {
+    background: #529723; / * #005098 * /
+    box-shadow: 0 0 5px rgba(0,0,0,.5) inset;
+}*/
+
+a img.icon-menu {
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    margin-right: 5px;
+    margin-top: -5px;
+}
+
+.intro-section {
+    background: url(https://images.unsplash.com/photo-1425315283416-2acc50323ee6?q=80&fm=jpg&s=94c3e17a79354c33dbd59ced862b1460)no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    padding-top: 0px;
+    text-align: center;
+}
+
+    .intro-section h1 {
+        color: #000;
+        margin: 100px 0;
+        font-size: 55px;
+    }
+/*About Section*/
+.about-section {
+    background: url(https://images.unsplash.com/photo-1436262513933-a0b06755c784?q=80&fm=jpg&s=943d98ea03caf20350b6e014b2a49890)no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    width: 1452px;
+    padding: 0;
+    text-align: center;
+}
+
+    .about-section h1 {
+        color: #000;
+    }
+/*Services Section*/
+
+.services-section {
+    background: url(https://images.unsplash.com/photo-1415201179613-bd037ff5eb29?q=80&fm=jpg&s=46a25087049ca6bdcff8390a342b9c59)no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    width: 1452px;
+    padding: 0;
+    text-align: center;
+}
+
+    .services-section h1 {
+        color: #000;
+    }
+/*Contact Section*/
+
+.contact-section {
+    background: url(https://images.unsplash.com/photo-1436397543931-01c4a5162bdb?q=80&fm=jpg&s=29b3d57347ca107a06e5cfe262f24ef1)no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    width: 1452px;
+    padding: 0;
+    text-align: center;
+}
+
+    .contact-section h1 {
+        color: #000;
+    }
+
+/* Application Name */
+
+h3.AppName {
+    color: #ffffff;
+    font: normal 20px "Open Sans", cursive;
+    margin: 0;
+}
+
+    h3.AppName span {
+        color: lightseagreen;
+    }

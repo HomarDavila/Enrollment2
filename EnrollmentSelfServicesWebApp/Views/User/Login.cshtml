@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="d-flex justify-content-center mt-3">
+    <div class="card customCardLogin">
+        <img class="card-img-top logoCardHeader" src="~/wwwroot/images/LogoVital.png" alt="">
+        <div class="card-body">
+            <div class="col-md-12 text-right">
+                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe-americas"></i> <span data-i18n="footer_EscogeUnIdioma">Idioma</span> <b class="caret"></b></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a onclick="changeLanguage('?lng=en', 'en')" class="dropdown-item" style="font-size:12px;">
+                        <i class="flag-icon flag-icon-us"></i> English
+                    </a>
+                    <a onclick="changeLanguage('?lng=es', 'es')" class="dropdown-item" style="font-size:12px;">
+                        <i class="flag-icon flag-icon-pr"></i> Español
+                    </a>
+                </div>
+                <div style="margin-bottom:2em;"></div>
+            </div>
+            <form id="loginForm" class="needs-validation" novalidate>
+                <div class="form-row">
+                    <div class="col-md-12  mb-3">
+                        <input id="user-field" required type="email" maxlength="500" class="form-control" name="user" data-i18n="[placeholder]restaurarpassword_email" placeholder="E-mail">
+                        <div class="invalid-feedback" data-i18n="registerUser_email_validation"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12  mb-3">
+                        <input id="password-field" required maxlength="500" class="form-control" type="password" data-i18n="[placeholder]login_passwordplaceholder" name="password" placeholder="Contraseña">
+                        <div class="invalid-feedback" data-i18n="registerUser_password_validation"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12  mb-3">
+                        <input id="btnLoginSubmit" type="submit" style="width:100%;" data-i18n="[value]login_ingresar" value="Ingresar" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12  mb-3 text-center">
+                        <a href="~/User/ResetPassword/" data-i18n="login_olvidastepassword">¿Olvidaste su contraseña?</a>
+                        <br />
+                        <a href="~/User/Register/" data-i18n="login_nuevousuario">¿Nuevo usuario?</a>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12  mb-3">
+                        <span data-i18n="login_disclaimer_partOne">Al ingresar, estás de acuerdo con los </span>
+                        <a href="#" data-i18n="login_disclaimer_TerminosDeServicio" data-toggle="modal" data-target="#terminosDeServicioModal">Normas de uso</a>,
+                        <a href="#" data-i18n="login_disclaimer_DeclaracionPrivacidad" data-toggle="modal" data-target="#privacidadModal">Declaración de privacidad</a>,
+                        <span data-i18n="login_disclaimer_partTwo">y</span>
+                        <a href="#" data-i18n="login_disclaimer_AvisoDeCookies" data-toggle="modal" data-target="#cookiesModal">Aviso de cookies</a>.
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/wwwroot/js/site.js"></script>
+    <script src="~/wwwroot/js/LoginAndResetJS.js"></script>
+    <script>
+
+        var urlChangePassword = '@Url.Action("ChangePassword", "User")';
+        var urlChangePasswordExternal = '@Url.Action("ChangePasswordExternal", "User")';
+
+        var urlLogin = '@Url.Action("Login", "User")';
+        var urlHome = '@Url.Action("Welcome", "Home")';
+
+    </script>
+}
+
+
+

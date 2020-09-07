@@ -1,0 +1,258 @@
+﻿@model Security.API.Model.Response.User_Response_v1
+@{
+    ViewBag.Title = "Welcome";
+    Layout = "~/Views/Shared/_LayoutWelcome.cshtml";
+}
+
+<style>
+    .color_white {
+        color: white;
+    }
+
+    .fondo {
+        background: #0483bb;
+    }
+
+    .background_grey {
+        background: #939598;
+        font-family: Arial, sans-serif;
+        font-size: 24px;
+    }
+
+    .heading--ltblue {
+        color: #00aeb4;
+    }
+
+    .heading--green {
+        color: #0089b5;
+    }
+
+    .heading--gray {
+        background-color: #939598;
+        color: #fff;
+        font-size: 1em;
+        font-weight: 600;
+        line-height: 1.2;
+        border: 0;
+        padding: 1.25rem 1.875rem;
+    }
+
+    .tile {
+        position: relative;
+    }
+
+        .tile img {
+            width: 100%;
+        }
+
+    .tile__title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: inline-block;
+        color: #fff;
+        font-size: 1.3em;
+        line-height: 1.1;
+        padding: 1.25rem .9375rem .625rem;
+        margin: 0;
+        width: 100%;
+    }
+
+    .tile__title--blue {
+        background: linear-gradient(rgba(0,174,180,0),rgba(0,174,180,.9) 60%);
+    }
+
+    .tile__title--green {
+        background: linear-gradient(rgba(0,137,181,0),rgba(0,137,181,.9) 60%)
+    }
+
+    .tile__title a, .tile__title a:hover {
+        color: #fff;
+        text-decoration: none
+    }
+</style>
+<input type="hidden" id="hdnMemberId" value="@Model.MemberId" />
+<div class="row fondo py-2">
+    <div class="col-md-6 col-lg-8">
+        <h4 class="ml-5 color_white" style="text-transform: uppercase">@ViewData["UserFullName"]</h4>
+        <h4 class="ml-5 color_white" data-i18n="ChangeMCO_welcome">Welcolme to your Vital account</h4>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><strong data-i18n="ChangeMCO_open">Próximo Período de Open Enrollment</strong></h5>
+                <div class="row">
+                    <div class="col-2">
+                        <img src="@Url.Content("~/wwwroot/images/welcome/calendar.svg")" alt="logo" />
+                    </div>
+                    <div class="col-10">
+                        <h5><span data-i18n="ChangeMCO_Date_started"></span><span id="DateStart"></span></h5>
+                        <h5><span data-i18n="ChangeMCO_Date_finish"></span><span id="DateEnd"></span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-2 pt-3 text-center">
+        @if (Model.Member.GenderId == 1)
+        {
+            <img id="MaleGender" src="@Url.Content("~/wwwroot/images/welcome/001-man.svg")" alt="logo" />
+        }
+        else if (Model.Member.GenderId == 2)
+        {
+            <img id="FemaleGender" src="@Url.Content("~/wwwroot/images/welcome/002-girl.svg")" alt="logo" />
+        }
+        else
+        {
+            <img id="TransformerGender" src="@Url.Content("~/wwwroot/images/welcome/Generic.png")" alt="logo" />
+        }
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-4 pt-3">
+        <div class="pl-3">
+            <h5 style="text-transform: uppercase">@ViewData["UserFullName"]</h5>
+            <h5>MCO: <span id="MCO" class="h6">@Model.Member.MCO.CarrierName</span></h5>
+            <h6>PCP: <span id="PCP" class="h6">@Model.Member.PCP.FullName</span></h6>
+            <h6>PMG: <span id="PMG" class="h6">@Model.Member.PMG.PmgName</span></h6>
+            <h6><span data-i18n="common_CertificationDate">Fecha de Certificación</span><span id="CertificationDate">@Model.Member.CertificationDate.Value.ToString("dd/MM/yyyy")</span></h6>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6 pt-3">
+        <div class="card">
+            <div class="card-body">
+                @*<h5 class="card-title "><strong data-i18n="ChangeMCO_open">Próximo Período de Open Enrollment</strong></h5>*@
+                <div class="row">
+                    @if (ViewBag.ChangePersonMcoEnabled == true)
+                    {
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-info" style="white-space: normal;" id="btnChangeMCO" data-i18n="common_ButtonChangeMCO">Change MCO</button>
+                        </div>
+                        <div class="col-md-8">
+                            <h5 id="txtChangeMCOYes" data-i18n="common_ButtonChangeMCOYes">Cambiar  Aseguradora</h5>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-4">
+                            <button type="button" disabled class="btn" style="white-space: normal; background-color:gray" data-i18n="common_ButtonChangeMCO">Change MCO</button>
+                        </div>
+                        <div class="col-md-8">
+                            <h5 id="txtChangeMCONo">
+                                <span data-i18n="common_ButtonChangeMCONo1">1</span><br />
+                                <span data-i18n="common_ButtonChangeMCONo2">2</span><br />
+                                <span data-i18n="common_ButtonChangeMCONo3">3</span>
+                            </h5>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-md-12 mt-5">
+        <div class="card mb-2 background_grey color_white">
+            <div class="card-body card__text-bar">
+                <p data-i18n="ChangeMCO_finished_period">El Periodo Anual de Inscripci&oacute;n Abierta ha finalizado.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-md-12 mt-5">
+        <div class="card mb-2 background_grey color_white">
+            <div class="card-body card__text-bar">
+                <p data-i18n="ChangeMCO_Actions">Durante esos 45 d&iacute;as usted podr&aacute; cambiar de aseguradora, si as&iacute; lo desea, oprimiendo abajo en el recuadro de "cambie su aseguradora". Si usted desea permanecer con la aseguradora que tiene actualmente, no tiene que realizar ning&uacute;n cambio.</p>
+                <ul>
+                    <li data-i18n="ChangeMCO_finished_period_point_1">Si necesita hacer un cambio de PMG o de PCP solamente, puede comunicarse con la aseguradora (MCO) que usted seleccion&oacute;.</li>
+                    <li>
+                        <span data-i18n="ChangeMCO_finished_period_point_2">Si tiene preguntas con relaci&oacute;n a su tarjeta de plan m&eacute;dico, puede llamar a la aseguradora o visitar un centro de servicios.</span><br />
+                                                                                                                                                                                                                             <span data-i18n="ChangeMCO_finished_period_point_2_1">Aseguradoras: First Medical 1-844-347-7800, MMM 1-844-336-3331, Molina Healthcare 1-877-335-3305, Menonita 1-866-600-4753, Triple-S 1-800-981-1352</span>
+                    </li>
+                    <li data-i18n="ChangeMCO_servicioTTY">Para servicio TTY en español debe llamar al 1-888-984-0128.</li>
+                    <li data-i18n="ChangeMCO_finished_period_more_information">Si necesita informaci&oacute;n sobre su cita para recertificarse, puede llamar al 787-641-4224.</li>
+                    <li>
+                        <span data-i18n="ChangeMCO_finished_period_point_3">Fechas de efectividad luego del cambio de aseguradora</span>:
+                        <ul>
+                            <li>
+                                <strong><span data-i18n="noviembre1">noviembre</span></strong><br />
+                                <strong><span data-i18n="ChangeMCO_finished_period_point_3_1">Del 1 al 20 de noviembre</span></strong><br />
+                                <span data-i18n="ChangeMCO_finished_period_point_3_2">Estará inscrito en su nueva aseguradora a partir del 1 de diciembre de 2020.</span><br />
+                                <strong><span data-i18n="ChangeMCO_finished_period_point_3_3">Del 21 al 30 de noviembre</span></strong><br />
+                                <span data-i18n="ChangeMCO_finished_period_point_3_4">Estará inscrito en su nueva aseguradora a partir del 1 de enero de 2021.</span>
+                            </li>
+                            <li>
+                                <strong><span data-i18n="diciembre1">diciembre</span></strong><br />
+                                <strong><span data-i18n="ChangeMCO_finished_period_point_3_5">Diciembre del 1 al 20 de diciembre</span></strong><br />
+                                <span data-i18n="ChangeMCO_finished_period_point_3_6">Estará inscrito en su nueva aseguradora a partir del 1 de enero de 2021.</span><br />
+                                <strong><span data-i18n="ChangeMCO_finished_period_point_3_7">Del 21 al 31 de diciembre</span></strong><br />
+                                <span data-i18n="ChangeMCO_finished_period_point_3_8">Estará inscrito en su nueva aseguradora a partir del 1 de febrero de 2021.</span>
+                            </li>
+                            <li>
+                                <strong><span data-i18n="enero1">enero</span></strong><br />
+                                <strong><span data-i18n="ChangeMCO_finished_period_point_3_9">Enero del 1 al 20 de enero</span></strong><br />
+                                <span data-i18n="ChangeMCO_finished_period_point_3_10">Estará inscrito en su nueva aseguradora a partir del 1 de febrero de 2021.</span><br />
+                                <strong><span data-i18n="ChangeMCO_finished_period_point_3_11">Del 21 al 31 de enero</span></strong><br />
+                                <span data-i18n="ChangeMCO_finished_period_point_3_12">Estará inscrito en su nueva aseguradora a partir del 1 de marzo de 2021.</span>
+                            </li>
+                            <li>
+                                <strong><span data-i18n="ChangeMCO_finished_period_point_3_13">Recordatorio</span>: </strong><span data-i18n="ChangeMCO_finished_period_point_3_14">Si usted realiza un cambio de aseguradora después del día 20 del mes, es decir, desde el día 21 del mes hasta el último día del mes, su nueva selección de aseguradora tendrá vigencia el primer día del mes subsiguiente.</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                @*<table class="table">
+                    <tr>
+                        <td>
+                            <strong><span data-i18n="noviembre1">noviembre</span></strong><br />
+                            <strong><span data-i18n="ChangeMCO_finished_period_point_3_1">Del 1 al 20 de noviembre</span></strong><br />
+                            <span data-i18n="ChangeMCO_finished_period_point_3_2">Estará inscrito en su nueva aseguradora a partir del 1 de diciembre de 2020.</span><br />
+                            <strong><span data-i18n="ChangeMCO_finished_period_point_3_3">Del 21 al 30 de noviembre</span></strong><br />
+                            <span data-i18n="ChangeMCO_finished_period_point_3_4">Estará inscrito en su nueva aseguradora a partir del 1 de enero de 2021.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong><span data-i18n="diciembre1">diciembre</span></strong><br />
+                            <strong><span data-i18n="ChangeMCO_finished_period_point_3_5">Diciembre del 1 al 20 de diciembre</span></strong><br />
+                            <span data-i18n="ChangeMCO_finished_period_point_3_6">Estará inscrito en su nueva aseguradora a partir del 1 de enero de 2021.</span><br />
+                            <strong><span data-i18n="ChangeMCO_finished_period_point_3_7">Del 21 al 31 de diciembre</span></strong><br />
+                            <span data-i18n="ChangeMCO_finished_period_point_3_8">Estará inscrito en su nueva aseguradora a partir del 1 de febrero de 2021.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong><span data-i18n="enero1">enero</span></strong><br />
+                            <strong><span data-i18n="ChangeMCO_finished_period_point_3_9">Enero del 1 al 20 de enero</span></strong><br />
+                            <span data-i18n="ChangeMCO_finished_period_point_3_10">Estará inscrito en su nueva aseguradora a partir del 1 de febrero de 2021.</span><br />
+                            <strong><span data-i18n="ChangeMCO_finished_period_point_3_11">Del 21 al 31 de enero</span></strong><br />
+                            <span data-i18n="ChangeMCO_finished_period_point_3_12">Estará inscrito en su nueva aseguradora a partir del 1 de marzo de 2021.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong><span data-i18n="ChangeMCO_finished_period_point_3_13">Recordatorio</span>: </strong><span data-i18n="ChangeMCO_finished_period_point_3_14">Si usted realiza un cambio de aseguradora después del día 20 del mes, es decir, desde el día 21 del mes hasta el último día del mes, su nueva selección de aseguradora tendrá vigencia el primer día del mes subsiguiente.</span>
+                        </td>
+                    </tr>
+                </table>*@
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/wwwroot/js/WelcomeJS.Js"></script>
+    <script>
+            var urlGetMembers = '@Url.Action("GetPeopleByMemberId", "Common")';
+        var urlChangePersonMcoEnabled = '@Url.Action("ChangePersonMcoEnabled", "Common")';
+        var UrlChangeMCO = '@Url.Action("Index", "Home")';
+        var urlGetEnrPeriod = '@Url.Action("GetEnrPeriod", "Common")';
+        //imagenes para sexo
+        var maleImage = '@Url.Content("~/wwwroot/images/welcome/001-man.svg")';
+        var felameImage = '@Url.Content("~/wwwroot/images/welcome/002-girl.svg")';
+    </script>
+}
+
+
+

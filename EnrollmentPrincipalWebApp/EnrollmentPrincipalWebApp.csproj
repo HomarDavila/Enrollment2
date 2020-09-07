@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8FBB0E4C-EAD1-474C-8870-51D9CD4BCF8D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EnrollmentPrincipalWebApp</RootNamespace>
+    <AssemblyName>EnrollmentPrincipalWebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PrincipalController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CustomConfigurationLib.cs" />
+    <Compile Include="Helpers\RequestHelpers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy\ProxyCoreAPI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="orientacionvital\busqueda-proveedores.html" />
+    <Content Include="orientacionvital\cambiar-su-mco.html" />
+    <Content Include="orientacionvital\change-your-mco.html" />
+    <Content Include="orientacionvital\contact-your-insurer.html" />
+    <Content Include="orientacionvital\contacta-a-tu-aseguradora-mco.html" />
+    <Content Include="orientacionvital\css\styles.min.css" />
+    <Content Include="orientacionvital\detail-highlights.html" />
+    <Content Include="orientacionvital\english.html" />
+    <Content Include="orientacionvital\fonts\ionicons.svg" />
+    <Content Include="orientacionvital\hacer-una-cita.html" />
+    <Content Include="orientacionvital\img\doctor-patient-2.jpg" />
+    <Content Include="orientacionvital\img\doctor-patient.jpg" />
+    <Content Include="orientacionvital\img\happy-family.jpg" />
+    <Content Include="orientacionvital\img\hero-2.jpg" />
+    <Content Include="orientacionvital\img\hero-english.jpg" />
+    <Content Include="orientacionvital\img\logo-2.png" />
+    <Content Include="orientacionvital\img\logo-first-medical.png" />
+    <Content Include="orientacionvital\img\logo-mmm.png" />
+    <Content Include="orientacionvital\img\logo-molina-healthcare-of-puerto-rico.png" />
+    <Content Include="orientacionvital\img\logo-plan-de-salud-menonita.png" />
+    <Content Include="orientacionvital\img\logo-triple-s-salud.png" />
+    <Content Include="orientacionvital\img\logo.jpg" />
+    <Content Include="orientacionvital\img\man-and-woman.jpg" />
+    <Content Include="orientacionvital\img\medical-professionals.jpg" />
+    <Content Include="orientacionvital\img\medical-symbol.jpg" />
+    <Content Include="orientacionvital\img\pregnant-woman-young-girl.jpg" />
+    <Content Include="orientacionvital\index.html" />
+    <Content Include="orientacionvital\js\scripts.min.js" />
+    <Content Include="orientacionvital\make-an-appointment.html" />
+    <Content Include="orientacionvital\office-locations.html" />
+    <Content Include="orientacionvital\overview.html" />
+    <Content Include="orientacionvital\panorama-general.html" />
+    <Content Include="orientacionvital\provider-search.html" />
+    <Content Include="orientacionvital\puntos-destacados-detalles.html" />
+    <Content Include="orientacionvital\ubicacion-oficinas.html" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="wwwroot\assets\css\styles.min.css" />
+    <Content Include="wwwroot\assets\fonts\ionicons.svg" />
+    <Content Include="wwwroot\assets\img\ani-kolleshi-7jjnJ-QA9fY-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\cdc-9MVMgP2zhgs-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\cdc-OJF3lYjC6vg-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\cdc-SAwxJ8PHY3Q-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\cdc-TDoPeUSOD1c-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\cdc-UC9_itYaafM-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\doctor-patient-2.jpg" />
+    <Content Include="wwwroot\assets\img\doctor-patient.jpg" />
+    <Content Include="wwwroot\assets\img\gob-pr-xs.png" />
+    <Content Include="wwwroot\assets\img\happy-family.jpg" />
+    <Content Include="wwwroot\assets\img\hero-2.jpg" />
+    <Content Include="wwwroot\assets\img\hero-english.jpg" />
+    <Content Include="wwwroot\assets\img\jonathan-borba-DUrU_bZV8So-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\logo-2.jpg" />
+    <Content Include="wwwroot\assets\img\logo-2.png" />
+    <Content Include="wwwroot\assets\img\logo-ases-BLACK.png" />
+    <Content Include="wwwroot\assets\img\logo-b.svg" />
+    <Content Include="wwwroot\assets\img\logo-first-medical.png" />
+    <Content Include="wwwroot\assets\img\logo-mmm.png" />
+    <Content Include="wwwroot\assets\img\logo-molina-healthcare-of-puerto-rico.png" />
+    <Content Include="wwwroot\assets\img\logo-plan-de-salud-menonita.png" />
+    <Content Include="wwwroot\assets\img\logo-triple-s-salud.png" />
+    <Content Include="wwwroot\assets\img\logo-Vital-BLACK.png" />
+    <Content Include="wwwroot\assets\img\logo-Vital-BLACK_old.png" />
+    <Content Include="wwwroot\assets\img\logo.jpg" />
+    <Content Include="wwwroot\assets\img\logoAses.png" />
+    <Content Include="wwwroot\assets\img\logoPuertoRico.png" />
+    <Content Include="wwwroot\assets\img\man-and-woman.jpg" />
+    <Content Include="wwwroot\assets\img\medical-professionals.jpg" />
+    <Content Include="wwwroot\assets\img\medical-symbol.jpg" />
+    <Content Include="wwwroot\assets\img\national-cancer-institute-701-FJcjLAQ-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\national-cancer-institute-BQPi8F_UON0-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\national-cancer-institute-cw2Zn2ZQ9YQ-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\national-cancer-institute-NNpo-liY5aU-unsplash.jpg" />
+    <Content Include="wwwroot\assets\img\pregnant-woman-young-girl.jpg" />
+    <Content Include="wwwroot\assets\img\Principal-m.jpg" />
+    <Content Include="wwwroot\assets\img\Principal-m2.jpg" />
+    <Content Include="wwwroot\assets\img\Principal.jpg" />
+    <Content Include="wwwroot\assets\img\Principal2.jpg" />
+    <Content Include="wwwroot\assets\img\PrincipalSeleccione4.jpg" />
+    <Content Include="wwwroot\assets\img\PrincipalSelecione1.jpg" />
+    <Content Include="wwwroot\assets\img\PrincipalSelecione2.jpg" />
+    <Content Include="wwwroot\assets\img\PrincipalSelecione3.jpg" />
+    <Content Include="wwwroot\assets\img\Principal_old.jpg" />
+    <Content Include="wwwroot\assets\js\scripts.min.js" />
+    <Content Include="wwwroot\css\cards\CustomCards.css" />
+    <Content Include="wwwroot\css\customStyle.css" />
+    <Content Include="wwwroot\css\customStyle2.css" />
+    <Content Include="wwwroot\css\tabs\CustomTabs.css" />
+    <Content Include="wwwroot\favicon.ico" />
+    <Content Include="wwwroot\fonts\fontawesome\css\all.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\all.min.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\brands.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\brands.min.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\fontawesome.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\fontawesome.min.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\regular.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\regular.min.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\solid.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\solid.min.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\svg-with-js.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\svg-with-js.min.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\v4-shims.css" />
+    <Content Include="wwwroot\fonts\fontawesome\css\v4-shims.min.css" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="wwwroot\images\analytics.svg" />
+    <Content Include="wwwroot\images\calendar.svg" />
+    <Content Include="wwwroot\images\Censo2020.jpg" />
+    <Content Include="wwwroot\images\ComunicadoMolina.jpg" />
+    <Content Include="wwwroot\images\familia.jpg" />
+    <Content Include="wwwroot\images\ico\apple-icon-120.png" />
+    <Content Include="wwwroot\images\ico\apple-icon-152.png" />
+    <Content Include="wwwroot\images\ico\apple-icon-60.png" />
+    <Content Include="wwwroot\images\ico\apple-icon-76.png" />
+    <Content Include="wwwroot\images\ico\favicon-32.png" />
+    <Content Include="wwwroot\images\ico\favicon.ico" />
+    <Content Include="wwwroot\images\IdentityWallpaper.jpg" />
+    <Content Include="wwwroot\images\IdentityWallpaper2.jpg" />
+    <Content Include="wwwroot\images\IdentityWallpaper3.jpg" />
+    <Content Include="wwwroot\images\logo-2.png" />
+    <Content Include="wwwroot\images\logo-ases-2018.svg" />
+    <Content Include="wwwroot\images\logo-vital-2018.svg" />
+    <Content Include="wwwroot\images\logoAses.png" />
+    <Content Include="wwwroot\images\Logon_Logo_Header.jpg" />
+    <Content Include="wwwroot\images\logoPuertoRico.png" />
+    <Content Include="wwwroot\images\LogoVital.png" />
+    <Content Include="wwwroot\images\question.svg" />
+    <Content Include="wwwroot\images\RedesignLogo.png" />
+    <Content Include="wwwroot\images\responsive.svg" />
+    <Content Include="wwwroot\images\stethoscope.svg" />
+    <Content Include="wwwroot\images\student.svg" />
+    <Content Include="wwwroot\js\cards\CustomCards.js" />
+    <Content Include="wwwroot\lib\blockUI\dist\js\jquery.blockUI.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\validator.min.js" />
+    <Content Include="wwwroot\lib\datatables\datatables.css" />
+    <Content Include="wwwroot\lib\datatables\datatables.js" />
+    <Content Include="wwwroot\lib\datatables\datatables.min.css" />
+    <Content Include="wwwroot\lib\datatables\datatables.min.js" />
+    <Content Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <Content Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <Content Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="wwwroot\lib\jquery.date-dropdowns\dist\jquery.date-dropdowns.js" />
+    <Content Include="wwwroot\lib\jquery.date-dropdowns\dist\jquery.date-dropdowns.min.js" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <Content Include="wwwroot\lib\jquery\LICENSE.txt" />
+    <Content Include="wwwroot\lib\select2\dist\css\select2.css" />
+    <Content Include="wwwroot\lib\select2\dist\js\select2.js" />
+    <Content Include="wwwroot\lib\sweet-alert\css\sweetalert2.min.css" />
+    <Content Include="wwwroot\lib\sweet-alert\js\core.js" />
+    <Content Include="wwwroot\lib\sweet-alert\js\sweetalert2.all.min.js" />
+    <Content Include="orientacionvital\fonts\ionicons.eot" />
+    <Content Include="orientacionvital\fonts\ionicons.ttf" />
+    <Content Include="orientacionvital\fonts\ionicons.woff" />
+    <Content Include="orientacionvital\pdf\Availability-of-Assistance-and-Rights-of-Enrollees.pdf" />
+    <Content Include="orientacionvital\pdf\directorio-de-las-oficinas-de-medicaid.pdf" />
+    <Content Include="orientacionvital\pdf\Disponibilidad-de-Asistencia-Derecho-de-los-Beneficiarios.pdf" />
+    <Content Include="orientacionvital\pdf\faq-plan-de-salud-vital.pdf" />
+    <Content Include="orientacionvital\pdf\oral-interpreter-services.pdf" />
+    <Content Include="orientacionvital\pdf\servicio-de-interprete.pdf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfileDEV.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfilePro.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfileTest.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index - Copia.cshtml" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="wwwroot\fonts\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="wwwroot\lib\bootstrap\.bower.json" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\.DS_Store" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="wwwroot\lib\bootstrap\LICENSE" />
+    <Content Include="wwwroot\lib\jquery\.bower.json" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <Content Include="wwwroot\lib\jquery-validation\.bower.json" />
+    <Content Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <Content Include="wwwroot\lib\jquery-validation-unobtrusive\.bower.json" />
+    <Content Include="Views\Shared\_Layout - Copia.cshtml" />
+    <Content Include="wwwroot\images\LogoVital.webp" />
+    <Content Include="Views\Home\Aseguradoras.cshtml" />
+    <Content Include="wwwroot\assets\fonts\ionicons.eot" />
+    <Content Include="wwwroot\assets\fonts\ionicons.ttf" />
+    <Content Include="wwwroot\assets\fonts\ionicons.woff" />
+    <Content Include="wwwroot\assets\pdf\Availability-of-Assistance-and-Rights-of-Enrollees.pdf" />
+    <Content Include="wwwroot\assets\pdf\directorio-de-las-oficinas-de-medicaid.pdf" />
+    <Content Include="wwwroot\assets\pdf\Disponibilidad-de-Asistencia-Derecho-de-los-Beneficiarios.pdf" />
+    <Content Include="wwwroot\assets\pdf\faq-plan-de-salud-vital.pdf" />
+    <Content Include="wwwroot\assets\pdf\oral-interpreter-services.pdf" />
+    <Content Include="wwwroot\assets\pdf\servicio-de-interprete.pdf" />
+    <Content Include="Views\Principal\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout-Principal.cshtml" />
+    <Content Include="Views\Principal\PanoramaGeneral.cshtml" />
+    <Content Include="Views\Principal\PuntosDestacadosDetalles.cshtml" />
+    <Content Include="Views\Principal\BusquedaProveedores.cshtml" />
+    <Content Include="Views\Principal\UbicacionOficinas.cshtml" />
+    <Content Include="Views\Principal\CambiarMco.cshtml" />
+    <Content Include="Views\Principal\HacerCita.cshtml" />
+    <Content Include="Views\Principal\ContactaAseguradora.cshtml" />
+    <Content Include="Views\Principal\English.cshtml" />
+    <Content Include="Views\Principal\Overview.cshtml" />
+    <Content Include="Views\Principal\DetailHighlights.cshtml" />
+    <Content Include="Views\Principal\ProviderSearch.cshtml" />
+    <Content Include="Views\Principal\OfficeLocations.cshtml" />
+    <Content Include="Views\Principal\ChangeMco.cshtml" />
+    <Content Include="Views\Principal\MakeAppointment.cshtml" />
+    <Content Include="Views\Principal\ContactInsurer.cshtml" />
+    <Content Include="Views\Shared\_Layout-Principal-English.cshtml" />
+    <Content Include="Views\Principal\IndexNA.cshtml" />
+    <Content Include="wwwroot\assets\pdf\oficinas-medicaid-en.pdf" />
+    <Content Include="wwwroot\assets\pdf\oficinas-medicaid-es.pdf" />
+    <None Include="Web.Produccion.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Test.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.WebConfigDEV.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="wwwroot\assets\pdf\faq-plan-de-salud-vital-en.pdf" />
+    <Content Include="wwwroot\assets\pdf\faq-plan-de-salud-vital-es.pdf" />
+    <Content Include="wwwroot\assets\pdf\servicio-de-interprete-en.pdf" />
+    <Content Include="wwwroot\assets\pdf\servicio-de-interprete-es.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.AspNet\Common.AspNet.csproj">
+      <Project>{EC27D426-BF69-423C-AC69-D5D35A327796}</Project>
+      <Name>Common.AspNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common\Common.csproj">
+      <Project>{CA8E872C-5BF5-448E-B6DA-C5E08B35362F}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.API.Model\Core.API.Model.csproj">
+      <Project>{4cfd6d7f-c8e6-43d0-b196-25c7e94a3615}</Project>
+      <Name>Core.API.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{7aa1031d-1670-44fd-8202-4ceff7e771ae}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security.API.Model\Security.API.Model.csproj">
+      <Project>{207C7503-BD27-4CC4-BA76-52E31AF70E7D}</Project>
+      <Name>Security.API.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'WebConfigDEV|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'WebConfigPRO|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Produccion|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49290</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49290/EnrollmentPrincipal</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

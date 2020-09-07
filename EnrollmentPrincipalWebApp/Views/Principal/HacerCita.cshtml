@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Haga una Cita con el Centro de Orientaci&oacute;n VITA";
+    ViewBag.Ruta = "MakeAppointment";
+}
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    @*<a href="Index" class="home"><span aria-hidden="true">&lt;</span> P&aacute;gina inicial</a>*@
+                </div>
+                <div class="col-md-6 col-lg-9">
+                    <h1>Haga una Cita con el Centro de Orientaci&oacute;n VITAL</h1>
+                    <p>
+                        <strong>Reciba Ayuda de un Consejero de Inscripci&oacute;n</strong><br>
+                        Los consejeros de inscripci&oacute;n est&aacute;n a su disposici&oacute;n para responder dudas y preguntas, y ayudarle a tomar una decisi&oacute;n informada sobre la elecci&oacute;n de la aseguradora que mejor satisfaga sus necesidades de cuidado m&eacute;dico. Para programar una cita personal con un consejero de inscripci&oacute;n, oprima el enlace
+                        <a href="@ViewBag.HacerCita" target="_blank">Haga una cita con el Centro de Orientaci&oacute;n VITAL</a>.
+                        Para ayudarle a encontrar la ubicación de la oficina de Medicaid más cercana a usted, puede descargar el documento PDF con todas las <a href="~/wwwroot/assets/pdf/oficinas-medicaid-es.pdf" target="_blank">localidades de las oficinas de Medicaid</a>.
+                    </p>
+                    <p>Los consejeros de inscripci&oacute;n est&aacute;n disponibles en las oficinas del Programa de Medicaid desde las 7:30 a.m. hasta las 4:00 p.m., lunes a viernes.</p>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="UbicacionOficinas">
+                        <div class="tile">
+                            <img class="img-fluid" src="~/wwwroot/assets/img/doctor-patient.jpg" alt="">
+                            <h3 class="tile__title tile__title--blue">Oficinas de Medicaid</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>

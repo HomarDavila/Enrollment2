@@ -1,0 +1,61 @@
+﻿.card {
+    border: 1px solid #CCCCCC;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 0;
+}
+
+/*.select2-container--default [role=treeitem][aria-disabled=true].select2-results__option {
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: #cc0000 !important;
+    background-color: #f3d8d8 !important;
+    background-image: url(http://goo.gl/GXVcmC) !important;
+    background-position: 50% 50% !important;
+    background-repeat: repeat !important;
+}*/
+/*.select2-results__options[id*="cbMCO"] .select2-results__option:nth-child(3) {
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: #cc0000 !important;
+    background-color: #f3d8d8 !important;
+    background-image: url(http://goo.gl/GXVcmC) !important;
+    background-position: 50% 50% !important;
+    background-repeat: repeat !important;
+}*/
+.table {
+    border: 1px solid #CCCCCC;
+}
+
+    .table thead th {
+        border: none;
+        background-color: #0189B4;
+        border-top: 1px solid #2da2ce;
+        border-bottom: 1px solid #2da2ce;
+    }
+
+    .table tbody td {
+        border: none;
+        border-top: 1px solid #e5e5e5;
+    }
+
+        .table tbody td.dataActual {
+            text-decoration: line-through;
+            color: #ff3232;
+        }
+
+        /*.table tbody td.dataUpdate {
+            font-style: oblique;
+            font-weight: bolder;
+        }*/
+
+        .table tbody td img.imgUpdate {
+            width: 12px;
+        }
+
+table tbody tr.NoEnabled {
+    background-image: url(/app-assets/assets/images/disabledBackgroung.png) !important;
+    color: gray;
+    background-color: #f3d8d8 !important;
+    background-position: 50% 50% !important;
+    background-repeat: repeat !important;
+}

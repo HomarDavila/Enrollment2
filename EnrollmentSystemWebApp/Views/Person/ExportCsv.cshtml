@@ -1,0 +1,85 @@
+﻿
+
+<main>
+
+
+
+    <div class="body-content">
+
+        <main>
+
+            @*<label class="tab" for="tab1" data-i18n="Expense_Settings_Tag">Settings</label>*@
+            <section id="content1" level-id="1">
+                <div class="m-bottom20px">
+                    <hr style="height: 1px;border: 0;box-shadow: 0 10px 5px -10px #8c8b8b inset;margin: 0 0 15px 0;">
+                    <div id="Container_Main" style="padding: 20px;">
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="Tittle_Settings_Main" style="display:block;margin-bottom:10px;font-weight: bold;" data-i18n="Person_export_History">Export History</label>
+                                <label class="Tittle_Settings_secondLine" style="display:block;margin-left:20px;margin-bottom:10px;" data-i18n="Person_export" >Export</label>
+
+                                <div class="Container_Controls" style="display:block;margin-left:40px;margin-bottom:10px;">
+                                    <div class="form-group col-md-2">
+                                        <label data-i18n="Person_export_date_from">Date From:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input type='text' id="DateFrom" class="form-control" placeholder="mm/dd/yyyy" style="background-color: white;" />
+                                            <div class="form-control-position">
+                                                <i class="icon-calendar"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label data-i18n="Person_export_date_to">Date To:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input type='text' id="DateTo" class="form-control" placeholder="mm/dd/yyyy" style="background-color: white;" />
+                                            <div class="form-control-position">
+                                                <i class="icon-calendar"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <div style="  margin-top: 8px;">
+                                            <label for=""></label>
+                                            <div class="position-relative has-icon-left">
+                                                <button class="btn btn-success" id="btnExport" type="submit" data-i18n="Person_settings_exportar_csv">Export to CSV</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </main>
+        <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="max-width: 800px;">
+                <div class="modal-content">
+                    <!--Header-->
+                    <!--Body-->
+                    <!--Footer-->
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="footer grey">
+
+        </div>
+    </div>
+</main>
+<script>
+    @* Variables to use in SearchPerson.js *@
+    var urlGetHistoryByFilters = '@Url.Action("GethistoryByFilters", "Enrollment")';
+
+    @*var urlGetApplicationMembers = '@Url.Action("GetApplicationMembers", "Person")';*@
+    var urlEnrollmentPage = '@Url.Action("Enrollment", "Enrollment")';
+</script>
+<script>
+    $("#settings").attr({
+        class: "active"
+    });
+</script>
+<script src="~/app-assets/assets/js/Settings.js"></script>

@@ -1,0 +1,257 @@
+﻿@using Common;
+@using EnrollmentSystemWebApp.Helpers;
+
+<html lang="es" data-textdirection="rtl" class="loading">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Enrollment System">
+    <meta name="keywords" content="Enrollment, Vital">
+    <meta name="author" content="Truenorth Corporation">
+    <title>Enrollment System</title>
+
+    <link href="~/app-assets/assets/css/bbva/generalBase-mobile.min.ver16.css" type="text/css" rel="stylesheet">
+    <link type="text/css" media="only screen and (min-width: 800px)" rel="stylesheet" href="~/app-assets/assets/css/bbva/generalBase-desktop.min.ver12.css">
+
+
+    <link rel="apple-touch-icon" sizes="60x60" href="@Url.Content("~/app-assets/images/ico/apple-icon-60.png")">
+    <link rel="apple-touch-icon" sizes="76x76" href="@Url.Content("~/app-assets/images/ico/apple-icon-76.png")">
+    <link rel="apple-touch-icon" sizes="120x120" href="@Url.Content("~/app-assets/images/ico/apple-icon-120.png")">
+    <link rel="apple-touch-icon" sizes="152x152" href="@Url.Content("~/app-assets/images/ico/apple-icon-152.png")">
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/app-assets/images/ico/favicon.ico")">
+    <link rel="shortcut icon" type="image/png" href="@Url.Content("~/app-assets/images/ico/favicon-32.png")">
+
+    <link href="~/app-assets/assets/css/build.css" rel="stylesheet" />
+    <link href="~/app-assets/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- BEGIN VENDOR CSS-->
+    @*<link rel="stylesheet" type="text/css" href="@Url.Content("~/app-assets/materializedesignbootstrap/css/mdb.min.css")" />
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/app-assets/bootstrap/dist/css/bootstrap.css")">
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/app-assets/fonts/fontawesome/css/all.css")" />
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/app-assets/sweet-alert/css/sweetalert2.min.css")" />
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/app-assets/flag-icon/css/flag-icon.css")" />*@
+    <!-- END VENDOR CSS-->
+
+    <link href="~/app-assets/css/materializedesignbootstrap/css/mdb.min.css" rel="stylesheet" />
+    <link href="~/app-assets/css/bootstrap.4.1.3.min.css" rel="stylesheet" />    
+    <link href="~/app-assets/vendors/css/extensions/sweetalert.css" rel="stylesheet" />
+    <link href="~/app-assets/fonts/flag-icon-css/css/flag-icon.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/app-assets/css/app.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/app-assets/css/colors.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/app-assets/assets/css/style.css")">
+    <link href="~/app-assets/assets/css/customStyle.css" rel="stylesheet" />
+    @RenderSection("head", required: false)
+</head>
+<body data-open="hover" data-menu="horizontal-menu" data-col="2-columns" class="horizontal-layout horizontal-menu 2-columns main-body">
+    <div id="wrap">
+        <div class="bg sizeOnSmall" style="height:690px;">
+            <div class="app-content container center-layout mt-2">
+                <div class="content-wrapper">
+                    <div class="content-header row">
+                    </div>
+                    <div class="content-body">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <!--
+    <p class="clearfix text-muted text-sm-center mb-0 px-2">
+        <ul class="customUl">
+            <li><a href="#" data-toggle="modal" data-target="#protegeteDelFraudeModal" data-i18n="footer_ProtegeteDelFraude">Protégete del fraude en los portales</a></li>
+            <li class="dropdown show">
+                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-i18n="footer_EscogeUnIdioma">Escoge un idioma <b class="caret"></b></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a onclick="changeLanguage('?lng=en', 'en')" class="dropdown-item" style="font-size:12px;">
+                        <i class="flag-icon flag-icon-us"></i> English
+                    </a>
+                    <a onclick="changeLanguage('?lng=es', 'es')" class="dropdown-item" style="font-size:12px;">
+                        <i class="flag-icon flag-icon-pr"></i> Español
+                    </a>
+                </div>
+            </li>
+            <li><a href="#" data-toggle="modal" data-target="#informacionLegalModal" data-i18n="footer_InformacionLegal">Información legal </a></li>
+            <li><a href="#" data-toggle="modal" data-target="#privacidadModal" data-i18n="footer_DeclatacionDePrivacidad">Declaración de privacidad</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#cookiesModal" data-i18n="footer_AvisoDeCookies">Aviso de cookies</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#comunicateModal" data-i18n="footer_ComunicateConNosotros">Comunícate con nosotros</a></li>
+        </ul>
+    </p>
+        -->
+        </div>
+    </div>
+    <!-- Modal Protegete del Fraude -->
+            <div class="modal fade" id="protegeteDelFraudeModal" tabindex="-1" role="dialog" aria-labelledby="protegeteDelFraudeModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="protegeteDelFraudeModalLabel" data-i18n="modal_title_ProtegeteDelFraude">Protégete del fraude en los portales</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @*  @Html.Partial("~/Views/Shared/Modal/ProtegeteDelFraudeModal.cshtml")*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Informacion Legal -->
+            <div class="modal fade" id="informacionLegalModal" tabindex="-1" role="dialog" aria-labelledby="informacionLegalModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="informacionLegalModalLabel" data-i18n="modal_title_InformacionLegal">Información Legal</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @*@Html.Partial("~/Views/Shared/Modal/InformacionLegalModal.cshtml")*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Declaracion de Privacidad -->
+            <div class="modal fade" id="privacidadModal" tabindex="-1" role="dialog" aria-labelledby="privacidadModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="privacidadModalLabel" data-i18n="modal_title_DeclaracionDePrivacidad">Declaración de Privacidad</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @Html.Partial("~/Views/Shared/Modal/DeclaracionDePrivacidadModal.cshtml")
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Aviso de Cookies -->
+            <div class="modal fade" id="cookiesModal" tabindex="-1" role="dialog" aria-labelledby="cookiesModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="cookiesModalLabel" data-i18n="modal_title_AvisoDeCookies">Aviso de Cookies</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @*@Html.Partial("~/Views/Shared/Modal/AvisoDeCookiesModal.cshtml")*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Comunicate con nosotros -->
+            <div class="modal fade" id="comunicateModal" tabindex="-1" role="dialog" aria-labelledby="comunicateModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="comunicateModalLabel" data-i18n="modal_title_ComunicateConNosotros">Comunícate con nosotros</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @*@Html.Partial("~/Views/Shared/Modal/ComunicateConNosotrosModal.cshtml")*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Terminos de Servicio -->
+            <div class="modal fade" id="terminosDeServicioModal" tabindex="-1" role="dialog" aria-labelledby="terminosDeServicioModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="terminosDeServicioModalLabel" data-i18n="modal_title_TerminosDeServicio">Normas de Uso</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @Html.Partial("~/Views/Shared/Modal/TerminosDeServicioModal.cshtml")
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- BEGIN VENDOR JS-->
+            <script src="~/app-assets/js/core/libraries/jquery.3.3.1.min.js"></script>
+            <script src="@Url.Content("~/app-assets/js/core/libraries/popper.js")"></script>
+            <script src="~/app-assets/js/core/libraries/bootstrap.4.1.3.min.js"></script>
+            <script src="@Url.Content("~/app-assets/vendors/js/ui/blockUI.min.js")" type="text/javascript"></script>
+            <script src="@Url.Content("~/app-assets/vendors/js/extensions/sweetalert2.all.min.js")"></script>
+            <script src="@Url.Content("~/app-assets/vendors/js/extensions/core.js")"></script>
+            <script src="@Url.Content("~/app-assets/vendors/js/extensions/i18next.min.js")" type="text/javascript"></script>
+            <script src="@Url.Content("~/app-assets/vendors/js/extensions/i18nextBrowserLanguageDetector.min.js")" type="text/javascript"></script>
+            <script src="@Url.Content("~/app-assets/vendors/js/extensions/i18nextXHRBackend.min.js")" type="text/javascript"></script>
+            <script src="@Url.Content("~/app-assets/vendors/js/extensions/jquery-i18next.min.js")" type="text/javascript"></script>
+            <script src="@Url.Content("~/app-assets/js/scripts/extensions/internationalization/query-string.js")" type="text/javascript"></script>
+            <script src="@Url.Content("~/app-assets/js/core/libraries/mdb.js")"></script>
+            <!-- END VENDOR JS-->
+            <!-- BEGIN CUSTOM JS-->
+            <script src="@Url.Content("~/app-assets/assets/js/site.js")"></script>
+            <!-- END CUSTOM JS-->
+
+
+
+
+
+            @RenderSection("scripts", required: false)
+            <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+        $(document).ready(function () {
+
+		    var UserSettings = {
+			    language: "@Session[SessionHelper.LANGUAGE_SESSION_KEY]",
+			    culture: "@Session[SessionHelper.CULTURE_SESSION_KEY]"
+		    }
+             String.language = UserSettings.language;
+		     String.defaultLocale = "@AppConstants.DefaultCulture";
+             String.locale = UserSettings.culture;
+             i18next.changeLanguage("@Session[SessionHelper.LANGUAGE_SESSION_KEY]");
+           });
+        function changeLanguage(urlLanguage, language) {
+            debugger;
+              $.ajax({
+                        url: '@Url.Action("ChangeLanguage", "Common")',
+                        dataType: 'json',
+                        data: {
+                            language: language
+                        },
+                        type: 'GET',
+                        async: false,
+                        success: function (response) {
+                            i18next.changeLanguage(language);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert('Occurrió un error en el translate')
+                        }
+                    });
+           }
+            </script>
+    @Html.Partial("~/Views/Shared/GoogleAnalytics.cshtml")
+</body>
+</html>

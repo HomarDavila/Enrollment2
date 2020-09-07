@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "Búsqueda de Proveedores";
+    ViewBag.Ruta = "ProviderSearch";
+}
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-5">
+                @*<a href="Index" class="home"><span aria-hidden="true">&lt;</span> P&aacute;gina inicial</a>*@
+            </div>
+            <div class="col-md-6 col-lg-9">
+                <h1>B&uacute;squeda de Proveedores</h1>
+                <p>Esta secci&oacute;n del portal le brinda la oportunidad de hacer una b&uacute;squeda de proveedores para sus registros. Al final, podr&aacute; imprimirlas para tenerlas con usted cuando las necesite. Sus selecciones desaparecer&aacute;n al salir de esta p&aacute;gina. Si desea realizar su cambio &uacute;nico de aseguradora hoy, comience su b&uacute;squeda de proveedores oprimiendo el recuadro de "B&uacute;squeda de proveedores".</p>
+                <p>
+                    <strong>Selecci&oacute;n de mi M&eacute;dico Primario</strong><br>
+                    Usted necesita seleccionar un m&eacute;dico primario (PCP) o un Grupo M&eacute;dico Primario (PMG), antes de poder efectuar un cambio de aseguradora. Utilice el enlace
+                    <a href="@ViewBag.BusquedaProveedores">B&uacute;squeda de proveedores</a> para encontrar a su PCP, PMG, un especialista, hospital u otras facilidades de atenci&oacute;n m&eacute;dica cerca de usted. Antes de seleccionar una nueva aseguradora, verifique que su PCP, PMG, hospital u otros proveedores de servicio se encuentran en la red de proveedores.
+                </p>
+                <p>
+                    <a class="btn btn-lg btn-info" role="button" href="@ViewBag.BusquedaProveedores" target="_blank">B&uacute;squeda de proveedores</a>
+                </p>
+                @*<p><a href="#" onclick="popupCenter('como-buscar-a-un-proveedor.html','C&oacute;mo buscar a un proveedor');">Instrucciones para buscar un proveedor</a>.</p>*@
+                <p>@*<a href="@ViewBag.BusquedaProveedores">Instrucciones para buscar un proveedor</a>*@</p>
+                <div class="accordion">
+                        <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h2 class="mb-0 accordion__title">&iquest;Qu&eacute; es un m&eacute;dico primario (PCP)?</h2>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>Un m&eacute;dico primario (PCP) es un m&eacute;dico seleccionado por usted que le asistir&aacute; en el cuidado de su salud y le referir&aacute; a un especialista cuando sea necesario.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h2 class="mb-0 accordion__title">&iquest;Qu&eacute; es un Grupo M&eacute;dico Primario (PMG)?</h2>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>Un Grupo M&eacute;dico Primario es un grupo de doctores que ayudan a coordinar sus servicios de cuidado de salud y trabajan para asegurar que usted obtenga el cuidado que necesita. Su Tarjeta de Identificaci&oacute;n muestra el nombre de su PCP y su n&uacute;mero de Grupo M&eacute;dico Primario.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h2 class="mb-0 accordion__title">&iquest;Necesito un m&eacute;dico primario (PCP)?</h2>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>Al inscribirse con una aseguradora, necesitar&aacute; un m&eacute;dico primario (PCP) que coordine su cuidado m&eacute;dico. Su m&eacute;dico primario tiene una funci&oacute;n muy importante en torno a su cuidado m&eacute;dico y los servicios de salud que ha de recibir. Por tal raz&oacute;n, usted deber&aacute; elegir un m&eacute;dico primario al seleccionar cualquiera de las aseguradoras participantes del Plan de Salud VITAL.</p>
+                                <p>Es importante que usted elija al m&eacute;dico primario que sea m&aacute;s adecuado para usted. Recuerde que usted necesita seleccionar un m&eacute;dico primario (PCP) antes de poder efectuar un cambio de aseguradora. A continuaci&oacute;n le proveemos algunas consideraciones para ayudarle a seleccionar un PCP:</p>
+                                <p>Elija a su m&eacute;dico primario de entre las siguientes opciones:</p>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <tbody>
+                                            <tr>
+                                                <th width="35%">Adultos</th>
+                                                <td width="65%">M&eacute;dico generalista, m&eacute;dico de medicina de familia, m&eacute;dico internista o m&eacute;dico geriatra.</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Menores de 21 a&ntilde;os</th>
+                                                <td>Considere elegir a un pediatra como su m&eacute;dico primario.</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Mujeres mayores de 12 a&ntilde;os</th>
+                                                <td>Las mujeres beneficiarias de doce (12) a&ntilde;os o m&aacute;s tienen la opci&oacute;n de elegir a un ginec&oacute;logo/obstetra (OB/GYN) como PCP directamente con la aseguradora seleccionada.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>Para cambiar de aseguradora, oprima el enlace "<a href="@ViewBag.SelfServices" target="_blank">Inicie sesi&oacute;n ahora</a>".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h2 class="mb-0 accordion__title">Selecci&oacute;n de un Nuevo M&eacute;dico Primario</h2>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>Si desea seleccionar un PCP que no forme parte de la red de proveedores de la aseguradora con la cual est&aacute; actualmente inscrito, necesitar&aacute; cambiar de aseguradora. <strong>Recuerde</strong> que solo puede realizar un cambio de aseguradora durante el periodo de inscripci&oacute;n abierta, as&iacute; que elija con cuidado. Para poder cambiar de aseguradora necesitar&aacute; seleccionar un m&eacute;dico primario (PCP) y un grupo m&eacute;dico primario (PMG) que forme parte de la red de proveedores de la aseguradora de su preferencia. Los miembros de su familia pueden seleccionar una aseguradora distinta a la suya.</p>
+                                <p>Si usted desea seleccionar un nuevo m&eacute;dico primario (PCP) que se encuentra activo en la red de proveedores de su aseguradora, no necesita cambiar de aseguradora. Para seleccionar &uacute;nicamente un nuevo m&eacute;dico primario comun&iacute;quese con la aseguradora con la cual se encuentra inscrito.</p>
+                                <p>Para cambiar de aseguradora, oprima el enlace "<a href="@ViewBag.SelfServices" target="_blank">Inicie sesi&oacute;n ahora</a>".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h2 class="mb-0 accordion__title">&iquest;Qu&eacute; sucede si mi PCP y mi especialista no est&aacute;n en la misma aseguradora?</h2>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>Debe buscar a un PCP y a un Especialista que se encuentren en la misma aseguradora. Recuerde que todos los proveedores deben estar contratados por su aseguradora, es decir, pertenecer a su red de proveedores.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="callout">
+                    <h4>Ayuda</h4>
+                    <p>Tiene consejeros de inscripci&oacute;n a su disposici&oacute;n que lo guiar&aacute;n durante el proceso de selecci&oacute;n de su aseguradora de preferencia hasta ser inscrito. 
+                    @*Oprima el siguiente enlace para programar una cita. <a href="HacerCita">Haga una cita con el Centro de Orientaci&oacute;n VITAL</a>.*@
+                    </p>
+                    @*<ul>
+                            <li><a href="#" onclick="popupCenter('como-buscar-a-un-proveedor.html','C&oacute;mo buscar a un proveedor');">Instrucciones para buscar un proveedor</a>.</li>
+                        </ul>*@
+                    @*<ul>
+                        <li><a href="@ViewBag.BusquedaProveedores">Instrucciones para buscar un proveedor</a>.</li>
+                    </ul>*@
+                    <!-- <h4>Eventos Educativos Cerca de Usted</h4>
+                    <p><a href="pdf/pdf-placeholder.pdf">Calendario de Eventos Educativos</a></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

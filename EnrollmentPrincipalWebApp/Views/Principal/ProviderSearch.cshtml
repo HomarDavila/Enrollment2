@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "ProviderSearch";
+    Layout = "~/Views/Shared/_Layout-Principal-English.cshtml";
+    ViewBag.Ruta = "BusquedaProveedores";
+}
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                </div>
+                <div class="col-lg-9 mb-4 mb-lg-0">
+                    <h1>Provider Search</h1>
+                    <p>This section of the portal gives you the opportunity to do a search for providers for your records. In the end, you can print them to have with you when you need them. Your selections will disappear when you leave this page. If you want to make your unique Insurer change today, start your provider search by clicking on the “Provider Search" box.</p>
+                    <p>
+                        <strong>Selection of my Primary Physician</strong><br>
+                        You need to select a primary care physician (PCP) or Primary Medical Group (PMG) before you can change Insurers. Use the <a href="@ViewBag.BusquedaProveedores" target="_blank">Provider Search</a> link to find your PCP, PMG, specialist, hospital or other health care facility near you. Before selecting a new Insurer, make sure your PCP, PMG, hospital or other health care service providers are in the provider's network of the Insurer of your choice.
+                    </p>
+                    <p><a class="btn btn-lg btn-info" role="button" href="@ViewBag.BusquedaProveedores" target="_blank">Provider Search</a></p>
+                    @*<p><a href="#" onclick="popupCenter('como-buscar-a-un-proveedor.html','C&oacute;mo buscar a un proveedor');">How to look for a provider</a>.<br><small>(Spanish video only)</small></p>*@
+                <div class="accordion">
+                    <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h4 class="mb-0 accordion__title">What is a primary care physician (PCP)?</h4>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>A primary care physician (PCP) is a doctor who is selected by you and who will assist you in your health care and refer you to a specialist when necessary.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h4 class="mb-0 accordion__title">What is a Primary Medical Group (PMG)?</h4>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>Primary Medical Group (PMG) is a group of doctors who help organize your health care services and work with your Insurer to make sure you get the care you need. Your ID card shows the name of your PCP and the number of your Primary Medical Group.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h4 class="mb-0 accordion__title">Why do I need a primary care physician (PCP)?</h4>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>When you enroll with an Insurer, you will need a primary care physician (PCP) to coordinate your medical care. Your PCP plays a very important role in your medical care and the health services you will receive. For this reason, you must choose a PCP by selecting any of the participating Insurers of the VITAL Health Plan.</p>
+                                <p>It is important that you choose the PCP that is best for you. <strong>Remember</strong> that you need to select a primary physician (PCP) before you can make an insurance change. Here are some considerations to help you select a PCP:</p>
+                                <p>Choose your primary doctor from the following options:</p>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <tbody>
+                                            <tr>
+                                                <th width="30%">Adult beneficiaries</th>
+                                                <td width="70%">Choose among the following types of practitioners as your PCP: general practice, family practice, internal medicine, or geriatric medicine.</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Beneficiaries under age 21</th>
+                                                <td>Consider choosing a pediatrician as your PCP.</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Females older than 12 years old</th>
+                                                <td>Female Enrollees age twelve (12) and older have an option to directly choose an obstetrician/gynecologist (OB/GYN) as a PCP with their selected MCO.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>To change your Insurer, click on the "<a href="@ViewBag.SelfServices" target="_blank" class="sso-link">Log in now</a>" link.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h4 class="mb-0 accordion__title">What if I want to choose a new doctor?</h4>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>If you want to use a new primary care physician (PCP) who is already in your assigned Insurer, you do not need to change Insurers.</p>
+                                <p>If you want to go to a PCP or specialist who is not part of your Insurer, you will need to change Insurers. <strong>Remember</strong>, you can only make <strong>one</strong> change during the annual open enrollment period, so chose carefully. When changing Insurers, you will need to select a PCP. Also remember everyone in your family doesn't have to use the same Insurer.</p>
+                                <p>To change your Insurer, click on the "<a href="@ViewBag.SelfServices" target="_blank" class="sso-link">Log in now</a>" link.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <button type="button" aria-expanded="false" class="card-header accordion__header collapser plus">
+                            <h4 class="mb-0 accordion__title">What if my PCP and specialist are not in the same Insurer?</h4>
+                        </button>
+                        <div class="collapse">
+                            <div class="card-body accordion__body">
+                                <p>You must find a PCP and a Specialist who are in the same Insurer. Remember that all providers must be contracted by your Insurer, that is, belong to your provider network.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="callout">
+                        <h4>Help</h4>
+                        <p>Choice Counselors are available to help guide you through the whole process. 
+                        @*Click here if you would like to make a <a href="MakeAppointment">VITAL Orientation Appointment</a>.*@
+                        </p>
+                        @*<p><a href="#" onclick="popupCenter('como-buscar-a-un-proveedor.html','C&oacute;mo buscar a un proveedor');">How to look for a provider</a>.<br><small>(Spanish video only)</small></p>*@
+                        <!-- <h4>Education events near you</h4>
+                    <p><a href="pdf/pdf-placeholder.pdf">Education Calendar of Events</a></p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+

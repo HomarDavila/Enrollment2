@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Encuesta de Satisfacción";
+}
+@using EnrollmentSurvey.Idioma
+
+    <style>
+        .escala {
+            /*color: #4EA7C5;*/
+            color: #6c757d;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+
+        .cualidad {
+            /*color: #4EA7C5;*/
+            color: #6c757d;
+            border-color: #6c757d;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .barra-satifaccion {
+            /*background: #4EA7C5;*/
+            background: #212529;
+            color: white;
+        }
+
+        .contador {
+            /*background: #5B9CCD;*/
+            background: #212529;
+            color: white;
+            border-radius: 74px 74px 74px 74px;
+            -moz-border-radius: 74px 74px 74px 74px;
+            -webkit-border-radius: 74px 74px 74px 74px;
+            border: 0px solid #000000;
+        }
+
+        .boton_2 {
+            outline: none;
+            text-decoration: none;
+            padding: 10px;
+            font-family: arial;
+            padding-left: 5px;
+            padding-right: 5px;
+            font-weight: 800;
+            font-size: 25px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .slider-tick {
+            width: 0px;
+        }
+
+        .round {
+            /*background: #061152;*/
+            background: #212529;
+        }
+        .slider-selection.tick-slider-selection {
+            background-image: linear-gradient(to bottom,#ced4da 0,#6c757d 100%);
+        }
+
+        .slider.slider-horizontal {
+            width: 100% !important;
+        }
+    </style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center barra-satifaccion p-3">
+                <strong>@Resource.txt_encuesta_satisfaccion</strong>
+            </div>
+        </div>
+        @*<div class="row d-flex justify-content-center mt-4">
+            <div id="barraRecomendacion" class="col-md-6">
+                <h2 class="escala">@Resource.txt_encuesta_recomendacion</h2>
+            </div>
+        </div>*@
+            <div class="row d-flex justify-content-center mt-4">
+                <div  id="barraTitulo" class="col-md-6">
+                    <h2 class="cualidad" id="txtTitulo"></h2>
+                </div>
+            </div>
+            
+            <div class="row d-flex justify-content-center mt-5">
+                <div id="btnRespuesta" class="col-md-6">
+                    <div class="row mt-3 d-flex justify-content-center">
+                        <div class="col-md-6">
+                            <div class="row d-flex align-items-center justify-content-center">
+                                <div class="col-md-12">
+                                    <button id="btnFinal" class="btn btn-primary btn-lg btn-block" style="border-radius:20px;">
+                                    <i class="fa fa-check-circle" style="font-size:120px;"></i><br />
+                                    @Resource.txt_btn_gracias</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="barraBtnEnviar" class="col-md-6">
+                    <div class="row mt-3 d-flex justify-content-center">
+                        <div class="col-md-6">
+                            <div class="row d-flex align-items-center justify-content-center">
+                                <div class="col-md-12">
+                                    <button id="btnEnviar" class="btn btn-primary btn-lg btn-block" style="border-radius:20px;">@Resource.txt_btn_enviar_encuesta</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="barraPuntos" class="controlrespuesta col-md-6" style="display:none;">
+                    <div class="row mt-2 d-flex justify-content-center">
+                        <div class="col-md-12">
+                            <input id="rangebar" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div id="optionbutton" class="controlrespuesta btn-group col-md-6 text-center" style="display:none;">
+
+                </div>
+            </div>
+        <div class="row d-flex justify-content-center mt-5">
+            <nav id="paginador" aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item " id="liAnterior">
+                        <button class="page-link" id="btnAnterior"><</button>                    </li>
+                    <li class="page-item"><span class="page-link" id="pagePager">1/6</span></li>
+                    <li class="page-item" id="liSiguiente">
+                        <button class="page-link" id="btnSiguiente" >></button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,162 @@
+﻿.card {
+    padding: 2.5rem;
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    /*height: 190px;*/
+    /*margin: 1rem;*/
+    position: relative;
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.ch-grid {
+    text-align: center;
+    margin-bottom: 5vh;
+    vertical-align: middle;
+    height: 100px;
+    display: table;
+}
+
+
+
+.ch-item {
+    display: table-cell;
+    width: 100px;
+    /*height: 100px;*/
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 16px rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.1);
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+p.Tittle {
+    opacity: 0;
+    display: table-cell;
+    width: 150px;
+    vertical-align: middle;
+}
+
+.ch-img-1 {
+    background-image: url("/Enrollment/app-assets/assets/images/user.png");
+}
+
+.ch-img-2 {
+    background-image: url("/Enrollment/app-assets/assets/images/adittionalResources.png");
+}
+
+.ch-img-3 {
+    background-image: url("/Enrollment/app-assets/assets/images/configuration.png");
+}
+
+.ch-img-4 {
+    background-image: url("/Enrollment/app-assets/assets/images/search.png");
+}
+
+.ch-img-5 {
+    background-image: url("/Enrollment/app-assets/assets/images/reports.png");
+}
+
+.ch-info {
+    background: rgba(218, 173, 77, 0.8);
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    -webkit-transform: value;
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+}
+
+    .ch-info img {
+        height: 100px;
+    }
+
+.ch-info-2 {
+    background: rgba(50, 178, 190, 0.8);
+}
+
+.ch-info-3 {
+    background: rgba(76, 166, 37, 0.8);
+}
+
+.ch-info-4 {
+    background: rgba(126, 154, 220, 0.8);
+}
+
+.ch-info i {
+    margin-top: 15px;
+    color: white;
+}
+
+.ch-item:hover {
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1), 0 1px 2px rgba(0,0,0,0.1);
+}
+
+    .ch-item:hover .ch-info {
+        -webkit-transform: value;
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+
+.card.horizontal .card-image img {
+    height: 100px;
+    width: 100px;
+}
+
+.card.horizontal {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    background: linear-gradient(45deg, #f6f6f6 50%, #fff 50%);
+}
+
+    .card.horizontal.small .card-image,
+    .card.horizontal.medium .card-image,
+    .card.horizontal.large .card-image {
+        height: 100%;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .card.horizontal .card-image img {
+        width: 150px;
+        height: 150px;
+        margin-right: 20px;
+    }
+
+    .card.horizontal .card-stacked {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        position: relative;
+        padding: 1rem;
+    }
+
+        .card.horizontal .card-stacked .card-content {
+            -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+        }
+
+.card-content h3 {
+    padding: 0.5rem 2rem;
+    font-weight: bold;
+}

@@ -1,0 +1,79 @@
+﻿<link href="~/app-assets/assets/css/CustomCards.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-2" onclick="window.location.href = '@Url.Action("ExportCsv", "Person")';">
+                        <div class="ch-info ch-info-2">
+                            <img class="img-rounded" src="~/app-assets/assets/images/icon-Configuration.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Person_settings_exportar_csv">Exportar a Csv</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-3" onclick="window.location.href = '@Url.Action("ConfigPeriod", "Person")';">
+                        <div class="ch-info ch-info-3">
+                            <img class="img-rounded" src="~/app-assets/assets/images/icon-Configuration.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Person_settings_setup_up_enrollment">Configurar Periodo de Enrollment</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="row">
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-4">
+                        <div class="ch-info ch-info-4">
+                            <img src="~/app-assets/assets/images/icon-Navigation.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Index_Search_PCP/PCM">Buscar PCP/PMG</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="card horizontal customCard">
+                <div class="ch-grid">
+                    <div class="ch-item ch-img-5">
+                        <div class="ch-info ch-info-5">
+                            <img src="~/app-assets/assets/images/icon-Report.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3 data-i18n="Index_Reporting">Reportes</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<script>
+       $("#settings").attr({
+        class: "active"
+        });
+</script>
+<script src="~/app-assets/assets/js/CustomCards.js"></script>

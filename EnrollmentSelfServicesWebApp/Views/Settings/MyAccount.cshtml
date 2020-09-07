@@ -1,0 +1,1083 @@
+﻿
+@{
+    //ViewBag.Title = "MyAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/wwwroot/css/tabs/CustomTabs.css" rel="stylesheet" />
+<link href="~/wwwroot/css/ToggleButton.css" rel="stylesheet" />
+
+<style type="text/css">
+
+
+    .trans {
+        /*width: 400px;*/
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .popupTd {
+        padding: 10px !important;
+        vertical-align: middle !important;
+    }
+
+    #tbChanges th {
+        line-height: 0;
+        text-align: center;
+    }
+
+    #tbChanges td {
+        line-height: 0;
+        padding: 0;
+    }
+
+    #tb_Members {
+        border: 1px solid #eee;
+    }
+
+    .marginsMCO {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        padding: 2rem 8rem;
+    }
+
+    table th {
+        font-size: .9rem;
+        font-weight: 400;
+        background-color: #0079c1;
+        color: #FFF;
+        padding: 5px 0;
+    }
+
+    .dataTables_length {
+        display: inline-block;
+        float: left;
+        margin-bottom: 15px;
+    }
+
+    .dataTables_scroll {
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+
+    table.dataTable tbody tr:hover {
+        background-color: #e8f4fd !important;
+    }
+
+    .CardBody {
+        cursor: pointer;
+    }
+
+        .CardBody:hover {
+            box-shadow: 0 0 5px #1F1F21; /*#0079C1*/
+        }
+
+    .form-inline {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .dataTables_length {
+        display: inline-block;
+        float: left;
+    }
+
+    .dataTables_info {
+        float: right;
+    }
+
+    .sorting_disabled {
+        text-align: center;
+    }
+
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active,
+    .btn-primary.active,
+    .btn-primary.focus,
+    .btn-primary:active,
+    .btn-primary:focus,
+    .btn-primary:hover,
+    .open > .dropdown-toggle.btn-primary {
+        background-color: #3bc0c3;
+        border: 1px solid #3bc0c3;
+    }
+
+    .p-t-10 {
+        border: 1px solid #a0a0a0;
+        padding: 15px 10px;
+        border-radius: 5px;
+        box-shadow: 10px 10px 25px -11px rgba(0,0,0,0.2);
+        margin: 15px 0;
+        background-color: #fff;
+    }
+
+    .media-main {
+        display: inline-flex;
+        width: 100%;
+    }
+
+        .media-main a.pull-left {
+            width: 100px;
+        }
+
+    .thumb-lg {
+        height: 100px;
+        width: 100px;
+        border: 1px solid #b1b1b1;
+        border-radius: 50%;
+    }
+
+    .media-main .info {
+        overflow: hidden;
+        color: #000;
+        margin-left: 10pX;
+        width: 100%;
+    }
+
+        .media-main .info h4 {
+            padding-top: 10px;
+            margin-bottom: 5px;
+        }
+
+    .name {
+        font-size: 15px;
+        color: forestgreen;
+        font-weight: 600 !important;
+    }
+
+    .text-muted {
+        margin-bottom: .1rem;
+    }
+
+    .bolder {
+        font-weight: bolder !important;
+    }
+    /* The container for custom radio */
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 18px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: inherit;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default radio button */
+        .containerRadio input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+    /* Create a custom radio button */
+    .checkmarkRadio {
+        position: absolute;
+        top: 5px;
+        left: 15px;
+        height: 12px;
+        width: 12px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmarkRadio {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmarkRadio {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmarkRadio:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmarkRadio:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmarkRadio::after {
+        top: 3px;
+        left: 3px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: white;
+    }
+    /*****************************/
+    /* Checkmarks for input radio buttons */
+    .containercheck {
+        display: block;
+        position: relative;
+        padding-left: 16px;
+        margin-bottom: 2px;
+        cursor: pointer;
+        font-size: 12px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .containercheckSquare {
+        display: block;
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 2px;
+        cursor: pointer;
+        font-size: 15px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+        /* Hide the browser's default checkbox */
+        .containercheck input,
+        .containercheckSquare input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark, .checkmarkRed {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        height: 12px;
+        width: 12px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    .checkmarkSquare {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: #eee;
+        border-radius: 2px;
+        border: 1px solid #d3d5d7;
+    }
+    /* On mouse-over, add a grey background color */
+    .containercheck:hover input ~ .checkmark,
+    .containercheck:hover input ~ .checkmarkRed,
+    .containercheckSquare:hover input ~ .checkmarkSquare {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .containercheck input:checked ~ .checkmark,
+    .containercheckSquare input:checked ~ .checkmarkSquare {
+        background-color: #2196F3;
+    }
+
+    .containercheck input:checked ~ .checkmarkRed {
+        background-color: #ff3232;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after, .checkmarkRed:after, .checkmarkSquare:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .containercheck input:checked ~ .checkmark:after,
+    .containercheck input:checked ~ .checkmarkRed:after,
+    .containercheckSquare input:checked ~ .checkmarkSquare:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .containercheck .checkmark:after {
+        left: 4px;
+        top: 2px;
+        width: 5px;
+        height: 7px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .containercheckSquare .checkmarkSquare:after {
+        left: 7px;
+        top: 4px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .container .checkmarkClose::before, .container .checkmarkClose::after {
+        position: absolute;
+        left: 5px;
+        top: 2px;
+        content: ' ';
+        height: 8px;
+        width: 2px;
+        background-color: white;
+    }
+
+    .container .checkmarkClose:before {
+        transform: rotate(45deg);
+    }
+
+    .container .checkmarkClose:after {
+        transform: rotate(-45deg);
+    }
+
+    .radioDiv.selected {
+        box-shadow: 0 0 20px #0079C1;
+    }
+
+    .table tbody td img.imgUpdate {
+        width: 12px;
+        margin-top: 10px;
+    }
+</style>
+<main class="main-body">
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label class="tab" for="tab1" data-i18n="MyAccount_datospersonales_cabezera">Datos Personales</label>
+    <input id="tab2" type="radio" name="tabs">
+    <label class="tab" for="tab2" data-i18n="Enrollment_TittleTab2">Change History</label>
+    @*<input id="tab2" type="radio" name="tabs">
+        <label class="tab" for="tab2" data-i18n="MyAccount_informaciondemografica_cabezera">Información Demográfica</label>
+        <input id="tab3" type="radio" name="tabs">
+        <label class="tab" for="tab3" data-i18n="MyAccount_elegibilidad_cabezera">Eligibility</label>
+        <input id="tab4" type="radio" name="tabs">
+        <label class="tab" for="tab4" data-i18n="">MCO/PMG/PCP</label>
+        <input id="tab5" type="radio" name="tabs">
+        <label class="tab" for="tab5" data-i18n="">Claims</label>*@
+
+    <section id="content1">
+        <div class="row mb-2">
+            @*<div class="col-md-1 hiddenOnSmall">
+                <a class="mt-2">
+                    <img src=@Url.Content("~/wwwroot/images/back_icon.png") class="mt-3 ml-3 mr-3" style="width:35px; height:35px;" />
+                </a>
+            </div>*@
+            <div class="col-md-10">
+                <h5 class="mt-2" data-i18n="registerUser_datospersonales">
+                    Información Personal
+                </h5>
+                <p data-i18n="MyAccount_DatosPersonales_Descripcion">
+                    En esta sección puede modificar su información personal
+                </p>
+            </div>
+            @*<div class="col-md-1 hiddenOnSmall">
+                <a class="mt-2">
+                    <img src=@Url.Content("~/wwwroot/images/back_icon.png") class="mt-3 ml-3 mr-3"
+                         style="width:35px; height:35px; transform: rotate(-180deg);" />
+                </a>
+            </div>*@
+        </div>
+        <div class="card customCardLogin" style="width: 100%;  display: inline-block;">
+            <div class="card-body">
+                <p><a href="#" data-i18n="registerUser_datospersonales">DATOS PERSONALES</a></p>
+                <form id="registerForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="register-isFirstPage-field" class="form-control" value="true">
+                    <div class="form-row">
+                        @*<div class="col-md-6 mb-3">
+                                <label for="register-names-field" data-i18n="registerUser_primernombre" class="font-weight-bold">Primer Nombre</label>
+                                <input required maxlength="30" id="register-names-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_primernombre" placeholder="Primer Nombre">
+                                <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="register-names-field" data-i18n="registerUser_segundonombre" class="font-weight-bold">Segundo Nombre</label>
+                                <input required maxlength="30" id="register-names-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_segundonombre" placeholder="Segundo Nombre">
+                                <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                            </div>*@
+                        <div class="col-md-4 mb-3">
+                            <label for="register-names-field" data-i18n="registerUser_nombres" class="font-weight-bold">Nombres</label>
+                            <input readonly required maxlength="30" id="register-names-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_nombres" placeholder="Nombres">
+                            <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                            <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                        </div>
+                        <div class="col-md-4  mb-3">
+                            <label for="register-lastnameOne-field" data-i18n="registerUser_primerapellido" class="font-weight-bold">Primer Apellido</label>
+                            <input readonly required maxlength="30" id="register-lastnameOne-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_primerapellido" placeholder="Primer Apellido">
+                            <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                            <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="register-lastNameTwo-field" data-i18n="registerUser_segundoapellido" class="font-weight-bold">Segundo Apellido</label>
+                            <input readonly required maxlength="30" id="register-lastNameTwo-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_segundoapellido" placeholder="Segundo Apellido">
+                            <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                            <div class="invalid-feedback" data-i18n="registerUser_secondlastname_validation"></div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="register-dateofbirth-field" data-i18n="registerUser_fechanacimiento" class="font-weight-bold">Fecha de Nacimiento </label> mm/dd/yyyy
+                            <input readonly required maxlength="30" id="register-dateofbirth-field" class="form-control" name="user" data-i18n="registerUser_fechanacimiento" placeholder="Fecha de Nacimiento">
+                            <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                            <div class="invalid-feedback" data-i18n="registerUser_secondlastname_validation"></div>
+                        </div>
+                        <div class="col-md-4  mb-3">
+                            <label for="register-mpi-field" data-i18n="registerUser_mpi" class="font-weight-bold">MPI</label>
+                            <input readonly required maxlength="30" id="register-mpi-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_mpi" placeholder="MPI">
+                            <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                            <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="register-ssn-field" data-i18n="registerUser_ssn" class="font-weight-bold">SSN</label>
+                            <input readonly required maxlength="30" id="register-ssn-field" class="form-control" name="user" data-i18n="[placeholder]registerUser_ssn" placeholder="SSN">
+                            <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                            <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-2" style="width: 102%;">
+            <div class="col-md-6">
+                <div class="card customCardLogin" style="width: 102%;  display: inline-block;">
+                    <div class="card-body">
+                        <p><a href="#" data-i18n="MyAccount_datospersonales_telefono">TELÉFONO</a></p>
+                        <form id="registerForm" class="needs-validation" novalidate>
+                            <input type="hidden" id="register-isFirstPage-field" class="form-control" value="true">
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="register-phone-field" data-i18n="MyAccount_datospersonales_telefono_principal" class="font-weight-bold">Principal</label>
+                                    <input required maxlength="14" minglength="14" id="register-phone-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_datospersonales_telefono_principal" placeholder="Principal">
+                                    <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                    <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                                </div>
+
+                                <div class="col-md-6  mb-3">
+                                    <label for="register-phonealt-field" data-i18n="MyAccount_datospersonales_telefono_alterno" class="font-weight-bold">Alterno</label>
+                                    <input required maxlength="14" minglength="14" id="register-phonealt-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_datospersonales_telefono_alterno" placeholder="Alterno">
+                                    <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                    <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card customCardLogin" style="width: 102%;  display: inline-block;">
+                    <div class="card-body">
+                        <p><a href="#" data-i18n="MyAccount_datospersonales_correo">CORREO</a></p>
+                        <form id="registerForm" class="needs-validation" novalidate>
+                            <input type="hidden" id="register-isFirstPage-field" class="form-control" value="true">
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="register-email-field" data-i18n="MyAccount_datospersonales_telefono_principal" class="font-weight-bold">Principal</label>
+                                    <input readonly required maxlength="30" id="register-email-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_datospersonales_telefono_principal" placeholder="Principal">
+                                    <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                    <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                                </div>
+
+                                <div class="col-md-6  mb-3">
+                                    <label for="register-emailalt-field" data-i18n="MyAccount_datospersonales_telefono_alterno" class="font-weight-bold">Alterno</label>
+                                    <input required maxlength="50" id="register-emailalt-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_datospersonales_telefono_alterno" placeholder="Alterno">
+                                    <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                    <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                                </div>
+
+                                <div class="row col-md-12" hidden="hidden">
+                                    <div class="col-sm-8">
+                                        <label for="register-optin-field" data-i18n="registerUser_optin" class="font-weight-bold">Opt-In</label>
+                                        <p data-i18n="">
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @*<input type="checkbox" id="register-optin-field" class="form-control" name="user">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>*@
+                                        <label class="switch">
+                                            <input type="checkbox" id="register-optin-field" class="form-control" name="user">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12 trans">
+                <button class="btn btn-primary" id="btnDisplaySelection" type="submit" data-i18n="MyAccount_datospersonales_btn_save">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </section>
+    <section id="content2">
+        <div>
+            <div class="row m-bottom20px" style="padding-right: 1.5rem;">
+                <div class="col-md-12" style="overflow: auto;">
+                    <div id="NoDataHistory" hidden>
+                        <p style="text-align:center; font-size:2em;" data-i18n="NoHistoryChanges">No hay cambios registrados.</p>
+                    </div>
+                    <div class="col-md-12">
+                        <table id="tbHistorySearch" class="table table-hover table-bordered dt-responsive nowrap dataex-html5-export" width="100%" cellspacing="0">
+                            @*<thead>
+                    <tr>
+                        <th scope="col" class="all" data-i18n="Enrollment_User">Usuario</th>
+                        <th scope="col" class="none" data-i18n="Enrollment_ChangeSource">Origen del Cambio</th>
+                        <th scope="col" class="desktop" data-i18n="Enrollment_ChangeDate">Fecha del Cambio</th>
+                        <th scope="col" class="all" data-i18n="Enrollment_MCO">MCO</th>
+                        <th scope="col" class="none" data-i18n="Enrollment_PMG">PMG</th>
+                        <th scope="col" class="desktop" data-i18n="Enrollment_PCP">PCP</th>
+                        <th scope="col" class="all">PDF</th>
+                    </tr>
+                </thead>*@
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @*<section id="content2">
+
+            <div class="row mb-2">
+                <div class="col-md-1 hiddenOnSmall">
+                    <a class="mt-2">
+                        <img src=@Url.Content("~/wwwroot/images/back_icon.png") class="mt-3 ml-3 mr-3" style="width:35px; height:35px;" />
+                    </a>
+                </div>
+                <div class="col-md-10">
+                    <h5 class="mt-2" data-i18n="MyAccount_informaciondemografica_titulo">
+                        Datos Demográficos
+                    </h5>
+                    <p data-i18n="MyAccount_informaciondemografica_descripcion">
+                        En esta sección tu puedes modificar los datos demográficos
+                    </p>
+                </div>
+                <div class="col-md-1 hiddenOnSmall">
+                    <a class="mt-2">
+                        <img src=@Url.Content("~/wwwroot/images/back_icon.png") class="mt-3 ml-3 mr-3"
+                             style="width:35px; height:35px; transform: rotate(-180deg);" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="row" style="width: 102%;">
+                <div class="col-md-6">
+                    <div class="card customCardLogin" style="width: 102%;  display: inline-block;">
+                        <div class="card-body">
+                            <p><a href="#" data-i18n="MyAccount_informaciondemografica_direccion_fisica">DIRECCIÓN FÍSICA</a></p>
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <input type="hidden" id="register-isFirstPage-field" class="form-control" value="true">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="register-names-field" data-i18n="MyAccount_informaciondemografica_direccion_linea1" class="font-weight-bold">Dirección Línea 1</label>
+                                        <input required maxlength="30" id="register-names-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_linea1" placeholder="Dirección Línea 1">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                                    </div>
+
+                                    <div class="col-md-12  mb-3">
+                                        <label for="register-lastnameOne-field" data-i18n="MyAccount_informaciondemografica_direccion_linea2" class="font-weight-bold">Dirección Línea 2</label>
+                                        <input required maxlength="30" id="register-lastnameOne-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_linea2" placeholder="Dirección Línea 2">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="register-names-field" data-i18n="MyAccount_informaciondemografica_direccion_ciudad" class="font-weight-bold">Ciudad</label>
+                                        <input required maxlength="30" id="register-names-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_ciudad" placeholder="Ciudad">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                                    </div>
+
+                                    <div class="col-md-6  mb-3">
+                                        <label for="register-lastnameOne-field" data-i18n="MyAccount_informaciondemografica_direccion_postal" class="font-weight-bold">Código Postal</label>
+                                        <input required maxlength="30" id="register-lastnameOne-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_postal" placeholder="Código Postal">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                                    </div>
+
+                                    <div class="col-md-12  mb-3">
+                                        <label for="register-lastnameOne-field" data-i18n="MyAccount_informaciondemografica_direccion_barrio" class="font-weight-bold">Barrio</label>
+                                        <input required maxlength="30" id="register-lastnameOne-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_barrio" placeholder="Barrio">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card customCardLogin" style="width: 102%;  display: inline-block;">
+                        <div class="card-body">
+                            <p><a href="#" data-i18n="MyAccount_informaciondemografica_direccion_postal">DIRECCIÓN POSTAL</a></p>
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <input type="hidden" id="register-isFirstPage-field" class="form-control" value="true">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="register-names-field" data-i18n="MyAccount_informaciondemografica_direccion_linea1" class="font-weight-bold">Dirección Línea 1</label>
+                                        <input required maxlength="30" id="register-names-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_linea1" placeholder="Dirección Línea 1">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                                    </div>
+
+                                    <div class="col-md-12  mb-3">
+                                        <label for="register-lastnameOne-field" data-i18n="MyAccount_informaciondemografica_direccion_linea2 " class="font-weight-bold">Dirección Línea 2</label>
+                                        <input required maxlength="30" id="register-lastnameOne-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_linea2" placeholder="Dirección Línea 2">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="register-names-field" data-i18n="MyAccount_informaciondemografica_direccion_ciudad" class="font-weight-bold">Ciudad</label>
+                                        <input required maxlength="30" id="register-names-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_ciudad" placeholder="Ciudad">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_name_validation"></div>
+                                    </div>
+
+                                    <div class="col-md-6  mb-3">
+                                        <label for="register-lastnameOne-field" data-i18n="MyAccount_informaciondemografica_direccion_postal" class="font-weight-bold">Código Postal</label>
+                                        <input required maxlength="30" id="register-lastnameOne-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_postal" placeholder="Código Postal">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                                    </div>
+
+                                    <div class="col-md-12  mb-3">
+                                        <label for="register-lastnameOne-field" data-i18n="MyAccount_informaciondemografica_direccion_barrio" class="font-weight-bold">Barrio</label>
+                                        <input required maxlength="30" id="register-lastnameOne-field" class="form-control" name="user" data-i18n="[placeholder]MyAccount_informaciondemografica_direccion_barrio" placeholder="Barrio">
+                                        <div class="valid-feedback" data-i18n="registerUser_looksgood"></div>
+                                        <div class="invalid-feedback" data-i18n="registerUser_firtlastname_validation"></div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 trans">
+                    <button class="btn btn-primary" id="btnDisplaySelection" type="submit" data-i18n="Enrollment_btnguardar">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+        </section>*@
+    @*<section id="content3">
+
+            <fieldset class="myCustomFieldset">
+                <div class="row mb-1">
+                    <div class="col-lg-12 mb-2 text-lg-center">
+                        <strong><label class="font-large-2">ApplicationGeneralinfoTitle</label></strong>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4">
+                        <div class="card box-shadow-3 border-blue-grey bg-light-blue bg-darken-3">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-lg-12 text-xs-center">
+                                            <label class="card-title white font-large-1 font-weight-bold">Teléfono</label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col-lg-12">
+                                            <div id="divPhoneNumber1" class="">
+                                                <label for="txtDaytimephonenumber" class="white font-weight-bold font-small-5">ApplicationGeneralInfoPhone</label>
+                                                <fieldset class=" position-relative has-icon-left">
+                                                    <input type="tel" class="form-control phone-formatter phoneformat" id="txtDaytimephonenumber" placeholder="ApplicationGeneralInfoPlaceHolderPhone">
+                                                    <div class="form-control-position">
+                                                        <i class="icon-phone3 blue-grey lighten-1"></i>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div id="divPhoneNumber2" class="">
+                                                <label for="txtEveningphonenumber" class="white font-weight-bold font-small-5">ApplicationGeneralInfoAlternativePhone</label>
+                                                <fieldset class=" position-relative has-icon-left">
+                                                    <input type="tel" class="form-control phoneformat" id="txtEveningphonenumber" placeholder="ApplicationGeneralInfoPlaceHolderPhone">
+                                                    <div class="form-control-position">
+                                                        <i class="icon-phone3 blue-grey lighten-1"></i>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card box-shadow-3 border-blue-grey bg-light-blue bg-darken-3">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-lg-12 text-xs-center" ">
+                                            <label class="card-title white font-large-1 font-weight-bold">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <div class="col-lg-12">
+                                            <div id="divEmailAddress" class="">
+                                                <label for="txtFirstEmailAddress" class="white font-weight-bold font-small-5">ApplicationGeneralInfoMail</label>
+                                                <div class="controls">
+                                                    <fieldset class=" position-relative has-icon-left">
+                                                        <input maxlength="350" type="email" class="form-control" id="txtFirstEmailAddress" data-validation-regex-regex="([a-z0-9_\.-]+)@Html.Raw(@"@[\da-z\.-]+")\.([a-z\.]{2,6})" aria-invalid="false" placeholder="ApplicationGeneralInfoPlaceHolderEmail">
+                                                        <div class="form-control-position">
+                                                            <i class="icon-mail2 blue-grey lighten-1"></i>
+                                                        </div>
+                                                        <div class="help-block emailHelpBlock"></div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div id="divAlternativeEmailAddress" class="">
+                                                <label for="txtSecondEmailAddress" class="white font-weight-bold font-small-5">ApplicationGeneralInfoAlternativeEmail</label>
+                                                <fieldset class=" position-relative has-icon-left">
+                                                    <input type="email" maxlength="350" class="form-control" id="txtSecondEmailAddress" data-validation-regex-regex="([a-z0-9_\.-]+)@Html.Raw(@"@[\da-z\.-]+")\.([a-z\.]{2,6})" aria-invalid="false" placeholder="ApplicationGeneralInfoPlaceHolderEmail">
+                                                    <div class="form-control-position">
+                                                        <i class="icon-mail2 blue-grey lighten-1"></i>
+                                                    </div>
+                                                    <div class="help-block emailHelpBlock"></div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+                <div class="row ">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div class="c-inputs-stacked">
+                            <label class="c-input c-checkbox font-medium-2">
+                                <input type="checkbox" id="cbPhone">
+                                <span class="c-indicator"></span>ApplicationGeneralInfoWantContactPhone
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div class="c-inputs-stacked">
+                            <label class="c-input c-checkbox font-medium-2">
+                                <input type="checkbox" id="cbEmail">
+                                <span class="c-indicator"></span>ApplicationGeneralInfoWantContactMaill
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4">
+                        <div class="col-lg-12">
+                            <label class="font-medium-2"><span class="danger font-medium-3">*</span>&nbsp;ApplicationGeneralInfoLanguagePrincipalVerbal</label>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <input type="radio" id="rLanguagePreferencesVerbalES" name="languageofpreferencesverbal">
+                                <label for="rLanguagePreferencesVerbalES" class="font-medium-2">&nbsp;ES</label><br />
+                                <input type="radio" id="rLanguagePreferencesVerbalEN" name="languageofpreferencesverbal">
+                                <label for="rLanguagePreferencesVerbalEN" class="font-medium-2">&nbsp;EN</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="col-lg-12">
+                            <label class="font-medium-2"><span class="danger font-medium-3">*</span>&nbsp;ApplicationGeneralInfoLanguagePrincipalWritten</label>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <input type="radio" id="rLanguagePreferencesWrittenES" class="required" name="languageofpreferenceswritten">
+                                <label for="rLanguagePreferencesWrittenES" class="font-medium-2">&nbsp;ES</label><br />
+                                <input type="radio" id="rLanguagePreferencesWrittenEN" class="required" name="languageofpreferenceswritten">
+                                <label for="rLanguagePreferencesWrittenEN" class="font-medium-2">&nbsp;EN</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+
+            </fieldset>
+
+        </section>*@
+    @*<section id="content4">
+            <div class="m-bottom20px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-4 label-control" for="txtContactMPI" style="line-height: 40px;" data-i18n="Enrollment_MPI">Nombre del Contacto:</label>
+                            <div class="col-md-8 position-relative has-icon-left">
+                                <input id="txtContactMPI" class="form-control" disabled />
+                                <div class="form-control-position">
+                                    <i class="icon-head"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <div class="form">
+                            <div class="form-body">
+                                <div class="row m-bottom20px">
+                                    <div class="col-md-12">
+                                        <h3 data-i18n="Enrollment_Tittle1">Datos Generales</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="txtBeneficiary" data-i18n="SearchPerson_Header_Member_Name">Beneficiario:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtBeneficiary" class="form-control" disabled />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="txtMPIDatosGenerales" data-i18n="">MPI:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtMPIDatosGenerales" class="form-control" disabled />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="txtActualPcp" data-i18n="Enrollment_CPCP">PCP Actual:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtActualPcp" class="form-control" disabled />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="txtActualPmg" data-i18n="Enrollment_CPMG">PMG Actual:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtActualPmg" class="form-control" disabled />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="txtActualMco" data-i18n="Enrollment_CMCO">MCO Actual:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtActualMco" class="form-control" disabled />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="txtEligibility" data-i18n="Enrollment_Eligibility">Elegibilidad:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtEligibility" data-i18n="[placeholder]Enrollment_Elegible" class="form-control" disabled />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="txtEfectivityDate" data-i18n="Enrollment_EffectiveDate">Fecha de Efectividad:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtEfectivityDate" class="form-control" disabled />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="txtComment" data-i18n="Enrollment_Comment">Comentario:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtComment" class="form-control" disabled />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="position-relative has-icon-left">
+                        <button class="btn btn-primary center-button" id="btnDisplaySelection" type="submit" data-i18n="Enrollment_btnDisplaySelection">
+                            <i class="icon-shuffle"></i> Realizar Cambio de MCO
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="cardSelection" style="display:none">
+                <div class="card-body collapse in">
+                    <div class="card-block">
+                        <div class="form">
+                            <div class="form-body">
+                                <div class="row m-bottom20px">
+                                    <div class="col-md-12">
+                                        <h3 data-i18n="Enrollment_Tittle2">Select PCP/PMG Optional</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label for="txtPhName" data-i18n="Enrollment_PhisycianName">Phisycian Name:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtPhName" class="form-control" data-i18n="[placeholder]AllEnterText" />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="txtNPI" data-i18n="Enrollment_NPI">NPI:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input id="txtNPI" maxlength="8" class="form-control" data-i18n="[placeholder]AllEnterText" />
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="cbSpeciality" data-i18n="Enrollment_Speciality">Speciality:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <div class="position-relative has-icon-left">
+                                                <select type="text" class="cbSpeciality" id="cbSpeciality" style="width: 100%;">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label for="cbPmg" data-i18n="Enrollment_Medical">Grupo Médico Primario:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <div class="position-relative has-icon-left">
+                                                <select type="text" class="cbPmg" id="cbPmg" style="width: 100%;">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="cbMco" data-i18n="Enrollment_Org">Organización de Manejo de Cuidado:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <div class="position-relative has-icon-left">
+                                                <select type="text" id="cbMco" class="cbMco" data-allow-clear="true" data-placeholder="Yours Placeholder" multiple style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4" style="margin-top: 10px;">
+                                        <label for="btnSearch"></label>
+                                        <div class="position-relative has-icon-left">
+                                            <button type="submit" class="btn btn-primary" id="btnSearch" style="float:right;" data-i18n="AllBtnSearch">
+                                                <i class="icon-shuffle"></i> Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div style="float:right; color:red "> <p id="mensajedatos"></p></div>
+
+                                <div class="results-tag" style="margin-top: 40px;">
+                                    <span data-i18n="SearchPerson_Results">Resultados</span>
+                                </div>
+                                <div id="results-div"></div>
+                                <div class="container">
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination" id="pagination"></ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+    @*<section id="content5">
+
+            hola
+
+        </section>*@
+</main>
+
+<!-- Modal: modalCart -->
+<div id="modalFile" style="display: none">
+    @*<img id="imgFile" width="1280" height="720" />*@
+    <iframe id="ifrFile" width="1280" height="720"></iframe>
+</div>
+
+@section scripts{
+    <script src="~/wwwroot/js/MyAccount.Js"></script>
+
+    <script>
+        var urlGetId = '@Url.Action("GetId", "User")';
+        var urlSetUser = '@Url.Action("SetUser", "User")';
+        var UserId = '@ViewBag.UserId';
+        var MemberId = '@ViewBag.MemberId';
+
+        var urlGetEnrollmentHistoryByPersonId = '@Url.Action("GetEnrollmentHistoryByPersonId", "Common")';
+        var urlGetPDF = '@Url.Action("GetPDF", "Common")';
+    </script>
+}

@@ -1,0 +1,146 @@
+﻿html body {
+    height: 100%;
+    background-color: #F3F3F3;
+    direction: ltr;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.45;
+    color: #373a3c;
+    background-color: #F1F1F1;
+    font-size: 12px;
+}
+
+.bg {
+    /* The image used */
+    background-image: url('../images/IdentityWallpaper.jpg');
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg2 {
+    /* The image used */
+    background-image: url('../images/IdentityWallpaper2.jpg');
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer {
+    width: 100%;
+    height: 40px;
+}
+
+    footer.footer-light {
+        background: #FFFFFF;
+    }
+
+    footer.navbar-shadow {
+        box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    footer.footer {
+        padding: 0.4rem;
+    }
+
+nav {
+    width: 100%;
+    height: 50px;
+}
+    nav.navbar-light {
+        background: #FFFFFF;
+    }
+
+    nav.navbar-shadow {
+        box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.15);
+    }
+    nav.navbar {
+        padding: 0.4rem;
+    }
+
+
+    .logoCardHeader {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-right: 25px;
+        padding-left: 25px;
+        max-height: 200px;
+    }
+
+.customCardLogin {
+    opacity: 0.98; /* Opacidad 60% */
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+a:link {
+    color: #178ab4;
+}
+
+a:visited {
+    color: #178ab4;
+}
+
+a:active {
+    color: #178ab4;
+}
+
+a:hover {
+    color: #04AEB4;
+}
+
+input[type=submit] {
+    background: #666666;
+    border-radius: 0;
+    width: 100%;
+    height: 44px;
+    line-height: 32px;
+    font-size: 18px;
+    border: 0;
+    color: #FFFFFF;
+}
+
+input[type=submit]:hover {
+     background: #d2d2d2;
+     color: #666666;
+}
+
+.helpLink {
+    font-size: 14px;
+    color: #178ab4;
+}
+.customUl {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.customUl li {
+    float: right;
+}
+    .customUl li a {
+        display: block;
+        padding: 8px;
+    }
+.loading-icon {
+   color: white
+}
+select {
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    margin: 0 3px;
+}
